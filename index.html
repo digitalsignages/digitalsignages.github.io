@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  EELL Signage — 落地页 index.html
+  ============================================================
+  改哪里？搜索下面的标记就能定位：
+
+  【改文案】  普通文字，直接改
+  【改图片】  换成你的产品图，把 src 指向 images/xxx.jpg
+  【改表单】  询盘表单，必须改成你自己的 Formspree 地址
+  【改联系】  邮箱 / 电话 / 地址
+  【改SEO】   标题、描述、关键词
+
+  技术说明：单文件，无依赖，不需要任何构建工具。
+  直接扔进 GitHub 仓库就能跑。
+  ============================================================
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- 【改SEO】 浏览器标签 + 搜索结果标题，控制在 60 字符内 -->
+<title>Outdoor Android Digital Signage &amp; Touch Kiosks | EELL Signage Factory</title>
+
+<!-- 【改SEO】 搜索结果下方的描述，控制在 155 字符内 -->
+<meta name="description" content="Chinese factory for outdoor high-brightness displays, wall-mounted Android touch AIOs and floor-standing kiosks. 10.1&quot;–98&quot;, Android 13/14, OEM/ODM, MOQ 1, 24h quote.">
+
+<meta property="og:title" content="Outdoor Android Digital Signage &amp; Touch Kiosks | EELL Signage">
+<meta property="og:description" content="In-house factory since 2014. Outdoor kiosks, wall-mounted touch AIOs, media players. Shipped to 42+ countries.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://eellnet.github.io/">
+<link rel="canonical" href="https://eellnet.github.io/">
+
+<style>
+/* ===== 设计变量：想换配色只改这里 ===== */
+:root{
+  --ink:#0A1626;          /* 主文字 / 深底 */
+  --ink-2:#33465e;        /* 次级文字 */
+  --muted:#6b7c93;        /* 弱化文字 */
+  --line:#e3e8ef;         /* 分割线 */
+  --bg:#ffffff;
+  --bg-soft:#f5f7fa;
+  --accent:#0B5FFF;       /* 主色，按钮/链接 */
+  --accent-dark:#0846c4;
+  --teal:#00b39a;         /* 点缀色 */
+  --radius:14px;
+  --maxw:1160px;
+  --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;font-family:var(--font);color:var(--ink);background:var(--bg);
+  line-height:1.65;-webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:var(--accent);text-decoration:none}
+h1,h2,h3{line-height:1.2;margin:0 0 .5em;letter-spacing:-.02em}
+h1{font-size:clamp(2rem,5vw,3.4rem);font-weight:800}
+h2{font-size:clamp(1.5rem,3.2vw,2.3rem);font-weight:750}
+h3{font-size:1.12rem;font-weight:700}
+p{margin:0 0 1em}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:20px}
+.section{padding-block:clamp(56px,8vw,96px)}
+.section--soft{background:var(--bg-soft)}
+.eyebrow{
+  font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:.8em;
+}
+.lede{font-size:1.08rem;color:var(--ink-2);max-width:62ch}
+
+/* ===== 按钮 ===== */
+.btn{
+  display:inline-block;padding:13px 26px;border-radius:10px;font-weight:650;
+  font-size:.97rem;border:1px solid transparent;cursor:pointer;transition:.18s;
+}
+.btn--primary{background:var(--accent);color:#fff}
+.btn--primary:hover{background:var(--accent-dark)}
+.btn--ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.38)}
+.btn--ghost:hover{background:rgba(255,255,255,.12)}
+.btn--outline{background:#fff;color:var(--ink);border-color:var(--line)}
+.btn--outline:hover{border-color:var(--accent);color:var(--accent)}
+
+/* ===== 顶部导航 ===== */
+header{
+  position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--line);
+}
+.nav{display:flex;align-items:center;gap:26px;height:66px}
+.logo{font-weight:800;font-size:1.22rem;letter-spacing:-.03em;color:var(--ink)}
+.logo span{color:var(--accent)}
+.nav ul{display:flex;gap:24px;list-style:none;margin:0;padding:0;margin-left:auto}
+.nav ul a{color:var(--ink-2);font-size:.94rem;font-weight:550}
+.nav ul a:hover{color:var(--accent)}
+.nav .btn{padding:9px 18px;font-size:.9rem}
+@media(max-width:860px){ .nav ul{display:none} .nav .btn{margin-left:auto} }
+
+/* ===== Hero ===== */
+.hero{
+  background:linear-gradient(160deg,#0A1626 0%,#132a4d 55%,#0c1f3d 100%);
+  color:#fff;padding-block:clamp(64px,9vw,110px);
+}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.hero .eyebrow{color:var(--teal)}
+.hero p{color:#c3d0e2;font-size:1.1rem;max-width:52ch}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+@media(max-width:900px){ .hero-grid{grid-template-columns:1fr;gap:38px} }
+
+/* 图片占位框：换成真图后可以删掉 .ph 相关样式 */
+.ph{
+  aspect-ratio:4/3;border-radius:var(--radius);
+  background:
+    repeating-linear-gradient(45deg,rgba(255,255,255,.045) 0 12px,transparent 12px 24px),
+    rgba(255,255,255,.07);
+  border:1px dashed rgba(255,255,255,.3);
+  display:grid;place-items:center;color:rgba(255,255,255,.65);
+  font-size:.85rem;text-align:center;padding:20px;
+}
+.ph--light{
+  background:
+    repeating-linear-gradient(45deg,rgba(11,95,255,.05) 0 12px,transparent 12px 24px),
+    #eef2f8;
+  border-color:#c9d5e6;color:var(--muted);
+}
+
+/* ===== 信任条 ===== */
+.trust{border-top:1px solid rgba(255,255,255,.14);margin-top:48px;padding-top:30px;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.trust b{display:block;font-size:1.75rem;font-weight:800;color:#fff;letter-spacing:-.02em}
+.trust span{font-size:.86rem;color:#93a6c0}
+@media(max-width:700px){ .trust{grid-template-columns:repeat(2,1fr);gap:26px} }
+
+/* ===== 产品卡 ===== */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:24px;margin-top:44px}
+.card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  overflow:hidden;transition:.2s;display:flex;flex-direction:column;
+}
+.card:hover{border-color:#c4d4f5;box-shadow:0 10px 30px rgba(10,22,38,.08);transform:translateY(-3px)}
+.card .ph{aspect-ratio:16/11;border-radius:0;border:0;border-bottom:1px solid var(--line)}
+.card-body{padding:22px 22px 24px;flex:1;display:flex;flex-direction:column}
+.card h3{margin-bottom:.35em}
+.card p{font-size:.93rem;color:var(--ink-2);margin-bottom:1.1em}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:auto}
+.tag{
+  font-size:.76rem;font-weight:600;padding:4px 10px;border-radius:999px;
+  background:#eef3ff;color:var(--accent);
+}
+
+/* ===== 能力网格 ===== */
+.feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px;margin-top:44px}
+.feat{padding-left:16px;border-left:3px solid var(--teal)}
+.feat h3{margin-bottom:.3em}
+.feat p{font-size:.93rem;color:var(--ink-2);margin:0}
+
+/* ===== 规格表 ===== */
+.table-scroll{overflow-x:auto;margin-top:34px;border:1px solid var(--line);border-radius:var(--radius)}
+table{border-collapse:collapse;width:100%;min-width:540px;background:#fff;font-size:.93rem}
+th,td{padding:13px 18px;text-align:left;border-bottom:1px solid var(--line)}
+th{background:var(--bg-soft);font-weight:700;color:var(--ink);white-space:nowrap}
+td{color:var(--ink-2)}
+tr:last-child th,tr:last-child td{border-bottom:0}
+
+/* ===== 流程 ===== */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:26px;margin-top:44px;counter-reset:s}
+.step{counter-increment:s;position:relative;padding-top:46px}
+.step::before{
+  content:counter(s);position:absolute;top:0;left:0;
+  width:34px;height:34px;border-radius:50%;background:var(--accent);color:#fff;
+  display:grid;place-items:center;font-weight:700;font-size:.95rem;
+}
+.step p{font-size:.93rem;color:var(--ink-2);margin:0}
+
+/* ===== 询盘表单 ===== */
+.contact{background:var(--ink);color:#fff}
+.contact h2{color:#fff}
+.contact .lede{color:#c3d0e2}
+.contact-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:56px;align-items:start}
+@media(max-width:900px){ .contact-grid{grid-template-columns:1fr;gap:36px} }
+.contact-info{list-style:none;padding:0;margin:28px 0 0}
+.contact-info li{margin-bottom:16px;font-size:.96rem;color:#c3d0e2}
+.contact-info b{display:block;font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:3px}
+.contact-info a{color:#fff}
+
+form{background:#fff;border-radius:var(--radius);padding:30px}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:.85rem;font-weight:650;color:var(--ink);margin-bottom:6px}
+.field input,.field select,.field textarea{
+  width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:9px;
+  font-family:inherit;font-size:.95rem;color:var(--ink);background:#fff;
+}
+.field input:focus,.field select:focus,.field textarea:focus{
+  outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(11,95,255,.13)
+}
+.field textarea{min-height:104px;resize:vertical}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:520px){ .row{grid-template-columns:1fr} }
+form .btn{width:100%;margin-top:6px}
+.formnote{font-size:.8rem;color:var(--muted);margin:12px 0 0;text-align:center}
+
+/* ===== 页脚 ===== */
+footer{background:#06101d;color:#8fa2ba;padding-block:38px;font-size:.88rem}
+.foot{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:center}
+footer a{color:#c3d0e2}
+</style>
+</head>
+
+<body>
+
+<!-- ============ 顶部导航 ============ -->
+<header>
+  <nav class="nav wrap">
+    <!-- 【改文案】 品牌名 -->
+    <div class="logo">EELL<span>.</span></div>
+    <ul>
+      <li><a href="#products">Products</a></li>
+      <li><a href="#capabilities">Factory</a></li>
+      <li><a href="#specs">Specs</a></li>
+      <li><a href="#process">How to Order</a></li>
+    </ul>
+    <a class="btn btn--primary" href="#contact">Get a Quote</a>
+  </nav>
+</header>
+
+<!-- ============ Hero ============ -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">Shenzhen Factory · Since 2014</div>
+        <!-- 【改文案】 主标题：说清楚你卖什么 + 对谁 -->
+        <h1>Outdoor &amp; touch displays, built in our own factory</h1>
+        <p>
+          High-brightness outdoor kiosks, wall-mounted Android touch AIOs and media
+          players from 10.1&quot; to 98&quot;. OEM/ODM welcome — your brand, our production line.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn--primary" href="#contact">Request a quote &rarr;</a>
+          <a class="btn btn--ghost" href="#products">See products</a>
+        </div>
+      </div>
+
+      <!-- 【改图片】 主视觉。换法：
+           <img src="images/hero.jpg" alt="Outdoor digital signage kiosk" style="border-radius:14px">
+           把下面整个 <div class="ph"> 删掉替换即可 -->
+      <div class="ph">主视觉图位置<br>建议 1200×900，产品实拍或场景图</div>
+    </div>
+
+    <!-- 【改文案】 信任数据 -->
+    <div class="trust">
+      <div><b>42+</b><span>Countries shipped</span></div>
+      <div><b>18,000m²</b><span>Own factory</span></div>
+      <div><b>MOQ 1</b><span>Samples accepted</span></div>
+      <div><b>24h</b><span>Quote response</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 产品 ============ -->
+<section class="section" id="products">
+  <div class="wrap">
+    <div class="eyebrow">Product lines</div>
+    <h2>Four ranges that cover most commercial deployments</h2>
+    <p class="lede">Every unit ships with a 24-hour burn-in test. Sizes, brightness, OS and I/O can be specified per project.</p>
+
+    <div class="cards">
+
+      <article class="card">
+        <!-- 【改图片】 <img src="images/outdoor.jpg" alt="..."> -->
+        <div class="ph ph--light">产品图<br>户外高亮机</div>
+        <div class="card-body">
+          <h3>Outdoor high-brightness</h3>
+          <p>Sunlight-readable panels for bus shelters, drive-thrus and storefronts. IP-rated enclosures with thermal management.</p>
+          <div class="tags"><span class="tag">up to 3000 nits</span><span class="tag">IP65 option</span><span class="tag">32&quot;–86&quot;</span></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="ph ph--light">产品图<br>壁挂触摸一体机</div>
+        <div class="card-body">
+          <h3>Wall-mounted touch AIO</h3>
+          <p>Slim Android all-in-ones for retail, lobbies and clinics. 10-point capacitive glass, VESA mount, PoE option.</p>
+          <div class="tags"><span class="tag">Android 13/14</span><span class="tag">10-point touch</span><span class="tag">15.6&quot;–65&quot;</span></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="ph ph--light">产品图<br>落地立式机</div>
+        <div class="card-body">
+          <h3>Floor-standing kiosks</h3>
+          <p>Vertical totems for wayfinding, self-service and menu boards. Optional printer, scanner and card-reader bays.</p>
+          <div class="tags"><span class="tag">9:16 portrait</span><span class="tag">1920×1080</span><span class="tag">43&quot;–75&quot;</span></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="ph ph--light">产品图<br>播放盒 / MINI PC</div>
+        <div class="card-body">
+          <h3>Media players &amp; mini PCs</h3>
+          <p>Rockchip-based Android boxes and Windows mini PCs to drive existing screens. Ships with your CMS pre-installed.</p>
+          <div class="tags"><span class="tag">RK3566–RK3588</span><span class="tag">4K output</span><span class="tag">Android / Linux / Win</span></div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ 工厂能力 ============ -->
+<section class="section section--soft" id="capabilities">
+  <div class="wrap">
+    <div class="eyebrow">Why buy direct</div>
+    <h2>No trading company in the middle</h2>
+    <p class="lede">We design, assemble and test in Shenzhen. That means faster engineering changes, traceable quality and a price that has not been marked up twice.</p>
+
+    <div class="feats">
+      <div class="feat"><h3>100% aging test</h3><p>Every unit runs a 24-hour burn-in before packing. Failures are caught here, not at your customer's site.</p></div>
+      <div class="feat"><h3>OEM / ODM</h3><p>Your logo, your boot animation, your enclosure colour, your pre-loaded CMS. Tooling available for volume projects.</p></div>
+      <div class="feat"><h3>Certified for export</h3><p>CE, FCC, RoHS and ISO9001. Documentation pack supplied with every shipment.</p></div>
+      <div class="feat"><h3>Samples from 1 unit</h3><p>Validate the hardware before you commit. Sample cost is credited against your first bulk order.</p></div>
+      <div class="feat"><h3>Quote in 24 hours</h3><p>Send your spec or a competitor's datasheet — you get pricing and lead time within one business day.</p></div>
+      <div class="feat"><h3>Spare parts kept</h3><p>Panels, boards and PSUs stocked for the models you buy, so field replacements do not need a new tooling run.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 规格表（对 SEO 很有用，搜索引擎爱抓参数） ============ -->
+<section class="section" id="specs">
+  <div class="wrap">
+    <div class="eyebrow">Reference specification</div>
+    <h2>Floor-standing Android touch kiosk</h2>
+    <p class="lede">A typical configuration. Nearly every line below can be changed for your project.</p>
+
+    <div class="table-scroll">
+      <table>
+        <tbody>
+          <tr><th>Screen sizes</th><td>32&quot; / 43&quot; / 55&quot; / 65&quot;</td></tr>
+          <tr><th>Resolution</th><td>1920 × 1080, 9:16 portrait</td></tr>
+          <tr><th>Brightness</th><td>700 cd/m² standard · high-brightness options available</td></tr>
+          <tr><th>Panel</th><td>LCD IPS, contrast 1200:1</td></tr>
+          <tr><th>Touch</th><td>10-point capacitive</td></tr>
+          <tr><th>Processor</th><td>Rockchip RK3566 / RK3568 / RK3576 / RK3588 · MStar V53</td></tr>
+          <tr><th>Memory</th><td>2GB / 4GB / 8GB RAM · 16GB / 32GB / 64GB storage</td></tr>
+          <tr><th>Operating system</th><td>Android 13, Android 14 or Linux</td></tr>
+          <tr><th>Network</th><td>WiFi 802.11 b/g/n · 10/100M Ethernet · Bluetooth 4.0</td></tr>
+          <tr><th>Ports</th><td>HDMI · VGA · USB 3.0</td></tr>
+          <tr><th>Audio</th><td>2 × 5W speakers</td></tr>
+          <tr><th>Operating temp.</th><td>0–40 °C (outdoor versions rated wider)</td></tr>
+          <tr><th>Weight</th><td>≈ 45 kg (55&quot; version)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 下单流程 ============ -->
+<section class="section section--soft" id="process">
+  <div class="wrap">
+    <div class="eyebrow">How to order</div>
+    <h2>From enquiry to shipment</h2>
+
+    <div class="steps">
+      <div class="step"><h3>Send your spec</h3><p>Size, quantity, OS and any custom requirement. A competitor's datasheet works too.</p></div>
+      <div class="step"><h3>Quote within 24h</h3><p>Unit price, tooling cost if any, lead time and shipping options — EXW, FOB or DDP.</p></div>
+      <div class="step"><h3>Approve a sample</h3><p>One unit built to your spec. Sample fee is credited against the bulk order.</p></div>
+      <div class="step"><h3>Production &amp; QC</h3><p>24-hour burn-in on every unit, photos before packing, then shipment with full certification pack.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 询盘表单 ============ -->
+<section class="section contact" id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div>
+        <div class="eyebrow">Get a quote</div>
+        <h2>Tell us what you need</h2>
+        <p class="lede">Reply within one business day, in English. No obligation, no auto-mailing list.</p>
+
+        <!-- 【改联系】 -->
+        <ul class="contact-info">
+          <li><b>Email</b><a href="mailto:info@eellnet.com">info@eellnet.com</a></li>
+          <li><b>WhatsApp / Phone</b><a href="tel:+8617757838687">+86 177 5783 8687</a></li>
+          <li><b>Factory</b>Shenzhen, Guangdong, China</li>
+          <li><b>Main site</b><a href="https://www.eellnet.com/" target="_blank" rel="noopener">www.eellnet.com</a></li>
+        </ul>
+      </div>
+
+      <!--
+        【改表单】★★ 必改 ★★
+        GitHub Pages 是纯静态的，不能自己处理表单提交，要接一个免费的表单服务。
+
+        步骤：
+        1. 去 https://formspree.io 用 info@eellnet.com 注册（免费版每月 50 条询盘）
+        2. 新建一个 form，它会给你一串地址，长这样：
+           https://formspree.io/f/xabcdefg
+        3. 把下面 action="..." 里的 YOUR_FORM_ID 换成你拿到的那串 ID
+
+        暂时不想注册？把 action 改成：
+           action="mailto:info@eellnet.com" method="post" enctype="text/plain"
+        效果是打开访客的邮件客户端，体验差一些，但能先跑通。
+      -->
+      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <div class="row">
+          <div class="field">
+            <label for="name">Your name *</label>
+            <input id="name" name="name" type="text" required>
+          </div>
+          <div class="field">
+            <label for="company">Company</label>
+            <input id="company" name="company" type="text">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label for="email">Email *</label>
+            <input id="email" name="email" type="email" required>
+          </div>
+          <div class="field">
+            <label for="country">Country</label>
+            <input id="country" name="country" type="text">
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label for="product">Product interest</label>
+            <select id="product" name="product">
+              <option>Outdoor high-brightness display</option>
+              <option>Wall-mounted touch AIO</option>
+              <option>Floor-standing kiosk</option>
+              <option>Media player / mini PC</option>
+              <option>Custom OEM/ODM project</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="qty">Quantity</label>
+            <input id="qty" name="quantity" type="text" placeholder="e.g. 1 sample, then 200">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="msg">Requirements *</label>
+          <textarea id="msg" name="message" required placeholder="Screen size, brightness, OS, mounting, timeline…"></textarea>
+        </div>
+
+        <!-- 蜜罐字段：防垃圾邮件，人看不见，机器人会填 -->
+        <input type="text" name="_gotcha" style="display:none">
+
+        <button class="btn btn--primary" type="submit">Send enquiry</button>
+        <p class="formnote">We reply within 1 business day · Your details stay with us</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 页脚 ============ -->
+<footer>
+  <div class="wrap foot">
+    <div>© 2026 EELL Signage · Shenzhen GZY Technology Co., Ltd.</div>
+    <div><a href="https://www.eellnet.com/" target="_blank" rel="noopener">www.eellnet.com</a> · <a href="mailto:info@eellnet.com">info@eellnet.com</a></div>
+  </div>
+</footer>
+
+<!-- 结构化数据：帮助 Google 识别你是制造商，可能显示富摘要 -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Organization",
+  "name":"EELL Signage",
+  "legalName":"Shenzhen GZY Technology Co., Ltd",
+  "url":"https://eellnet.github.io/",
+  "sameAs":["https://www.eellnet.com/"],
+  "email":"info@eellnet.com",
+  "telephone":"+86-177-5783-8687",
+  "foundingDate":"2014",
+  "address":{"@type":"PostalAddress","addressLocality":"Shenzhen","addressRegion":"Guangdong","addressCountry":"CN"},
+  "description":"Manufacturer of outdoor high-brightness displays, wall-mounted Android touch all-in-ones, floor-standing kiosks and media players, 10.1\" to 98\"."
+}
+</script>
+
+</body>
+</html>
