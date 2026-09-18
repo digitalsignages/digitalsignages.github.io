@@ -303,6 +303,20 @@
     .controls select { width: auto; max-width: 42vw; }
   }
 
+  /* contact block in the side panel */
+  .controls .contact { margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.1); display: grid; gap: 12px; }
+  .controls .c-row { display: block; text-decoration: none; }
+  .controls .c-k { display: block; font: 600 10px/1 var(--display); letter-spacing: .14em; text-transform: uppercase; color: #7d889e; }
+  .controls .c-v { display: block; margin-top: 5px; font: 500 13px/1.3 var(--mono); color: #fff; overflow-wrap: anywhere; }
+  .controls .c-row:hover .c-v { color: #8fb3f2; }
+  .controls .c-btn {
+    margin-top: 4px; display: flex; align-items: center; justify-content: center; height: 40px; border-radius: 20px;
+    background: var(--blue); color: #fff; text-decoration: none; font: 600 13px/1 var(--display); letter-spacing: .02em;
+  }
+  .controls .c-btn:hover { background: #1f6de6; }
+  .controls .c-row:focus-visible, .controls .c-btn:focus-visible { outline: 2px solid #8fb3f2; outline-offset: 3px; border-radius: 4px; }
+  .controls .c-btn:focus-visible { border-radius: 20px; }
+
   /* language switch */
   .controls .lang {
     display: inline-flex; align-self: flex-start; gap: 2px; padding: 3px; margin-bottom: 18px;
@@ -466,6 +480,11 @@
   <label class="lbl" for="jump" id="jumpLabel"></label>
   <select id="jump"></select>
   <p class="side-hint" id="hint"></p>
+  <div class="contact">
+    <a class="c-row" href="tel:17757838687"><span class="c-k" id="cPhoneK"></span><span class="c-v">17757838687</span></a>
+    <a class="c-row" href="mailto:info@eellnet.com"><span class="c-k" id="cMailK"></span><span class="c-v">info@eellnet.com</span></a>
+    <a class="c-btn" id="cBtn" href="https://www.eellnet.com/contactus" target="_blank" rel="noopener"></a>
+  </div>
 </nav>
 
 <div id="m">
@@ -513,7 +532,7 @@ const T = {
     tocRun: ['目录', 'Contents'], tocTitle: '产品目录', models: n => `${n} 款`,
     avail: '可选尺寸', origPage: p => `原目录 P${p}`, specRun: ['规格参数', 'Specifications'],
     name: p => p.cn, sub: p => p.en, runL: p => `${pad(p.cat)} · ${p.cn}`, runR: p => p.en,
-    catName: c => c.cn, contactSub: '联系我们',
+    catName: c => c.cn, contactSub: '联系我们', phone: '电话', email: '邮箱', contactBtn: '联系我们 →',
   },
   en: {
     htmlLang: 'en', nav: 'Page navigation', prev: 'Previous page', next: 'Next page', jump: 'Jump to category',
@@ -528,7 +547,7 @@ const T = {
     tocRun: ['Contents', 'GZY 2026'], tocTitle: 'Contents', models: n => `${n} model${n > 1 ? 's' : ''}`,
     avail: 'Available in', origPage: p => `Catalogue p.${p}`, specRun: ['Specifications', 'GZY 2026'],
     name: p => p.en, sub: () => '', runL: p => `${pad(p.cat)} · ${p.en}`, runR: () => 'GZY 2026',
-    catName: c => c.en, contactSub: '',
+    catName: c => c.en, contactSub: '', phone: 'Phone', email: 'Email', contactBtn: 'Contact us →',
   },
 };
 let lang = 'en';
@@ -703,6 +722,9 @@ function build() {
   nextBtn.setAttribute('aria-label', L.next);
   document.getElementById('jumpLabel').textContent = L.jump;
   document.getElementById('hint').textContent = L.hint;
+  document.getElementById('cPhoneK').textContent = L.phone;
+  document.getElementById('cMailK').textContent = L.email;
+  document.getElementById('cBtn').textContent = L.contactBtn;
   jump.innerHTML = `<option value="1">${L.cover}</option><option value="3">${L.contents}</option>` +
     DATA.cats.map(c => `<option value="${c.page}">${pad(c.no)} ${esc(L.catName(c))}</option>`).join('') +
     `<option value="${TOTAL}">${L.back}</option>`;
