@@ -1,487 +1,1024 @@
-<!DOCTYPE html>
-<!--
-  ============================================================
-  EELL Signage — 落地页 index.html
-  ============================================================
-  改哪里？搜索下面的标记就能定位：
-
-  【改文案】  普通文字，直接改
-  【改图片】  换成你的产品图，把 src 指向 images/xxx.jpg
-  【改表单】  询盘表单，必须改成你自己的 Formspree 地址
-  【改联系】  邮箱 / 电话 / 地址
-  【改SEO】   标题、描述、关键词
-
-  技术说明：单文件，无依赖，不需要任何构建工具。
-  直接扔进 GitHub 仓库就能跑。
-  ============================================================
--->
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<!-- 【改SEO】 浏览器标签 + 搜索结果标题，控制在 60 字符内 -->
-<title>Outdoor Android Digital Signage &amp; Touch Kiosks | EELL Signage Factory</title>
-
-<!-- 【改SEO】 搜索结果下方的描述，控制在 155 字符内 -->
-<meta name="description" content="Chinese factory for outdoor high-brightness displays, wall-mounted Android touch AIOs and floor-standing kiosks. 10.1&quot;–98&quot;, Android 13/14, OEM/ODM, MOQ 1, 24h quote.">
-
-<meta property="og:title" content="Outdoor Android Digital Signage &amp; Touch Kiosks | EELL Signage">
-<meta property="og:description" content="In-house factory since 2014. Outdoor kiosks, wall-mounted touch AIOs, media players. Shipped to 42+ countries.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://eellnet.github.io/">
-<link rel="canonical" href="https://eellnet.github.io/">
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GZY Catalogue 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,400..800&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;700&display=swap">
 <style>
-/* ===== 设计变量：想换配色只改这里 ===== */
-:root{
-  --ink:#0A1626;          /* 主文字 / 深底 */
-  --ink-2:#33465e;        /* 次级文字 */
-  --muted:#6b7c93;        /* 弱化文字 */
-  --line:#e3e8ef;         /* 分割线 */
-  --bg:#ffffff;
-  --bg-soft:#f5f7fa;
-  --accent:#0B5FFF;       /* 主色，按钮/链接 */
-  --accent-dark:#0846c4;
-  --teal:#00b39a;         /* 点缀色 */
-  --radius:14px;
-  --maxw:1160px;
-  --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
-}
 
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;font-family:var(--font);color:var(--ink);background:var(--bg);
-  line-height:1.65;-webkit-font-smoothing:antialiased;
-}
-img{max-width:100%;display:block}
-a{color:var(--accent);text-decoration:none}
-h1,h2,h3{line-height:1.2;margin:0 0 .5em;letter-spacing:-.02em}
-h1{font-size:clamp(2rem,5vw,3.4rem);font-weight:800}
-h2{font-size:clamp(1.5rem,3.2vw,2.3rem);font-weight:750}
-h3{font-size:1.12rem;font-weight:700}
-p{margin:0 0 1em}
+  :root {
+    --desk: #1b2130;
+    --desk-2: #242c3e;
+    --paper: #fafaf7;
+    --paper-edge: #eceae3;
+    --ink: #141b2d;
+    --ink-2: #505a6e;
+    --ink-3: #8a93a4;
+    --line: #dce1ea;
+    --blue: #0b5cd5;
+    --blue-soft: #e8f0fc;
+    --display: "Archivo", "Noto Sans SC", system-ui, sans-serif;
+    --body: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+    color-scheme: dark;
+  }
+  html, body { height: 100%; }
+  body {
+    background: radial-gradient(120% 90% at 50% 40%, var(--desk-2), var(--desk) 70%);
+    color: var(--ink);
+    font-family: var(--body);
+    overflow: hidden;
+    padding-inline: 16px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+  }
 
-.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:20px}
-.section{padding-block:clamp(56px,8vw,96px)}
-.section--soft{background:var(--bg-soft)}
-.eyebrow{
-  font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--accent);margin-bottom:.8em;
-}
-.lede{font-size:1.08rem;color:var(--ink-2);max-width:62ch}
+  /* ---------- stage & book ---------- */
+  .stage { flex: 1; min-height: 0; display: grid; place-items: center; position: relative; }
+  .scaler { width: 1040px; height: 700px; transform-origin: center center; flex: none; }
+  .book {
+    position: relative; width: 1040px; height: 700px;
+    perspective: 2600px;
+    transition: transform .9s cubic-bezier(.3,.1,.2,1);
+  }
+  .book.closed-front { transform: translateX(-25%); }
+  .book.closed-back { transform: translateX(25%); }
+  .book::after { /* soft shadow on the desk */
+    content: ""; position: absolute; left: 3%; right: 3%; bottom: -26px; height: 40px;
+    background: radial-gradient(50% 50% at 50% 50%, rgba(0,0,0,.45), transparent 70%);
+    z-index: -1; transition: left .9s, right .9s;
+  }
+  .book.closed-front::after { left: 52%; }
+  .book.closed-back::after { right: 52%; }
 
-/* ===== 按钮 ===== */
-.btn{
-  display:inline-block;padding:13px 26px;border-radius:10px;font-weight:650;
-  font-size:.97rem;border:1px solid transparent;cursor:pointer;transition:.18s;
-}
-.btn--primary{background:var(--accent);color:#fff}
-.btn--primary:hover{background:var(--accent-dark)}
-.btn--ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.38)}
-.btn--ghost:hover{background:rgba(255,255,255,.12)}
-.btn--outline{background:#fff;color:var(--ink);border-color:var(--line)}
-.btn--outline:hover{border-color:var(--accent);color:var(--accent)}
+  .leaf {
+    position: absolute; top: 0; left: 50%; width: 50%; height: 100%;
+    transform-origin: left center; transform-style: preserve-3d;
+    transition: transform 1s cubic-bezier(.45,.05,.25,1);
+    cursor: pointer;
+  }
+  .leaf.flipped { transform: rotateY(-180deg); }
+  .face {
+    position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden;
+    background: var(--paper); overflow: hidden;
+  }
+  .face.back { transform: rotateY(180deg); }
+  /* gutter shading: right pages dark on their left edge, left pages on their right edge */
+  .face.front::before, .face.back::before {
+    content: ""; position: absolute; top: 0; bottom: 0; width: 60px; pointer-events: none; z-index: 5;
+  }
+  .face.front::before { left: 0; background: linear-gradient(90deg, rgba(20,27,45,.16), rgba(20,27,45,0)); }
+  .face.back::before { right: 0; background: linear-gradient(270deg, rgba(20,27,45,.16), rgba(20,27,45,0)); }
+  /* shading that sweeps across a page while it turns */
+  .face::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 6; opacity: 0;
+    background: linear-gradient(90deg, rgba(0,0,0,.18), rgba(255,255,255,.08) 60%, rgba(0,0,0,.05));
+    transition: opacity .5s;
+  }
+  .leaf.turning .face::after { opacity: 1; }
+  /* stacked page edges */
+  .leaf:not(.flipped) .face.front { box-shadow: inset -1px 0 0 var(--paper-edge), 3px 2px 0 -1px #e3e1d9, 6px 4px 0 -2px #d5d3ca; }
+  .leaf.flipped .face.back { box-shadow: inset 1px 0 0 var(--paper-edge), -3px 2px 0 -1px #e3e1d9, -6px 4px 0 -2px #d5d3ca; }
 
-/* ===== 顶部导航 ===== */
-header{
-  position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);
-  backdrop-filter:blur(10px);border-bottom:1px solid var(--line);
-}
-.nav{display:flex;align-items:center;gap:26px;height:66px}
-.logo{font-weight:800;font-size:1.22rem;letter-spacing:-.03em;color:var(--ink)}
-.logo span{color:var(--accent)}
-.nav ul{display:flex;gap:24px;list-style:none;margin:0;padding:0;margin-left:auto}
-.nav ul a{color:var(--ink-2);font-size:.94rem;font-weight:550}
-.nav ul a:hover{color:var(--accent)}
-.nav .btn{padding:9px 18px;font-size:.9rem}
-@media(max-width:860px){ .nav ul{display:none} .nav .btn{margin-left:auto} }
+  @media (prefers-reduced-motion: reduce) {
+    .leaf, .book, .book::after { transition-duration: .01s; }
+  }
 
-/* ===== Hero ===== */
-.hero{
-  background:linear-gradient(160deg,#0A1626 0%,#132a4d 55%,#0c1f3d 100%);
-  color:#fff;padding-block:clamp(64px,9vw,110px);
-}
-.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
-.hero .eyebrow{color:var(--teal)}
-.hero p{color:#c3d0e2;font-size:1.1rem;max-width:52ch}
-.hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
-@media(max-width:900px){ .hero-grid{grid-template-columns:1fr;gap:38px} }
+  /* ---------- page furniture ---------- */
+  .pg { position: absolute; inset: 0; display: flex; flex-direction: column; padding: 40px 44px 30px; box-sizing: border-box; }
+  .run {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font: 500 10px/1 var(--display); letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3);
+    padding-bottom: 12px; border-bottom: 1px solid var(--line);
+  }
+  .run b { color: var(--blue); font-weight: 700; }
+  .folio {
+    margin-top: auto; padding-top: 12px; display: flex; justify-content: space-between;
+    font: 500 10px/1 var(--mono); color: var(--ink-3);
+  }
+  .back .folio { flex-direction: row-reverse; }
 
-/* 图片占位框：换成真图后可以删掉 .ph 相关样式 */
-.ph{
-  aspect-ratio:4/3;border-radius:var(--radius);
-  background:
-    repeating-linear-gradient(45deg,rgba(255,255,255,.045) 0 12px,transparent 12px 24px),
-    rgba(255,255,255,.07);
-  border:1px dashed rgba(255,255,255,.3);
-  display:grid;place-items:center;color:rgba(255,255,255,.65);
-  font-size:.85rem;text-align:center;padding:20px;
-}
-.ph--light{
-  background:
-    repeating-linear-gradient(45deg,rgba(11,95,255,.05) 0 12px,transparent 12px 24px),
-    #eef2f8;
-  border-color:#c9d5e6;color:var(--muted);
-}
+  /* ---------- cover ---------- */
+  .cover { background: var(--blue); color: #fff; }
+  .cover .pg { padding: 48px 46px 40px; }
+  .cover .brand { font: 800 15px/1 var(--display); letter-spacing: .32em; }
+  .cover .brand span { opacity: .6; font-weight: 500; letter-spacing: .1em; margin-left: 10px; }
+  .cover h1 {
+    margin: 64px 0 0; font: 800 68px/.92 var(--display); font-stretch: 78%; letter-spacing: -.01em; text-wrap: balance;
+  }
+  .cover h1 em { font-style: normal; display: block; color: #bcd4fb; }
+  .cover .cn { margin-top: 18px; font: 500 22px/1.3 var(--body); letter-spacing: .12em; }
+  .cover .hero {
+    position: absolute; left: 46px; right: 46px; bottom: 96px; height: 250px;
+    background: #fff; border-radius: 2px; display: grid; grid-template-columns: 1.1fr 1fr; overflow: hidden;
+  }
+  .cover .hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .cover .hero .mono { object-fit: contain; padding: 18px; box-sizing: border-box; }
+  .cover .foot {
+    margin-top: auto; display: flex; justify-content: space-between; align-items: flex-end;
+    font: 500 11px/1.5 var(--mono); color: #d7e5fd;
+  }
+  .cover .foot strong { font: 800 40px/1 var(--display); color: #fff; font-stretch: 80%; }
 
-/* ===== 信任条 ===== */
-.trust{border-top:1px solid rgba(255,255,255,.14);margin-top:48px;padding-top:30px;
-  display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
-.trust b{display:block;font-size:1.75rem;font-weight:800;color:#fff;letter-spacing:-.02em}
-.trust span{font-size:.86rem;color:#93a6c0}
-@media(max-width:700px){ .trust{grid-template-columns:repeat(2,1fr);gap:26px} }
+  /* ---------- intro & contents ---------- */
+  .intro h2, .toc h2 { margin: 26px 0 6px; font: 800 38px/1 var(--display); font-stretch: 80%; }
+  .intro .lede { font-size: 13.5px; line-height: 1.85; color: var(--ink-2); max-width: 34em; margin: 14px 0 0; }
+  .stats { margin-top: 28px; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 2px solid var(--ink); }
+  .stats div { padding: 14px 0 0; }
+  .stats strong { display: block; font: 800 46px/1 var(--display); font-stretch: 80%; color: var(--blue); font-variant-numeric: tabular-nums; }
+  .stats span { font-size: 12px; color: var(--ink-2); }
+  .chips { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 6px; }
+  .chips span { font: 500 11px/1 var(--mono); padding: 6px 8px; background: var(--blue-soft); color: var(--blue); border-radius: 2px; }
+  .intro .note { margin-top: 22px; font-size: 11.5px; line-height: 1.7; color: var(--ink-3); }
 
-/* ===== 产品卡 ===== */
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:24px;margin-top:44px}
-.card{
-  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
-  overflow:hidden;transition:.2s;display:flex;flex-direction:column;
-}
-.card:hover{border-color:#c4d4f5;box-shadow:0 10px 30px rgba(10,22,38,.08);transform:translateY(-3px)}
-.card .ph{aspect-ratio:16/11;border-radius:0;border:0;border-bottom:1px solid var(--line)}
-.card-body{padding:22px 22px 24px;flex:1;display:flex;flex-direction:column}
-.card h3{margin-bottom:.35em}
-.card p{font-size:.93rem;color:var(--ink-2);margin-bottom:1.1em}
-.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:auto}
-.tag{
-  font-size:.76rem;font-weight:600;padding:4px 10px;border-radius:999px;
-  background:#eef3ff;color:var(--accent);
-}
+  .toc ol { list-style: none; margin: 16px 0 0; padding: 0; }
+  .toc li { border-bottom: 1px solid var(--line); }
+  .toc button {
+    all: unset; box-sizing: border-box; width: 100%; display: grid; grid-template-columns: 26px 1fr auto; gap: 10px;
+    align-items: baseline; padding: 7px 2px; cursor: default;
+  }
+  .toc .n { font: 500 11px/1 var(--mono); color: var(--ink-3); }
+  .toc .t { font-size: 13px; font-weight: 500; }
+  .toc .t small { display: block; font: 400 10.5px/1.4 var(--display); color: var(--ink-3); margin-top: 2px; }
+  .toc .p { font: 500 11px/1 var(--mono); color: var(--ink-2); font-variant-numeric: tabular-nums; }
+  .toc li.live button { cursor: pointer; }
+  .toc li.live .t { color: var(--blue); }
+  .toc li.live .p::after { content: " →"; color: var(--blue); }
+  .toc li.live button:hover { background: var(--blue-soft); }
+  .toc button:focus-visible { outline: 2px solid var(--blue); outline-offset: 1px; }
 
-/* ===== 能力网格 ===== */
-.feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px;margin-top:44px}
-.feat{padding-left:16px;border-left:3px solid var(--teal)}
-.feat h3{margin-bottom:.3em}
-.feat p{font-size:.93rem;color:var(--ink-2);margin:0}
+  /* ---------- product pages ---------- */
+  .kicker { margin-top: 22px; font: 600 11px/1 var(--display); letter-spacing: .16em; text-transform: uppercase; color: var(--blue); }
+  .pname { margin: 8px 0 0; font: 700 25px/1.25 var(--body); text-wrap: balance; }
+  .pname-en { margin-top: 4px; font: 500 13px/1.3 var(--display); color: var(--ink-2); }
+  .size { font: 800 64px/1 var(--display); font-stretch: 75%; color: var(--ink); letter-spacing: -.02em; margin-top: 12px; }
+  .size small { font-size: 22px; font-weight: 600; color: var(--ink-3); margin-left: 2px; }
+  .shot { flex: 1; min-height: 0; display: grid; place-items: center; margin: 4px -10px 0; }
+  .shot img { max-height: 100%; max-width: 100%; object-fit: contain; mix-blend-mode: multiply; }
+  .keys { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 2px solid var(--ink); }
+  .keys div { padding: 10px 8px 0 0; }
+  .keys dt { font: 500 9.5px/1.2 var(--display); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
+  .keys dd { margin: 5px 0 0; font: 500 12px/1.35 var(--mono); }
+  .tag { position: absolute; top: 36px; right: 44px; font: 700 10px/1 var(--display); letter-spacing: .14em; background: #d63a2f; color: #fff; padding: 5px 7px; }
 
-/* ===== 规格表 ===== */
-.table-scroll{overflow-x:auto;margin-top:34px;border:1px solid var(--line);border-radius:var(--radius)}
-table{border-collapse:collapse;width:100%;min-width:540px;background:#fff;font-size:.93rem}
-th,td{padding:13px 18px;text-align:left;border-bottom:1px solid var(--line)}
-th{background:var(--bg-soft);font-weight:700;color:var(--ink);white-space:nowrap}
-td{color:var(--ink-2)}
-tr:last-child th,tr:last-child td{border-bottom:0}
+  .scene { margin: 18px -44px 0; height: 238px; overflow: hidden; position: relative; }
+  .scene img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .scene figcaption { position: absolute; left: 44px; bottom: 10px; font: 500 10px/1 var(--display); letter-spacing: .12em; text-transform: uppercase; color: #fff; text-shadow: 0 1px 6px rgba(0,0,0,.5); }
+  .duo { margin-top: 18px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; height: 170px; }
+  .duo img { width: 100%; height: 100%; object-fit: cover; }
+  .acc { margin-top: 12px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+  .acc figure { margin: 0; text-align: center; }
+  .acc img { width: 100%; aspect-ratio: 1; object-fit: contain; background: #fff; border: 1px solid var(--line); mix-blend-mode: multiply; }
+  .acc figcaption { font-size: 9.5px; color: var(--ink-2); margin-top: 3px; }
 
-/* ===== 流程 ===== */
-.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:26px;margin-top:44px;counter-reset:s}
-.step{counter-increment:s;position:relative;padding-top:46px}
-.step::before{
-  content:counter(s);position:absolute;top:0;left:0;
-  width:34px;height:34px;border-radius:50%;background:var(--accent);color:#fff;
-  display:grid;place-items:center;font-weight:700;font-size:.95rem;
-}
-.step p{font-size:.93rem;color:var(--ink-2);margin:0}
+  .spec-h { margin-top: 18px; display: flex; justify-content: space-between; align-items: baseline; }
+  .spec-h h3 { margin: 0; font: 700 14px/1 var(--body); }
+  .spec-h span { font: 500 10px/1 var(--display); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3); }
+  table.spec { width: 100%; border-collapse: collapse; margin-top: 8px; }
+  .spec td { padding: 4px 0; border-bottom: 1px solid var(--line); vertical-align: top; font-size: 10.5px; line-height: 1.4; }
+  .spec td:first-child { width: 34%; color: var(--ink-2); padding-right: 8px; }
+  .spec td:first-child small { color: var(--ink-3); margin-left: 4px; }
+  .spec td:last-child { font-family: var(--mono); font-size: 10px; color: var(--ink); }
+  .spec.tight td { padding: 3px 0; font-size: 10px; }
+  .spec.tight td:last-child { font-size: 9.5px; }
 
-/* ===== 询盘表单 ===== */
-.contact{background:var(--ink);color:#fff}
-.contact h2{color:#fff}
-.contact .lede{color:#c3d0e2}
-.contact-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:56px;align-items:start}
-@media(max-width:900px){ .contact-grid{grid-template-columns:1fr;gap:36px} }
-.contact-info{list-style:none;padding:0;margin:28px 0 0}
-.contact-info li{margin-bottom:16px;font-size:.96rem;color:#c3d0e2}
-.contact-info b{display:block;font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:3px}
-.contact-info a{color:#fff}
+  /* ---------- back cover ---------- */
+  .backcover { background: var(--ink); color: #dfe5f0; }
+  .backcover .pg { padding: 48px 46px 40px; }
+  .backcover h2 { margin: 0; font: 800 44px/1 var(--display); font-stretch: 80%; color: #fff; }
+  .backcover .zh { margin-top: 8px; font-size: 15px; letter-spacing: .2em; color: #8fb3f2; }
+  .backcover dl { margin: 40px 0 0; display: grid; gap: 16px; }
+  .backcover dt { font: 500 10px/1 var(--display); letter-spacing: .16em; text-transform: uppercase; color: #7d889e; }
+  .backcover dd { margin: 6px 0 0; font-size: 13px; line-height: 1.6; }
+  .backcover .mono { font-family: var(--mono); }
+  .backcover .bar { margin-top: auto; height: 10px; background: var(--blue); margin-inline: -46px; margin-bottom: -40px; }
 
-form{background:#fff;border-radius:var(--radius);padding:30px}
-.field{margin-bottom:16px}
-.field label{display:block;font-size:.85rem;font-weight:650;color:var(--ink);margin-bottom:6px}
-.field input,.field select,.field textarea{
-  width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:9px;
-  font-family:inherit;font-size:.95rem;color:var(--ink);background:#fff;
-}
-.field input:focus,.field select:focus,.field textarea:focus{
-  outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(11,95,255,.13)
-}
-.field textarea{min-height:104px;resize:vertical}
-.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-@media(max-width:520px){ .row{grid-template-columns:1fr} }
-form .btn{width:100%;margin-top:6px}
-.formnote{font-size:.8rem;color:var(--muted);margin:12px 0 0;text-align:center}
+  /* ---------- controls ---------- */
+  .controls {
+    flex: none; display: flex; align-items: center; justify-content: center; gap: 14px;
+    padding-block: 10px calc(14px + env(safe-area-inset-bottom, 0px));
+    color: #c9d2e3; font: 500 12px/1 var(--mono);
+  }
+  .controls button {
+    all: unset; cursor: pointer; width: 38px; height: 38px; display: grid; place-items: center; border-radius: 50%;
+    border: 1px solid rgba(255,255,255,.18); color: #fff; font-size: 16px;
+  }
+  .controls button:hover { background: rgba(255,255,255,.08); }
+  .controls button:focus-visible { outline: 2px solid #8fb3f2; outline-offset: 2px; }
+  .controls button:disabled { opacity: .3; cursor: default; }
+  #pageInfo { min-width: 96px; text-align: center; font-variant-numeric: tabular-nums; }
+  .draft {
+    position: fixed; top: calc(12px + env(safe-area-inset-top, 0px)); left: 16px;
+    font: 600 10px/1 var(--display); letter-spacing: .16em; text-transform: uppercase;
+    color: #8fb3f2; border: 1px solid rgba(143,179,242,.4); padding: 6px 8px; border-radius: 2px;
+  }
+  .hint { position: fixed; top: calc(12px + env(safe-area-inset-top, 0px)); right: 16px; font-size: 11px; color: #7d889e; }
+  @media (max-width: 640px) { .hint { display: none; } }
 
-/* ===== 页脚 ===== */
-footer{background:#06101d;color:#8fa2ba;padding-block:38px;font-size:.88rem}
-.foot{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:center}
-footer a{color:#c3d0e2}
+  body { margin: 0; }   /* the published page gets this from its skeleton; the local copy needs it */
+
+  /* ---------- full-book additions ---------- */
+  .viewport { position: relative; }
+  .viewport.single { overflow: hidden; }
+  .viewport.single .book::after { display: none; }
+  .book.show-right { transform: translateX(-25%); }
+  .book.show-left { transform: translateX(25%); }
+
+  .pg.fit { --fs: 11.5px; }
+  .spec td { font-size: var(--fs, 11.5px); line-height: 1.34; padding-block: calc(var(--fs, 11.5px) * .32); }
+  table.spec, .toc ol, .spec-h, .run, .folio { flex: none; }
+  .spec td:first-child { font-weight: 500; color: var(--ink-2); }
+  .spec td:last-child { font-family: var(--body); font-size: var(--fs, 11.5px); color: var(--ink); }
+
+  /* product shot fills the free space without pushing the key specs */
+  .shot { position: relative; flex: 1; min-height: 0; }
+  .shot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+  .tag { top: 94px; }
+  .avail { margin-top: 6px; font: 500 11px/1.3 var(--mono); color: var(--ink-3); }
+  .avail b { color: var(--blue); font-weight: 500; }
+
+  .media { margin: 14px -44px 0; height: 230px; display: grid; gap: 6px; flex: none; }
+  .media.two { grid-template-columns: 1fr 1fr; margin-inline: 0; }
+  .media img { width: 100%; height: 100%; display: block; min-height: 0; }
+  .media .cover { object-fit: cover; }
+  .media .contain { object-fit: contain; background: #fff; mix-blend-mode: multiply; padding: 6px; box-sizing: border-box; }
+  .media.one .contain { background: transparent; }
+
+  .acc.n1, .acc.n2, .acc.n3 { grid-template-columns: repeat(4, 1fr); }
+  .acc.n5 { grid-template-columns: repeat(5, 1fr); }
+  .shot { margin-top: 8px; margin-bottom: 10px; }
+
+  .cat-mark {
+    position: absolute; top: 0; width: 22px; height: 64px; background: var(--blue); color: #fff;
+    display: grid; place-items: center; font: 700 10px/1 var(--mono); z-index: 4;
+  }
+  .front .cat-mark { right: 0; }
+  .back .cat-mark { left: 0; }
+
+  .toc { --ts: 13px; }
+  .toc h2 { margin-top: 16px; font-size: 32px; }
+  .toc ol { margin-top: 8px; }
+  .toc li button { cursor: pointer; padding-block: calc(var(--ts) * .38); }
+  .toc .t { font-size: var(--ts); line-height: 1.3; }
+  .toc .t small { font-size: calc(var(--ts) - 2.5px); margin-top: 1px; }
+  .toc .t { color: var(--ink); }
+  .toc li button:hover .t { color: var(--blue); }
+  .toc .p::after { content: ""; }
+  .toc .cnt { font: 500 10px/1 var(--mono); color: var(--ink-3); margin-left: 6px; }
+
+  /* side panel */
+  body { flex-direction: row; }
+  .stage { min-width: 0; min-height: 0; overflow: hidden; }
+  .hint { display: none; }
+  .controls {
+    flex-direction: column; justify-content: center; align-items: stretch; gap: 14px;
+    width: 196px; flex: none; padding-block: 24px; padding-inline: 18px 2px;
+    border-left: 1px solid rgba(255,255,255,.08);
+  }
+  .controls .navrow { display: flex; gap: 10px; }
+  .controls #pageInfo { font: 700 22px/1.1 var(--display); color: #fff; text-align: left; min-width: 0; }
+  .controls #pageInfo small { display: block; font: 500 11px/1.4 var(--mono); color: #7d889e; margin-top: 4px; }
+  .controls .lbl { font: 600 10px/1 var(--display); letter-spacing: .14em; text-transform: uppercase; color: #7d889e; margin-top: 10px; }
+  .controls .side-hint { margin: 10px 0 0; font-size: 11px; line-height: 1.6; color: #7d889e; }
+  .controls select {
+    width: 100%;
+    appearance: none; -webkit-appearance: none; background: transparent; color: #dfe5f0;
+    border: 1px solid rgba(255,255,255,.18); border-radius: 19px; height: 38px; padding: 0 30px 0 14px;
+    font: 500 12px/1 var(--body); cursor: pointer;
+    background-image: linear-gradient(45deg, transparent 50%, #c9d2e3 50%), linear-gradient(135deg, #c9d2e3 50%, transparent 50%);
+    background-position: calc(100% - 16px) 16px, calc(100% - 11px) 16px; background-size: 5px 5px; background-repeat: no-repeat;
+  }
+  .controls select option { color: #141b2d; }
+  .controls select:focus-visible { outline: 2px solid #8fb3f2; outline-offset: 2px; }
+  @media (max-width: 760px) {
+    body { flex-direction: column; }
+    .controls {
+      flex-direction: row; align-items: center; justify-content: center; width: auto; gap: 10px;
+      border-left: 0; padding-inline: 0; padding-block: 10px calc(14px + env(safe-area-inset-bottom, 0px));
+    }
+    .controls .lbl, .controls .side-hint { display: none; }
+    .controls #pageInfo { font-size: 15px; order: -1; }
+    .controls #pageInfo small { display: none; }
+    .controls select { width: auto; max-width: 42vw; }
+  }
+
+  /* language switch */
+  .controls .lang {
+    display: inline-flex; align-self: flex-start; gap: 2px; padding: 3px; margin-bottom: 18px;
+    border: 1px solid rgba(255,255,255,.18); border-radius: 19px;
+  }
+  .controls .lang button {
+    width: auto; height: auto; border: 0; border-radius: 16px; padding: 7px 14px; display: inline-block;
+    font: 600 12px/1 var(--body); color: #c9d2e3; cursor: pointer;
+  }
+  .controls .lang button:hover { background: rgba(255,255,255,.08); }
+  .controls .lang button[aria-pressed="true"] { background: #fff; color: #141b2d; }
+  @media (max-width: 760px) {
+    .controls .lang { margin-bottom: 0; order: -2; align-self: center; }
+    .controls .lang button { padding: 6px 10px; }
+  }
+
+  /* English copy runs longer than Chinese */
+  .cover .cn.en { font: 600 17px/1.3 var(--display); letter-spacing: .08em; text-transform: uppercase; }
+  .pname.en { font: 700 23px/1.2 var(--display); font-stretch: 88%; }
+
+  /* ================= phone layout (≤ 760px): one page at a time, reflowed ================= */
+  #m { display: none; }
+  @media (max-width: 760px) {
+    body { padding-inline: 0; flex-direction: column; }
+    .stage, .controls { display: none !important; }
+    #m { display: flex; flex-direction: column; height: 100%; width: 100%; position: relative; }
+  }
+  .m-top { flex: none; height: 48px; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; }
+  .m-top .logo { font: 800 14px/1 var(--display); letter-spacing: .3em; color: #fff; }
+  .m-top .logo small { font-weight: 500; letter-spacing: .08em; color: #7d889e; margin-left: 6px; }
+  .m-lang { display: inline-flex; padding: 2px; border: 1px solid rgba(255,255,255,.2); border-radius: 17px; }
+  .m-lang button { all: unset; cursor: pointer; padding: 7px 12px; border-radius: 14px; font: 600 12px/1 var(--body); color: #c9d2e3; }
+  .m-lang button[aria-pressed="true"] { background: #fff; color: var(--ink); }
+  .m-lang button:focus-visible, .m-bottom button:focus-visible, .m-sheet button:focus-visible { outline: 2px solid #8fb3f2; outline-offset: 2px; }
+
+  .m-stage { flex: 1; min-height: 0; position: relative; margin: 0 12px; perspective: 1600px; }
+  .mpage {
+    position: absolute; inset: 0; background: var(--paper); color: var(--ink); border-radius: 4px 10px 10px 4px; overflow: hidden;
+    transform-origin: left center; transition: transform .6s cubic-bezier(.45,.05,.25,1), opacity .6s;
+    box-shadow: inset 10px 0 18px -12px rgba(20,27,45,.35), 4px 3px 0 -1px #e3e1d9, 7px 5px 0 -2px #d0cec5;
+    touch-action: pan-y;
+  }
+  .mpage.gone { transform: rotateY(-100deg); opacity: 0; pointer-events: none; }
+  @media (prefers-reduced-motion: reduce) { .mpage { transition-duration: .01s; } }
+  .mpage .in { position: absolute; inset: 0; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 18px 20px; display: flex; flex-direction: column; box-sizing: border-box; }
+  .mpage .run { flex: none; font-size: 9.5px; padding-bottom: 10px; }
+  .mpage .run span { max-width: 62%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .mpage .folio { flex: none; font-size: 10px; }
+
+  .mpage.cover { background: var(--blue); color: #fff; }
+  .mpage.cover .in { padding: 26px 22px 22px; }
+  .mpage.cover .brand { font: 800 13px/1 var(--display); letter-spacing: .3em; }
+  .mpage.cover .brand span { opacity: .6; font-weight: 500; letter-spacing: .08em; margin-left: 8px; }
+  .mpage.cover h2 { margin: 36px 0 0; font: 800 clamp(40px, 13vw, 52px)/.92 var(--display); font-stretch: 78%; }
+  .mpage.cover h2 em { font-style: normal; display: block; color: #bcd4fb; }
+  .mpage.cover .sub { margin-top: 14px; font: 600 13px/1.3 var(--display); letter-spacing: .1em; text-transform: uppercase; }
+  .mpage.cover .sub.zh { font: 500 16px/1.4 var(--body); letter-spacing: .12em; text-transform: none; }
+  .mpage.cover .hero { position: static; left: auto; right: auto; bottom: auto; border-radius: 0; margin-top: 24px; height: min(200px, 26vh); display: grid; grid-template-columns: 1.15fr 1fr; background: #fff; flex: none; }
+  .mpage.cover .hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .mpage.cover .hero .contain { object-fit: contain; padding: 12px; box-sizing: border-box; }
+  .mpage.cover .foot { margin-top: auto; padding-top: 16px; display: flex; justify-content: space-between; align-items: flex-end; font: 500 10px/1.5 var(--mono); color: #d7e5fd; }
+  .mpage.cover .foot strong { font: 800 34px/1 var(--display); font-stretch: 80%; color: #fff; }
+
+  .mpage.intro h3 { margin: 18px 0 0; font: 800 30px/1 var(--display); font-stretch: 80%; }
+  .mpage.intro .lede { font-size: 14px; line-height: 1.8; color: var(--ink-2); margin: 12px 0 0; }
+  .mpage.intro .stats { margin-top: 20px; }
+  .mpage.intro .stats strong { font-size: 38px; }
+  .mpage.intro .note { font-size: 12.5px; line-height: 1.7; color: var(--ink-3); margin: 18px 0 0; }
+
+  .mpage.mtoc h3 { margin: 16px 0 6px; font: 800 28px/1 var(--display); font-stretch: 80%; }
+  .mpage.mtoc ol { list-style: none; margin: 0; padding: 0; }
+  .mpage.mtoc li button { all: unset; box-sizing: border-box; width: 100%; cursor: pointer; display: grid; grid-template-columns: 24px 1fr auto; gap: 8px; align-items: baseline; padding: 10px 0; border-bottom: 1px solid var(--line); }
+  .mpage.mtoc .n, .mpage.mtoc .p { font: 500 11px/1 var(--mono); color: var(--ink-3); }
+  .mpage.mtoc .p { color: var(--ink-2); }
+  .mpage.mtoc .t { font: 600 14px/1.3 var(--display); }
+  .mpage.mtoc .t small { font: 500 10.5px/1 var(--mono); color: var(--ink-3); margin-left: 5px; }
+  .mpage.mtoc li button:active .t { color: var(--blue); }
+
+  .mpage .mk { margin-top: 14px; display: flex; justify-content: space-between; align-items: center; font: 600 10.5px/1 var(--display); letter-spacing: .14em; text-transform: uppercase; color: var(--blue); }
+  .mpage .mk .tag { position: static; }
+  .mpage .mname { margin-top: 8px; font: 700 22px/1.2 var(--display); font-stretch: 88%; text-wrap: balance; }
+  .mpage .mname.zh { font: 700 21px/1.3 var(--body); }
+  .mpage .msub { margin-top: 3px; font: 500 12.5px/1.3 var(--display); color: var(--ink-2); }
+  .mpage .msize { margin-top: 6px; font: 800 56px/1 var(--display); font-stretch: 75%; letter-spacing: -.02em; }
+  .mpage .msize small { font-size: 20px; color: var(--ink-3); }
+  .mpage .mavail { margin-top: 4px; font: 500 11.5px/1.4 var(--mono); color: var(--ink-3); }
+  .mpage .mavail b { color: var(--blue); font-weight: 500; }
+  .mpage .mshot { flex: 1; min-height: 170px; position: relative; margin: 8px 0 10px; }
+  .mpage .mshot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; }
+  .mpage .mthumbs { display: flex; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; flex: none; }
+  .mpage .mthumbs img { width: 60px; height: 60px; object-fit: contain; border: 1px solid var(--line); background: #fff; mix-blend-mode: multiply; }
+  .mpage .mkeys { flex: none; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 14px; border-top: 2px solid var(--ink); padding-top: 10px; margin: 0; }
+  .mpage .mkeys dt { font: 600 9.5px/1 var(--display); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
+  .mpage .mkeys dd { margin: 4px 0 0; font: 500 13px/1.3 var(--mono); overflow-wrap: anywhere; }
+
+  .mpage .mmedia { margin: 12px -20px 0; height: 150px; display: grid; gap: 4px; flex: none; }
+  .mpage .mmedia.two { grid-template-columns: 1fr 1fr; }
+  .mpage .mmedia img { width: 100%; height: 100%; min-height: 0; display: block; }
+  .mpage .mmedia .cover { object-fit: cover; }
+  .mpage .mmedia .contain { object-fit: contain; background: #fff; mix-blend-mode: multiply; padding: 6px; box-sizing: border-box; }
+  .mpage .mspec-h { margin-top: 14px; display: flex; justify-content: space-between; align-items: baseline; gap: 10px; flex: none; }
+  .mpage .mspec-h h3 { margin: 0; font: 700 15px/1.25 var(--display); }
+  .mpage .mspec-h span { font: 500 10px/1 var(--mono); color: var(--ink-3); }
+  .mpage dl.mspec { margin: 6px 0 0; flex: none; }
+  .mpage dl.mspec div { padding: 8px 0; border-bottom: 1px solid var(--line); }
+  .mpage dl.mspec dt { font: 600 10px/1.2 var(--display); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+  .mpage dl.mspec dt small { text-transform: none; letter-spacing: 0; margin-left: 5px; font: 400 10.5px/1 var(--body); }
+  .mpage dl.mspec dd { margin: 3px 0 0; font: 400 13px/1.45 var(--body); color: var(--ink); overflow-wrap: anywhere; }
+  .mpage .cue { position: absolute; left: 0; right: 0; bottom: 0; height: 56px; pointer-events: none; z-index: 2;
+    background: linear-gradient(rgba(250,250,247,0), var(--paper) 75%); display: flex; align-items: flex-end; justify-content: center; padding-bottom: 8px;
+    font: 600 10px/1 var(--display); letter-spacing: .12em; text-transform: uppercase; color: var(--blue); transition: opacity .2s; }
+
+  .mpage.backcover { background: var(--ink); color: #dfe5f0; }
+  .mpage.backcover .in { padding: 30px 24px; }
+  .mpage.backcover h2 { margin: 0; font: 800 40px/1 var(--display); font-stretch: 80%; color: #fff; }
+  .mpage.backcover .zh { margin-top: 8px; font-size: 15px; letter-spacing: .2em; color: #8fb3f2; }
+  .mpage.backcover dl { margin: 22px 0 0; display: grid; gap: 12px; }
+  .mpage.backcover .in { padding-bottom: 30px; }
+  .mpage.backcover dt { font: 500 10px/1 var(--display); letter-spacing: .16em; text-transform: uppercase; color: #7d889e; }
+  .mpage.backcover dd { margin: 6px 0 0; font-size: 14px; line-height: 1.6; }
+  .mpage.backcover .mono { font-family: var(--mono); }
+  .mpage.backcover .bar { position: absolute; left: 0; right: 0; bottom: 0; margin: 0; height: 10px; background: var(--blue); }
+
+  .m-bottom { flex: none; display: flex; align-items: center; gap: 10px; padding: 10px 16px calc(12px + env(safe-area-inset-bottom, 0px)); }
+  .m-bottom .circ { all: unset; cursor: pointer; width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255,255,255,.2); display: grid; place-items: center; color: #fff; font-size: 18px; flex: none; }
+  .m-bottom .circ:disabled { opacity: .3; cursor: default; }
+  #mInfo { flex: 1; text-align: center; font: 700 15px/1.1 var(--display); color: #fff; }
+  #mInfo small { display: block; font: 500 10px/1.4 var(--mono); color: #7d889e; }
+  .m-catbtn { all: unset; cursor: pointer; display: flex; align-items: center; gap: 6px; height: 40px; padding: 0 14px; border-radius: 20px; border: 1px solid rgba(255,255,255,.2); font: 600 12px/1 var(--display); color: #fff; max-width: 42vw; box-sizing: border-box; }
+  .m-catbtn span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+  .m-dim { position: absolute; inset: 0; background: rgba(8,11,18,.55); z-index: 20; }
+  .m-sheet { position: absolute; left: 0; right: 0; bottom: 0; z-index: 21; background: #fff; color: var(--ink); border-radius: 18px 18px 0 0;
+    padding: 10px 18px calc(18px + env(safe-area-inset-bottom, 0px)); max-height: 78%; overflow-y: auto; box-sizing: border-box; }
+  .m-sheet .grab { width: 38px; height: 4px; border-radius: 2px; background: var(--line); margin: 0 auto 12px; }
+  .m-sheet h4 { margin: 0 0 6px; font: 700 16px/1.2 var(--display); }
+  .m-sheet ul { list-style: none; margin: 0; padding: 0; }
+  .m-sheet li button { all: unset; box-sizing: border-box; width: 100%; cursor: pointer; display: flex; justify-content: space-between; gap: 10px; padding: 12px 0; border-bottom: 1px solid var(--line); font: 500 14px/1.3 var(--display); }
+  .m-sheet li button span { font: 500 11px/1.3 var(--mono); color: var(--ink-3); white-space: nowrap; }
+  .m-sheet li button[aria-current="true"] { color: var(--blue); font-weight: 700; }
 </style>
-</head>
 
-<body>
-
-<!-- ============ 顶部导航 ============ -->
-<header>
-  <nav class="nav wrap">
-    <!-- 【改文案】 品牌名 -->
-    <div class="logo">EELL<span>.</span></div>
-    <ul>
-      <li><a href="#products">Products</a></li>
-      <li><a href="#capabilities">Factory</a></li>
-      <li><a href="#specs">Specs</a></li>
-      <li><a href="#process">How to Order</a></li>
-    </ul>
-    <a class="btn btn--primary" href="#contact">Get a Quote</a>
-  </nav>
-</header>
-
-<!-- ============ Hero ============ -->
-<section class="hero">
-  <div class="wrap">
-    <div class="hero-grid">
-      <div>
-        <div class="eyebrow">Shenzhen Factory · Since 2014</div>
-        <!-- 【改文案】 主标题：说清楚你卖什么 + 对谁 -->
-        <h1>Outdoor &amp; touch displays, built in our own factory</h1>
-        <p>
-          High-brightness outdoor kiosks, wall-mounted Android touch AIOs and media
-          players from 10.1&quot; to 98&quot;. OEM/ODM welcome — your brand, our production line.
-        </p>
-        <div class="hero-cta">
-          <a class="btn btn--primary" href="#contact">Request a quote &rarr;</a>
-          <a class="btn btn--ghost" href="#products">See products</a>
-        </div>
-      </div>
-
-      <!-- 【改图片】 主视觉。换法：
-           <img src="images/hero.jpg" alt="Outdoor digital signage kiosk" style="border-radius:14px">
-           把下面整个 <div class="ph"> 删掉替换即可 -->
-      <div class="ph">主视觉图位置<br>建议 1200×900，产品实拍或场景图</div>
-    </div>
-
-    <!-- 【改文案】 信任数据 -->
-    <div class="trust">
-      <div><b>42+</b><span>Countries shipped</span></div>
-      <div><b>18,000m²</b><span>Own factory</span></div>
-      <div><b>MOQ 1</b><span>Samples accepted</span></div>
-      <div><b>24h</b><span>Quote response</span></div>
+<div class="stage" id="stage">
+  <div class="scaler" id="scaler">
+    <div class="viewport" id="viewport">
+      <div class="book" id="book"></div>
     </div>
   </div>
-</section>
+</div>
 
-<!-- ============ 产品 ============ -->
-<section class="section" id="products">
-  <div class="wrap">
-    <div class="eyebrow">Product lines</div>
-    <h2>Four ranges that cover most commercial deployments</h2>
-    <p class="lede">Every unit ships with a 24-hour burn-in test. Sizes, brightness, OS and I/O can be specified per project.</p>
+<nav class="controls" id="controls">
+  <div class="lang" role="group" aria-label="语言 / Language">
+    <button type="button" id="lang-zh" data-lang="zh" aria-pressed="false">中文</button>
+    <button type="button" id="lang-en" data-lang="en" aria-pressed="true">EN</button>
+  </div>
+  <span id="pageInfo"></span>
+  <div class="navrow">
+    <button type="button" id="prev">‹</button>
+    <button type="button" id="next">›</button>
+  </div>
+  <label class="lbl" for="jump" id="jumpLabel"></label>
+  <select id="jump"></select>
+  <p class="side-hint" id="hint"></p>
+</nav>
 
-    <div class="cards">
-
-      <article class="card">
-        <!-- 【改图片】 <img src="images/outdoor.jpg" alt="..."> -->
-        <div class="ph ph--light">产品图<br>户外高亮机</div>
-        <div class="card-body">
-          <h3>Outdoor high-brightness</h3>
-          <p>Sunlight-readable panels for bus shelters, drive-thrus and storefronts. IP-rated enclosures with thermal management.</p>
-          <div class="tags"><span class="tag">up to 3000 nits</span><span class="tag">IP65 option</span><span class="tag">32&quot;–86&quot;</span></div>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="ph ph--light">产品图<br>壁挂触摸一体机</div>
-        <div class="card-body">
-          <h3>Wall-mounted touch AIO</h3>
-          <p>Slim Android all-in-ones for retail, lobbies and clinics. 10-point capacitive glass, VESA mount, PoE option.</p>
-          <div class="tags"><span class="tag">Android 13/14</span><span class="tag">10-point touch</span><span class="tag">15.6&quot;–65&quot;</span></div>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="ph ph--light">产品图<br>落地立式机</div>
-        <div class="card-body">
-          <h3>Floor-standing kiosks</h3>
-          <p>Vertical totems for wayfinding, self-service and menu boards. Optional printer, scanner and card-reader bays.</p>
-          <div class="tags"><span class="tag">9:16 portrait</span><span class="tag">1920×1080</span><span class="tag">43&quot;–75&quot;</span></div>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="ph ph--light">产品图<br>播放盒 / MINI PC</div>
-        <div class="card-body">
-          <h3>Media players &amp; mini PCs</h3>
-          <p>Rockchip-based Android boxes and Windows mini PCs to drive existing screens. Ships with your CMS pre-installed.</p>
-          <div class="tags"><span class="tag">RK3566–RK3588</span><span class="tag">4K output</span><span class="tag">Android / Linux / Win</span></div>
-        </div>
-      </article>
-
+<div id="m">
+  <header class="m-top">
+    <span class="logo">GZY<small>2026</small></span>
+    <div class="lang m-lang" role="group" aria-label="语言 / Language">
+      <button type="button" data-lang="zh" aria-pressed="false">中文</button>
+      <button type="button" data-lang="en" aria-pressed="true">EN</button>
     </div>
+  </header>
+  <div class="m-stage" id="mStage"></div>
+  <footer class="m-bottom">
+    <button type="button" class="circ" id="mPrev">‹</button>
+    <span id="mInfo"></span>
+    <button type="button" class="circ" id="mNext">›</button>
+    <button type="button" class="m-catbtn" id="mCatBtn" aria-haspopup="dialog"><i aria-hidden="true">☰</i><span id="mCatLabel"></span></button>
+  </footer>
+  <div class="m-dim" id="mDim" hidden></div>
+  <div class="m-sheet" id="mSheet" role="dialog" aria-modal="true" aria-labelledby="mSheetTitle" hidden>
+    <div class="grab"></div>
+    <h4 id="mSheetTitle"></h4>
+    <ul id="mSheetList"></ul>
   </div>
-</section>
+</div>
 
-<!-- ============ 工厂能力 ============ -->
-<section class="section section--soft" id="capabilities">
-  <div class="wrap">
-    <div class="eyebrow">Why buy direct</div>
-    <h2>No trading company in the middle</h2>
-    <p class="lede">We design, assemble and test in Shenzhen. That means faster engineering changes, traceable quality and a price that has not been marked up twice.</p>
+<script>
+const DATA = {"cats": [{"no": 1, "cn": "安卓商用一体机", "en": "Android Commercial All-in-One PC", "n": 2}, {"no": 2, "cn": "安卓商用平板", "en": "Android Commercial Tablet", "n": 2}, {"no": 3, "cn": "安卓商用收银一体机", "en": "Commercial All-in-One Cash Register", "n": 1}, {"no": 4, "cn": "安卓智能广告机", "en": "Kitchen Digital Signage", "n": 2}, {"no": 5, "cn": "安卓商用一体机", "en": "Digital Signage", "n": 3}, {"no": 6, "cn": "超窄边框智能交互数字标牌", "en": "Ultra-narrow Bezel Intelligent Digital Signage", "n": 4}, {"no": 7, "cn": "智能交互数字标牌", "en": "Interactive Digital Signage", "n": 15}, {"no": 8, "cn": "会议带灯智能交互数字标牌", "en": "Meeting Room Interactive Digital Signage With LED Light Bar", "n": 11}, {"no": 9, "cn": "L形智能交互数字标牌", "en": "L-Type Interactive Digital Signage", "n": 8}, {"no": 10, "cn": "桌面式智能交互数字标牌", "en": "Desktop Type Interactive Digital Signage", "n": 3}, {"no": 11, "cn": "智能家居控制面板", "en": "Smart Home Control Panel", "n": 1}, {"no": 12, "cn": "医疗智能交互数字标牌", "en": "Medical Interactive Digital Signage", "n": 1}, {"no": 13, "cn": "触控显示器", "en": "Touchscreen monitor", "n": 2}], "products": [{"id": "01-01", "cat": 1, "cn": "安卓商用一体机", "en": "Android Commercial All-in-One PC", "cp": 1, "size": "10.1", "sizes": ["10.1"], "main": "01-01-p1.jpg", "acc": [], "media": [{"src": "01-01-p2.jpg", "fit": "contain"}], "keys": [["Resolution", "1280×800"], ["Platform", "RK3576S"], ["System", "Android 14"], ["Brightness", "250 cd/m²"]], "spec": [["Screen Size", "尺寸", "10.1\""], ["Panel Type", "屏类型", "LCD panel"], ["Resolution", "分辨率", "1280*800"], ["Interactive Touch", "触控技术", "10-Point Full Lamination,Capacitive touch screen"], ["Brightness", "亮度", "250cd/m2"], ["View Angle", "可视角", "85/85/85/85(L/R/U/D)"], ["Contrast Ratio", "对比度", "800:1"], ["Aspect Ratio", "长宽比", "16:10"], ["Camera", "摄像头", "5.0MP"], ["Chipset", "主芯片", "RK3576S Quad core cortex A72+Quad core cortex A53"], ["System Memory", "内存", "4GB"], ["Flash Memory", "存储", "64GB"], ["OS", "系统", "Android 14"], ["Communication", "通信", "IEEE 802.11a/b/g/n/ac/ax (Wi-Fi 6)"], ["Input/Output", "输入输出口", "USB-A/Type-C*2"], ["Battery", "电池", "3.8V/5000mAh"], ["VESA Mount", "VESA 孔", "100x100mm"], ["Speaker", "喇叭", "8Ω*1W*2"], ["Power Input", "电源输入", "5V/2A"], ["Color", "颜色", "Black/White"], ["Product Size (LxWxH)", "产品尺寸", "242.3*161.1*23mm"]], "new": true}, {"id": "01-02", "cat": 1, "cn": "安卓商用一体机", "en": "Android Commercial All-in-One PC", "cp": 1, "size": "10.95", "sizes": ["10.95"], "main": "01-02-p1.jpg", "acc": [], "media": [{"src": "01-02-p2.jpg", "fit": "contain"}], "keys": [["Resolution", "1920×1200"], ["Platform", "RK3576S"], ["System", "Android 14"], ["Brightness", "280 cd/m²"]], "spec": [["Screen Size", "尺寸", "10.95\""], ["Panel Type", "屏类型", "LCD panel"], ["Resolution", "分辨率", "1920*1200"], ["Interactive Touch", "触控技术", "10-Point Full Lamination, Capacitive touch screen"], ["Brightness", "亮度", "280cd/m2"], ["View Angle", "可视角", "80/80/80/80(L/R/U/D)"], ["Contrast Ratio", "对比度", "1500:1"], ["Aspect Ratio", "长宽比", "16:10"], ["Camera", "摄像头", "5.0MP"], ["Chipset", "主芯片", "RK3576S Quad core cortex A72+Quad core cortex A53"], ["System Memory", "内存", "4GB"], ["Flash Memory", "存储", "64GB"], ["OS", "系统", "Android 14"], ["Communication", "通信", "IEEE 802.11a/b/g/n/ac/ax (Wi-Fi 6)"], ["Input/Output", "输入输出口", "USB-A/Type-C*2"], ["Battery", "电池", "3.8V/5000mAh"], ["VESA Mount", "VESA 孔", "100x100mm"], ["Speaker", "喇叭", "8Ω*1W*2"], ["Power Input", "电源输入", "5V/2A"], ["Color", "颜色", "Black/White"], ["Product Size (LxWxH)", "产品尺寸", "255.9*167.4*22.5mm"]], "new": true}, {"id": "02-01", "cat": 2, "cn": "安卓商用平板", "en": "Android Commercial Tablet", "cp": 2, "size": "10.95", "sizes": ["10.95"], "main": "02-01-p1.jpg", "acc": ["02-01-p2.jpg"], "media": [{"src": "02-01-s1.jpg", "fit": "cover"}, {"src": "02-01-s2.jpg", "fit": "cover"}], "keys": [["Resolution", "1920×1200"], ["Platform", "MT8781 / RK3576S"], ["System", "Android 16"], ["Brightness", "280 cd/m²"]], "spec": [["Screen Size", "尺寸", "10.95\""], ["Panel Type", "屏类型", "LCD panel"], ["Resolution", "分辨率", "1920*1200"], ["Interactive Touch", "触控技术", "10-Point In cell,Capacitive touch"], ["Brightness", "亮度", "280cd/m2"], ["View Angle", "可视角", "80/80/80/80(L/R/U/D)"], ["Contrast Ratio", "对比度", "1500:1"], ["Aspect Ratio", "长宽比", "16:10"], ["Camera", "摄像头", "Front camera 500W Fixed focus\nRear camera 1300W Auto focus (AF)"], ["Chipset", "主芯片", "MT8781, 2x Arm Cortex-A76 + 6x Arm Cortex-A55\nRK3576S Quad core cortex A72+Quad core cortex A53, Maximum frequency 2.2GHz"], ["System Memory", "内存", "4GB/6GB"], ["Flash Memory", "存储", "64GB/128GB"], ["OS", "系统", "Android 16"], ["Communication", "通信", "IEEE 802.11a/b/g/n/ac (MT8781)\nIEEE 802.11a/b/g/n/ac/ax (RK3576S)"], ["Input/Output", "输入输出口", "Type-C/Headphone jack/SD/TF/Docking/Button"], ["Battery", "电池", "3.8V/8000mAh"], ["Microphone", "麦克风", "Single microphone"], ["Speaker", "喇叭", "8Ω/1W *4"], ["Power Input", "电源输入", "12V/2A"], ["Color", "颜色", "Grey"], ["Product Size (LxWxH)", "产品尺寸", "257.3*169.46*9.85mm"]], "new": true}, {"id": "02-02", "cat": 2, "cn": "安卓商用平板", "en": "Android Commercial Tablet", "cp": 3, "size": "10.95", "sizes": ["10.95"], "main": "02-02-p1.jpg", "acc": ["02-02-p2.jpg"], "media": [{"src": "02-02-s1.jpg", "fit": "cover"}, {"src": "02-02-s2.jpg", "fit": "cover"}], "keys": [["Resolution", "1920×1200"], ["Platform", "MT8781 / RK3576S"], ["System", "Android 16"], ["Brightness", "280 cd/m²"]], "spec": [["Screen Size", "尺寸", "10.95\""], ["Panel Type", "屏类型", "LCD panel"], ["Resolution", "分辨率", "1920*1200"], ["Interactive Touch", "触控技术", "10-Point In cell,Capacitive touch screen"], ["Brightness", "亮度", "280cd/m2"], ["View Angle", "可视角", "80/80/80/80(L/R/U/D)"], ["Contrast Ratio", "对比度", "1500:1"], ["Aspect Ratio", "长宽比", "16:10"], ["Camera", "摄像头", "Front camera 500W Fixed focus\nRear camera 1300W Auto focus (AF)"], ["Chipset", "主芯片", "MT8781, 2x Arm Cortex-A76 + 6x Arm Cortex-A55\nRK3576S Quad core cortex A72+Quad core cortex A53, Maximum frequency 2.2GHz"], ["System Memory", "内存", "4GB/6GB"], ["Flash Memory", "存储", "64GB/128GB"], ["OS", "系统", "Android 16"], ["Communication", "通信", "IEEE 802.11b/g/n/a/ac (MT8781)\nIEEE 802.11a/b/g/n/ac/ax (RK3576S)"], ["Input/Output", "输入输出口", "Type-C/Headphone jack/SD/TF/Docking/Button"], ["Battery", "电池", "3.8V/8000mAh"], ["Microphone", "麦克风", "Single microphone"], ["Speaker", "喇叭", "8Ω/1W *2"], ["Power Input", "电源输入", "Adapter 5V/2A; 86 Box AC 100-240V (50-60Hz) to 9V/2A."], ["Color", "颜色", "Grey"], ["Product Size (LxWxH)", "产品尺寸", "257.37*168.92*12.25mm"]], "new": true}, {"id": "03-01", "cat": 3, "cn": "安卓商用收银一体机", "en": "Commercial All-in-One Cash Register", "cp": 4, "size": "15.6–32", "sizes": ["15.6", "21.5", "23.8", "27", "32"], "main": "03-01-p1.jpg", "acc": ["03-01-p2.jpg", "03-01-p3.jpg", "03-01-p4.jpg", "03-01-p5.jpg", "03-01-p6.jpg"], "media": [{"src": "03-01-s1.jpg", "fit": "cover"}, {"src": "03-01-s2.jpg", "fit": "cover"}], "keys": [["Resolution", "1080×1920"], ["Platform", "RK3576"], ["System", "Android 14"], ["Brightness", "400 cd/m²"]], "spec": [["Screen Size", "尺寸", "15.6\"/21.5\"/23.8\"/27\"/32\""], ["Panel Type", "屏类型", "LCD panel"], ["Resolution", "分辨率", "1080*1920"], ["Interactive Touch", "触控技术", "10-Point capacitive"], ["Brightness", "亮度", "400cd/m2"], ["Aspect Ratio", "长宽比", "16:9"], ["Chipset", "主芯片", "RK3576, Quad-core Cortex A53 + quad-core Cortex A72"], ["System Memory", "内存", "4GB"], ["Flash Memory", "存储", "64GB"], ["OS", "系统", "Android 14"], ["Communication", "通信", "IEEE 802.11a/b/g/n/ac/ax (Wi-Fi 6 ) Bluetooth 5.4"], ["Interface", "接口", "TF / Serial port / RJ11/HDMI IN/RJ45/USB-A*2/Type-C/RJ12/Power socket"], ["External devices", "外挂设备", "Support external NFC/RFID(optional)\nSupport external 8-megapixel camera (optional)\nSupport external MSR magnetic stripe reader (optional)\nSupport external barcode scanner (optional)"], ["VESA Mount", "VESA孔", "75x75mm/100x100mm"], ["Microphone", "麦克风", "Standard configuration with 4 microphones, supports noise reduction and echo cancellation"], ["Speaker", "喇叭", "4Ω/3W*2; 4Ω/5W*2;"], ["Process", "工艺", "Full Lamination"], ["Power Input", "电源输入", "24V/3A; 24V/4A; 24V/5A"], ["Color", "颜色", "Black"], ["Product Size (LxWxH)", "产品尺寸", "223.4*39.5*373.9mm/307.18*40*516.46mm\n573.1*43.50*342mm/643.88*51.75*382.31mm\n744.4*63.9*438.9mm"]], "new": true}, {"id": "04-01", "cat": 4, "cn": "安卓智能广告机", "en": "Kitchen Digital Signage", "cp": 5, "size": "15.6–23.8", "sizes": ["15.6", "21.5", "23.8"], "main": "04-01-p1.jpg", "acc": [], "media": [{"src": "04-01-p2.jpg", "fit": "contain"}], "keys": [["Resolution", "1920×1080"], ["Platform", "RK3576S"], ["System", "Android 14"], ["Brightness", "400 cd/m²"]], "spec": [["Screen Size", "尺寸", "15.6\"/21.5\"/23.8\""], ["Panel Type", "屏类型", "LCD panel"], ["Resolution", "分辨率", "1920*1080"], ["Interactive Touch", "触控技术", "10-Point Capacitive touch screen"], ["Brightness", "亮度", "400cd/m2"], ["View Angle", "可视角", "85/85/85/85(L/R/U/D); 89/89/89/89(L/R/U/D)"], ["Contrast Ratio", "对比度", "1000:1/3000:1"], ["Aspect Ratio", "长宽比", "16：9"], ["Camera", "摄像头", "8.0MP"], ["Chipset", "主芯片", "RK3576S Quad core cortex A72+Quad core cortex A53"], ["System Memory", "内存", "4GB"], ["Flash Memory", "存储", "64GB"], ["OS", "系统", "Android 14"], ["Communication", "通信", "IEEE 802.11a/b/g/n/ac/ax (Wi-Fi 6 ) Bluetooth 5.4"], ["Input/Output", "输入输出口", "RJ45/USB-A*2/Type-C/HDMI IN/Power Jack"], ["Waterproof rating", "防水等级", "Front IP65, back IP54"], ["VESA Mount", "VESA孔", "100x100mm/75x75mm"], ["Speaker", "喇叭", "4Ω*3W*2/4Ω*5W*2"], ["Power Input", "电源输入", "12V/2A; 12V/3A; 12V/5A"], ["Storage Temperature", "存储温度", "-20℃--60℃"], ["Process", "工艺", "Full Lamination, Waterproof, Dustproof, High-Temperature Resistance"], ["Material", "产品材质", "Stainless steel/Sheet metal"], ["Product Size (LxWxH)", "产品尺寸", "257.37*168.92*12.25mm/513.86*55.3*305.58/568.4*54.6*337.86mm"]], "new": true}, {"id": "04-02", "cat": 4, "cn": "安卓智能广告机", "en": "Kitchen Digital Signage", "cp": 5, "size": "15.6–23.8", "sizes": ["15.6", "21.5", "23.8"], "main": "04-02-p1.jpg", "acc": [], "media": [{"src": "04-02-p2.jpg", "fit": "contain"}], "keys": [["Resolution", "1920×1080"], ["Platform", "RK3588S2"], ["System", "Android 13"], ["Brightness", "400 cd/m²"]], "spec": [["Screen Size", "尺寸", "15.6\"/21.5\"/23.8\""], ["Panel Type", "屏类型", "LCD panel"], ["Resolution", "分辨率", "1920*1080"], ["Interactive Touch", "触控技术", "10-Point Capacitive touch screen"], ["Brightness", "亮度", "400cd/m2"], ["View Angle", "可视角", "85/85/85/85(L/R/U/D); 89/89/89/89(L/R/U/D)"], ["Contrast Ratio", "对比度", "1000:1/3000:1"], ["Aspect Ratio", "长宽比", "16：9"], ["Camera", "摄像头", "8.0MP"], ["Chipset", "主芯片", "RK3588S2 Quad core cortex A76+Quad core cortex A55"], ["System Memory", "内存", "8GB"], ["Flash Memory", "存储", "128GB"], ["OS", "系统", "Android 13"], ["Communication", "通信", "IEEE 802.11a/b/g/n/ac/ax (Wi-Fi 6 ) with Mu-MIMO standard Bluetooth 5.3"], ["Input/Output", "输入输出口", "RJ45/USB-A*2/Type-C/HDMI IN/Power Jack"], ["Waterproof rating", "防水等级", "Front IP65, back IP54"], ["VESA Mount", "VESA孔", "100x100mm/75x75mm"], ["Speaker", "喇叭", "4Ω*3W*2/4Ω*5W*2"], ["Power Input", "电源输入", "12V/2A; 12V/3A; 12V/5A"], ["Storage Temperature", "存储温度", "-20℃--60℃"], ["Process", "工艺", "Full Lamination, Waterproof, Dustproof, High-Temperature Resistance"], ["Material", "产品材质", "Stainless steel/Sheet metal"], ["Product Size (LxWxH)", "产品尺寸", "343.56*47.2*228mm/513.86*55.3*305.58mm/568.4*54.6*337.86mm"]], "new": true}, {"id": "05-01", "cat": 5, "cn": "安卓商用一体机", "en": "Digital Signage", "cp": 6, "size": "21.5", "sizes": ["21.5"], "main": "05-01-p1.jpg", "acc": [], "media": [{"src": "05-01-p2.jpg", "fit": "contain"}], "keys": [["Resolution", "1080×1920"], ["Platform", "RK3399 / RK3576S"], ["System", "Android 12–14"], ["Brightness", "250 cd/m²"]], "spec": [["Screen Size", "尺寸", "21.5\""], ["Panel Type", "屏类型", "LCD panel"], ["Resolution", "分辨率", "1080*1920"], ["Interactive Touch", "触控技术", "10-Point capacitive touch"], ["Brightness", "亮度", "250cdm2"], ["View Angle", "可视角", "89/89/89/89(L/R/U/D)"], ["Contrast Ratio", "对比度", "3000:1"], ["Aspect Ratio", "长宽比", "16:9"], ["Camera", "摄像头", "Optional External USB type camera 8.0MP"], ["Chipset", "主芯片", "RK3399 Dual core cortex A72+Quad core cortex A53\nRK3576S Quad core cortex A53+Quad core cortex A72"], ["System Memory", "内存", "4GB"], ["Flash Memory", "存储", "64GB"], ["OS", "系统", "Android 12(RK3399)/14(RK3576S),other"], ["Communication", "通信", "WiFi 802.11a/b/g/n/ac/ax(Wi-Fi 6 ) with MIMO standard , Bluetooth"], ["Interface", "接口", "DC power input, Type C, USB Host*2, HDMI IN, RJ45"], ["Battery", "电池", "14.6V/5200mAh"], ["VESA Mount", "VESA孔", "100x100mm"], ["Speaker", "喇叭", "4Ω*5W*2"], ["Power Input", "电源输入", "18V/3A"], ["Color", "颜色", "Black/White/Customized Color"], ["Product Size (LxWxH)", "产品尺寸", "510.24*308.24*34.12*1192.5mm"]], "new": false}, {"id": "05-02", "cat": 5, "cn": "安卓商用一体机", "en": "Digital Signage", "cp": 6, "size": "23.8", "sizes": ["23.8"], "main": "05-02-p1.jpg", "acc": [], "media": [{"src": "05-02-p2.jpg", "fit": "contain"}, {"src": "05-02-p3.jpg", "fit": "contain"}], "keys": [["Resolution", "1920×1080"], ["Platform", "RK3576S / RK3588S2"], ["System", "Android 13–14"], ["Brightness", "250 cd/m²"]], "spec": [["Screen Size", "尺寸", "23.8\""], ["Panel Type", "屏类型", "LCD panel"], ["Resolution", "分辨率", "1920x1080"], ["Interactive Touch", "触控技术", "10-Point Capacitive touch screen"], ["Brightness", "亮度", "250cdm2"], ["View Angle", "可视角", "89/89/89/89(L/R/U/D)"], ["Contrast Ratio", "对比度", "1000:1"], ["Aspect Ratio", "长宽比", "16:9"], ["Camera", "摄像头", "Optional External USB type camera 8.0MP"], ["Chipset", "主芯片", "RK3576S Quad core cortex A53+Quad core cortex A72\nRK3588S2 Quad core cortex A55+Quad core cortex A76"], ["System Memory", "内存", "4GB(RK3576S),8GB(RK3588S2)"], ["Flash Memory", "存储", "64GB(RK3576S),128GB(RK3588S2)"], ["OS", "系统", "Android 13(RK3588S2)/14(RK3576S),other"], ["Communication", "通信", "WiFi 802.11a/b/g/n/ac/ax(Wi-Fi 6 ) with MIMO standard , Bluetooth"], ["Interface", "接口", "DC power input, Type C, USB Host*2, HDMI IN, RJ45"], ["Battery", "电池", "14.6V/6800mAh"], ["VESA Mount", "VESA孔", "100x100mm"], ["Speaker", "喇叭", "4Ω*5W*2"], ["Power Input", "电源输入", "18V/3A"], ["Color", "颜色", "Black/White/Customized Color"], ["Product Size (LxWxH)", "产品尺寸", "335.77*549.7*34.12*1213mm"]], "new": false}, {"id": "05-03", "cat": 5, "cn": "安卓商用一体机", "en": "Digital Signage", "cp": 7, "size": "32", "sizes": ["32"], "main": "05-03-p1.jpg", "acc": ["05-03-p2.jpg", "05-03-p3.jpg"], "media": [{"src": "05-03-s1.jpg", "fit": "cover"}, {"src": "05-03-s2.jpg", "fit": "cover"}], "keys": [["Resolution", "1920×1080"], ["Platform", "RK3399 / RK3576S / RK3588S2"], ["System", "Android 12–14"], ["Brightness", "250 cd/m²"]], "spec": [["Screen Size", "尺寸", "32\""], ["Panel Type", "屏类型", "LCD panel"], ["Resolution", "分辨率", "1920x1080,3480x2160 (SW3295T-4K/SW3299T-4K)"], ["Interactive Touch", "触控技术", "10-Point capacitive touch"], ["Brightness", "亮度", "250cdm2"], ["View Angle", "可视角", "89/89/89/89(L/R/U/D)"], ["Contrast Ratio", "对比度", "1200:1,3000:1(SW3295T-4K/SW3299T-4K)"], ["Aspect Ratio", "长宽比", "16:9"], ["Camera", "摄像头", "Optional External USB type camera 8.0MP"], ["Chipset", "主芯片", "RK3399 Dual core cortex A72+Quad core cortex A53\nRK3576S Quad core cortex A53+Quad core cortex A72\nRK3588S2 Quad core cortex A55+Quad core cortex A76"], ["System Memory", "内存", "4GB,8GB(RK3588S2)"], ["Flash Memory", "存储", "64GB,128GB(RK3588S2)"], ["OS", "系统", "Android 12(RK3399)/13(RK3588S2)/14(RK3576S),other"], ["Communication", "通信", "WiFi 802.11a/b/g/n/ac/ax(Wi-Fi 6 ) with MIMO standard , Bluetooth"], ["Interface", "接口", "DC power input, Type C, USB Host*2, HDMI IN, RJ45"], ["Battery", "电池", "14.6V/15000mAh"], ["VESA Mount", "VESA孔", "100x100mm"], ["Speaker", "喇叭", "4Ω*5W*2"], ["Power Input", "电源输入", "18V/5A"], ["Color", "颜色", "Black/White/Customized Color"], ["Product Size (LxWxH)", "产品尺寸", "432*733.40*34.12*1213mm"]], "new": false}, {"id": "06-01", "cat": 6, "cn": "超窄边框智能交互数字标牌", "en": "Ultra-narrow Bezel Intelligent Digital Signage", "cp": 8, "size": "15.6", "sizes": ["15.6"], "main": "06-01-p1.jpg", "acc": [], "media": [{"src": "06-01-p2.jpg", "fit": "contain"}], "keys": [["Resolution", "1920×1080"], ["Platform", "RK3568 / RK3576S / RK3588S2"], ["System", "Android 13–14"], ["Brightness", "250 cd/m²"]], "spec": [["Screen Size", "尺寸", "15.6\""], ["Panel Type", "屏类型", "LCD panel ,TP full lamination process"], ["Resolution", "分辨率", "1920x1080"], ["Interactive Touch", "触控技术", "10-Point capacitive touch"], ["Brightness", "亮度", "250 cd/m2"], ["View Angle", "可视角", "85/85/85/85(L/R/U/D); 89/89/89/89(L/R/U/D)"], ["Contrast Ratio", "对比度", "1000:1"], ["Aspect Ratio", "长宽比", "16:9"], ["Camera", "摄像头", "MIPI 8.0MP Camera"], ["Chipset", "主芯片", "RK3568 Quad core cortex A55\nRK3576S Quad core cortex A72+Quad core cortex A53\nRK3588S2 Quad core cortex A55+Quad core cortex A76"], ["System Memory", "内存", "4GB"], ["Flash Memory", "存储", "64GB"], ["OS", "系统", "Android14\nAndroid 13 (RK3588S2) other"], ["Communication", "通信", "Wi-Fi 802.11a/b/g/n/ac/ax(WiFi 6), with Mu-MIMO standard\nBluetooth"], ["Interface", "接口", "DC IN, HDMI IN, USB host x2, Type-C, RJ45(POE Optional)"], ["Microphone", "麦克风", "Standard Quad Mic;Noise Reduction & Echo Cancellation"], ["VESA Mount", "VESA孔", "75x75mm"], ["Speaker", "喇叭", "4Ω*3W*2"], ["Power Input", "电源输入", "12V/2A"], ["Process", "工艺", "Full Lamination"], ["Color", "颜色", "Black/White/Customized Color"], ["Product Size (LxWxH)", "产品尺寸", "370*227.9*23.7mm"]], "new": false}, {"id": "06-02", "cat": 6, "cn": "超窄边框智能交互数字标牌", "en": "Ultra-narrow Bezel Intelligent Digital Signage", "cp": 8, "size": "21.5", "sizes": ["21.5"], "main": "06-02-p1.jpg", "acc": [], "media": [{"src": "06-02-p2.jpg", "fit": "contain"}], "keys": [["Resolution", "1920×1080"], ["Platform", "RK3568 / RK3576S / RK3588S2"], ["System", "Android 13–14"], ["Brightness", "250 cd/m²"]], "spec": [["Screen Size", "尺寸", "21.5\""], ["Panel Type", "屏类型", "LCD panel ,TP full lamination process"], ["Resolution", "分辨率", "1920x1080"], ["Interactive Touch", "触控技术", "10-Point capacitive touch"], ["Brightness", "亮度", "250 cd/m2"], ["View Angle", "可视角", "89/89/89/89(L/R/U/D)"], ["Contrast Ratio", "对比度", "3000:1"], ["Aspect Ratio", "长宽比", "16:9"], ["Camera", "摄像头", "MIPI 8.0MP Camera"], ["Chipset", "主芯片", "RK3568 Quad core cortex A55\nRK3576S Quad core cortex A72+Quad core cortex A53\nRK3588S2 Quad core cortex A55+Quad core cortex A76"], ["System Memory", "内存", "4GB"], ["Flash Memory", "存储", "64GB"], ["OS", "系统", "Android 14\nAndroid 13 (RK3588S2),other"], ["Communication", "通信", "Wi-Fi 802.11a/b/g/n/ac/ax(WiFi 6), with Mu-MIMO standard\nBluetooth"], ["Interface", "接口", "DC IN, HDMI IN, USB host x2, Type-C, RJ45(POE Optional)"], ["Microphone", "麦克风", "Standard Quad Mic;Noise Reduction & Echo Cancellation"], ["VESA Mount", "VESA孔", "75x75mm"], ["Speaker", "喇叭", "4Ω*5W*2"], ["Power Input", "电源输入", "12V/3A"], ["Process", "工艺", "Full Lamination"], ["Color", "颜色", "Black/White/Customized Color"], ["Product Size (LxWxH)", "产品尺寸", "506.97*305.47*32.2mm"]], "new": false}, {"id": "06-03", "cat": 6, "cn": "超窄边框智能交互数字标牌", "en": "Ultra-narrow Bezel Intelligent Digital Signage", "cp": 9, "size": "23.8", "sizes": ["23.8"], "main": "06-03-p1.jpg", "acc": [], "media": [{"src": "06-03-p2.jpg", "fit": "contain"}], "keys": [["Resolution", "1920×1080"], ["Platform", "RK3568 / RK3576S / RK3588S2"], ["System", "Android 13–14"], ["Brightness", "300 cd/m²"]], "spec": [["Screen Size", "尺寸", "23.8\""], ["Panel Type", "屏类型", "LCD panel,TP full lamination process"], ["Resolution", "分辨率", "1920x1080"], ["Interactive Touch", "触控技术", "10-Point Capacitive touch screen"], ["Brightness", "亮度", "300cdm2"], ["View Angle", "可视角", "89/89/89/89(L/R/U/D)"], ["Contrast Ratio", "对比度", "4000:1"], ["Aspect Ratio", "长宽比", "16:9"], ["Camera", "摄像头", "MIPI 8.0MP Camera"], ["Chipset", "主芯片", "RK3568 Quad core cortex A55\nRK3576S Quad core cortex A72+Quad core cortex A53\nRK3588S2 Quad core cortex A55+Quad core cortex A76"], ["System Memory", "内存", "4GB"], ["Flash Memory", "存储", "64GB"], ["OS", "系统", "Android14\nAndroid 13 (RK3588S2) other"], ["Communication", "通信", "WiFi IEEE 802.11b/g/n/a/ac/ax (Wi-Fi 6 ) Bluetooth/Ethernet"], ["Interface", "接口", "DC IN, HDMI IN, USB host x2, Type-C, RJ45(POE Optional)"], ["Microphone", "麦克风", "Standard Quad Mic;Noise Reduction & Echo Cancellation"], ["VESA Mount", "VESA孔", "100x100mm"], ["Speaker", "喇叭", "4Ω*5W*2"], ["Power Input", "电源输入", "12V/5A"], ["Process", "工艺", "Full Lamination"], ["Color", "颜色", "Black/White/Customized Color"], ["Product Size (LxWxH)", "产品尺寸", "552.07*333.09*29mm"]], "new": false}, {"id": "06-04", "cat": 6, "cn": "超窄边框智能交互数字标牌", "en": "Ultra-narrow Bezel Intelligent Digital Signage", "cp": 9, "size": "32", "sizes": ["32"], "main": "06-04-p1.jpg", "acc": [], "media": [{"src": "06-04-p2.jpg", "fit": "contain"}], "keys": [["Resolution", "1920×1080"], ["Platform", "RK3568 / RK3576S / RK3588S2"], ["System", "Android 13–14"], ["Brightness", "300 cd/m²"]], "spec": [["Screen Size", "尺寸", "32\""], ["Panel Type", "屏类型", "LCD panel,TP full lamination process"], ["Resolution", "分辨率", "1920x1080,3840x2160(WF3285T-4K/WF3289T-4K)"], ["Interactive Touch", "触控技术", "10-Point capacitive touch"], ["Brightness", "亮度", "300 cd/m2"], ["View Angle", "可视角", "89/89/89/89(L/R/U/D)"], ["Contrast Ratio", "对比度", "1000:1/3000:1(WF3285T-4K/WF3289T-4K)"], ["Aspect Ratio", "长宽比", "16:9"], ["Camera", "摄像头", "MIPI 8.0MP Camera"], ["Chipset", "主芯片", "RK3568 Quad core cortex A55\nRK3576S Quad core cortex A72+Quad core cortex A53\nRK3588S2 Quad core cortex A55+Quad core cortex A76"], ["System Memory", "内存", "4GB"], ["Flash Memory", "存储", "64GB"], ["OS", "系统", "Android 14\nAndroid 13 (RK3588S2),other"], ["Communication", "通信", "Wi-Fi 802.11a/b/g/n/ac/ax(WiFi 6), Bluetooth"], ["Interface", "接口", "DC IN, HDMI IN, USB host x2, Type-C, RJ45(POE Optional)"], ["Microphone", "麦克风", "Standard Quad Mic;Noise Reduction & Echo Cancellation"], ["VESA Mount", "VESA孔", "100x100mm"], ["Speaker", "喇叭", "4Ω*5W*2"], ["Power Input", "电源输入", "12V/5A"], ["Process", "工艺", "Full Lamination"], ["Color", "颜色", "Black/White/Customized Color"], ["Product Size (LxWxH)", "产品尺寸", "735.6*436.2*36.5mm"]], "new": false}, {"id": "07-01", "cat": 7, "cn": "智能交互数字标牌", "en": "Interactive Digital Signage", "cp": 10, "size": "14", "sizes": ["14"], "main": "07-01-p1.jpg", "acc": [], "media": [], "keys": [["Resolution", "1920×1080"], ["Platform", "RK3576S / RK3588S2"], ["System", "Android 14"], ["Brightness", "250 cd/m²"]], "spec": [["Screen Size", "尺寸", "14\""], ["Panel Type", "屏类型", "LCD panel"], ["Resolution", "分辨率", "1920x1080"], ["Interactive Touch", "触控技术", "10-Point Capacitive touch screen"], ["Brightness", "亮度", "250cdm2"], ["View Angle", "可视角", "85/85/85/85(L/R/U/D)"], ["Contrast Ratio", "对比度", "700:1"], ["Aspect Ratio", "长宽比", "16:9"], ["Camera", "摄像头", "Optional External USB type camera(vertical interfacerait , 8.0MP)"], ["Chipset", "主芯片", "RK3576S Quad core cortex A53+Quad core cortex A72\nRK3588S2 Quad core cortex A55+Quad core cortex A76"], ["System Memory", "内存", "4GB"], ["Flash Memory", "存储", "64GB"], ["OS", "系统", "Android 14,other"], ["Communication", "通信", "WiFi 802.11b/g/n/a/ac/ax (wifi 6),with Mu-MIMO standard\nBluetooth"], ["Interface", "接口", "DC power input, Type C, USB Host*2, RJ45(POE Optional), HDMI IN"], ["Microphone", "麦克风", "Standard Dual Mic;Noise Reduction & Echo Cancellation"], ["VESA Mount", "VESA孔", "100x100mm"], ["Speaker", "喇叭", "4Ω*3W*2"], ["Power Input", "电源输入", "12V/2A"], ["Color", "颜色", "Black/White/Customized Color"], ["Product Size (LxWxH)", "产品尺寸", "336.2*209.3*27.6mm"]], "new": false}, {"id": "07-02", "cat": 7, "cn": "智能交互数字标牌", "en": "Interactive Digital Signage", "cp": 10, "size": "21.5", "sizes": ["21.5"], "main": "07-02-p1.jpg", "acc": [], "media": [{"src": "07-02-p2.jpg", "fit": "contain"}], "keys": [["Resolution", "1920×1080"], ["Platform", "RK3576S / RK3588S2"], ["System", "Android 12–14"], ["Brightness", "250 cd/m²"]], "spec": [["Screen Size", "尺寸", "21.5\""], ["Panel Type", "屏类型", "LCD panel"], ["Resolution", "分辨率", "1920x1080"], ["Interactive Touch", "触控技术", "10-Point Capacitive touch screen"], ["Brightness", "亮度", "250cdm2"], ["View Angle", "可视角", "89/89/89/89(L/R/U/D)"], ["Contrast Ratio", "对比度", "3000:1"], ["Aspect Ratio", "长宽比", "16:9"], ["Camera", "摄像头", "Optional External USB type camera(vertical interfacerait , 8.0MP)"], ["Chipset", "主芯片", "RK3576S Quad core cortex A53+Quad core cortex A72\nRK3588S2 Quad core cortex A55+Quad core cortex A76"], ["System Memory", "内存", "4GB"], ["Flash Memory", "存储", "64GB"], ["OS", "系统", "Android 12(RK3568),13(RK3588S2),14,other"], ["Communication", "通信", "WiFi 802.11b/g/n/a/ac/ax (wifi 6),with Mu-MIMO standard\nBluetooth"], ["Interface", "接口", "DC power input, Type C, USB Host*2, HDMI IN, RJ45(POE Optional)"], ["Microphone", "麦克风", "Standard Quad Mic;Noise Reduction & Echo Cancellation"], ["VESA Mount", "VESA孔", "100x100mm"], ["Speaker", "喇叭", "4Ω*5W*2"], ["Power Input", "电源输入", "12V/3A"], ["Color", "颜色", "Black/White/Customized Color"], ["Product Size (LxWxH)", "产品尺寸", "512.8*308.9*33.5mm"]], "new": false}, {"id": "07-03", "cat": 7, "cn": "智能交互数字标牌", "en": "Interactive Digital Signage", "cp": 11, "size": "23.8", "sizes": ["23.8"], "main": "07-03-p1.jpg", "acc": ["07-03-p2.jpg"], "media": [{"src": "07-03-s1.jpg", "fit": "cover"}, {"src": "07-03-s2.jpg", "fit": "cover"}], "keys": [["Resolution", "1920×1080"], ["Platform", "RK3576S / RK3588S2"], ["System", "Android 12–14"], ["Brightness", "250 cd/m²"]], "spec": [["Screen Size", "尺寸", "23.8\""], ["Panel Type", "屏类型", "LCD panel"], ["Resolution", "分辨率", "1920x1080"], ["Interactive Touch", "触控技术", "10-Point Capacitive touch screen"], ["Brightness", "亮度", "250cdm2"], ["View Angle", "可视角", "89/89/89/89(L/R/U/D)"], ["Contrast Ratio", "对比度", "1000:1"], ["Aspect Ratio", "长宽比", "16:9"], ["Camera", "摄像头", "Optional External USB type camera(vertical interfacerait , 8.0MP)"], ["Chipset", "主芯片", "RK3576S Quad core cortex A53+Quad core cortex A72\nRK3588S2 Quad core cortex A55+Quad core cortex A76"], ["System Memory", "内存", "4GB"], ["Flash Memory", "存储", "64GB"], ["OS", "系统", "Android 12,13(RK3588S2),14(RK3576S),other"], ["Communication", "通信", "WiFi 802.11b/g/n/a/ac/ax (wifi 6),with Mu-MIMO standard\nBluetooth"], ["Interface", "接口", "DC power input, Type C, USB Host*2, HDMI IN, RJ45(POE Optional)"], ["Microphone", "麦克风", "Standard Dual Mic;Noise Reduction & Echo Cancellation"], ["VESA Mount", "VESA孔", "100x100mm"], ["Speaker", "喇叭", "4Ω*5W*2"], ["Power Input", "电源输入", "12V/4A"], ["Color", "颜色", "Black/White/Customized Color"], ["Product Size (LxWxH)", "产品尺寸", "549.7*335.7*27.8mm"]], "new": false}, {"id": "07-04", "cat": 7, "cn": "智能交互数字标牌", "en": "Interactive Digital Signage", "cp": 12, "size": "32", "sizes": ["32"], "main": "07-04-p1.jpg", "acc": ["07-04-p2.jpg"], "media": [{"src": "07-04-s1.jpg", "fit": "cover"}, {"src": "07-04-s2.jpg", "fit": "cover"}], "keys": [["Resolution", "1920×1080"], ["Platform", "RK3576S / RK3588S2"], ["System", "Android 12–14"], ["Brightness", "250 cd/m²"]], "spec": [["Screen Size", "尺寸", "32\""], ["Panel Type", "屏类型", "LCD panel"], ["Resolution", "分辨率", "1920x1080,3840x2160(NW3295T-4K/NW3295T-4K)"], ["Interactive Touch", "触控技术", "10-Point capacitive touch"], ["Brightness", "亮度", "250cdm2"], ["View Angle", "可视角", "89/89/89/89(L/R/U/D)"], ["Contrast Ratio", "对比度", "1200:1,3000:1(NW3295T-4K/NW3295T-4K)"], ["Aspect Ratio", "长宽比", "16:9"], ["Camera", "摄像头", "Optional External USB type camera(vertical interfacerait , 8.0MP)"], ["Chipset", "主芯片", "RK3576S Quad core cortex A53+Quad core cortex A72\nRK3588S2 Quad core cortex A55+Quad core cortex A76"], ["System Memory", "内存", "4GB(Optional/8GB)"], ["Flash Memory", "存储", "32GB(Optional/64GB)"], ["OS", "系统", "Android 12,13(RK3588S2),14(RK3576S),other"], ["Communication", "通信", "WiFi 802.11b/g/n/a/ac/ax (wifi 6),with Mu-MIMO standard\nBluetooth"], ["Interface", "接口", "DC power input, Type C, USB Host*2, HDMI IN, RJ45(POE Optional)"], ["Microphone", "麦克风", "Standard Dual Mic;Noise Reduction & Echo Cancellation"], ["VESA Mount", "VESA孔", "100x100mm"], ["Speaker", "喇叭", "4Ω*5W*2"], ["Power Input", "电源输入", "12V/5A"], ["Color", "颜色", "Black/White/Customized Color"], ["Product Size (LxWxH)", "产品尺寸", "733.4*432*37mm"]], "new": false}, {"id": "07-05", "cat": 7, "cn": "智能交互数字标牌", "en": "Interactive Digital Signage", "cp": 13, "size": "8", "sizes": ["8"], "main": "07-05-p1.jpg", "acc": ["07-05-p2.jpg"], "media": [{"src": "07-05-s1.jpg", "fit": "cover"}, {"src": "07-05-s2.jpg", "fit": "cover"}], "keys": [["Resolution", "1280×800"], ["Platform", "RK3568 / RK3576S"], ["System", "Android 11–14"], ["Brightness", "300 cd/m²"]], "spec": [["Screen Size", "尺寸", "8\""], ["Panel Type", "屏类型", "LCD panel"], ["Resolution", "分辨率", "1280*800"], ["Interactive Touch", "触控技术", "5-Point capacitive touch"], ["Brightness", "亮度", "300cd/m2"], ["View Angle", "可视角", "80/80/80/80(L/R/U/D)"], ["Contrast Ratio", "对比度", "1200:1"], ["Aspect Ratio", "长宽比", "16:10"], ["Camera", "摄像头", "5MP from a conventional perspective"], ["Chipset", "主芯片", "RK3568 Quad core cortex A55\nRK3576S Quad core cortex A72+Quad core cortex A53"], ["System Memory", "内存", "2GB Optional 4GB"], ["Flash Memory", "存储", "16GB Optional 32GB/64G"], ["OS", "系统", "Android 11(RK3568)/Android 14(RK3576S)"], ["Communication", "通信", "IEEE 802.11a/b/g/n/ac/ax（Wi-Fi 6）"], ["Input/Output", "输入输出口", "Card slot/USB*2/Type-c/RJ45/Power jack/Earphone"], ["VESA Mount", "VESA孔", "75*75mm"], ["Microphone", "麦克风", "Dual microphone"], ["Speaker", "喇叭", "8Ω*2W*2"], ["Power Input", "电源输入", "Adapter 12V/1.5A"], ["Color", "颜色", "White/Black"], ["Product Size (LxWxH)", "产品尺寸", "212.6*22*148mm"]], "new": false}, {"id": "07-06", "cat": 7, "cn": "智能交互数字标牌", "en": "Interactive Digital Signage", "cp": 14, "size": "10.1", "sizes": ["10.1"], "main": "07-06-p1.jpg", "acc": [], "media": [{"src": "07-06-p2.jpg", "fit": "contain"}], "keys": [["Resolution", "1280×800"], ["Platform", "RK3566 / RK3568 / RK3576S"], ["System", "Android 11–14"], ["Brightness", "250 cd/m²"]], "spec": [["Screen Size", "尺寸", "10.1\""], ["Panel Type", "屏类型", "LCD panel"], ["Resolution", "分辨率", "1280*800"], ["Interactive Touch", "触控技术", "10-Point ,Capacitive touch screen"], ["Brightness", "亮度", "250cd/m2/280cd/m2"], ["View Angle", "可视角", "85/85/85/85(L/R/U/D)"], ["Contrast Ratio", "对比度", "800:1/1500:1"], ["Aspect Ratio", "长宽比", "16:10"], ["Camera", "摄像头", "Routine angle 5.0MP"], ["Chipset", "主芯片", "RK3566/RK3568 Quad core cortex A55\nRK3576S Quad core cortex A72+Quad core cortex A53"], ["System Memory", "内存", "2GB Optional 4GB"], ["Flash Memory", "存储", "16GB Optional 32GB/64G"], ["OS", "系统", "Android 11(RK3566 /RK3568)/Android 14(RK3576S)"], ["Communication", "通信", "802.11b/g/n (RK3566)\nIEEE 802.11a/b/g/n/ac/ax(RK3568/RK3576S)"], ["Input/Output", "输入输出口", "Card slot/USB-A*2/Type-c/RJ45/Power jack/Earphone"], ["VESA Mount", "VESA孔", "75*75mm"], ["Microphone", "麦克风", "Single microphone"], ["Speaker", "喇叭", "8Ω*2W*2"], ["Power Input", "电源输入", "Adapter 12V/1.5A"], ["Color", "颜色", "White/Black"], ["Product Size (LxWxH)", "产品尺寸", "212.6*28.7*178.36mm"]], "new": false}, {"id": "07-07", "cat": 7, "cn": "智能交互数字标牌", "en": "Interactive Digital Signage", "cp": 14, "size": "10.1", "sizes": ["10.1"], "main": "07-07-p1.jpg", "acc": [], "media": [{"src": "07-07-p2.jpg", "fit": "contain"}], "keys": [["Resolution", "1280×800"], ["Platform", "RK3568"], ["System", "Android 11"], ["Brightness", "250 cd/m²"]], "spec": [["Screen Size", "尺寸", "10.1\""], ["Panel Type", "屏类型", "LCD panel"], ["Resolution", "分辨率", "1280*800"], ["Interactive Touch", "触控技术", "10-Point ,Capacitive touch screen"], ["Brightness", "亮度", "250cd/m2"], ["View Angle", "可视角", "85/85/85/85(L/R/U/D)"], ["Contrast Ratio", "对比度", "800:1"], ["Aspect Ratio", "长宽比", "16:10"], ["Camera", "摄像头", "Routine angle 5.0MP"], ["Chipset", "主芯片", "RK3568 Quad core cortex A55"], ["System Memory", "内存", "2GB Optional 4GB"], ["Flash Memory", "存储", "16GB Optional 32GB/64G"], ["OS", "系统", "Android 11"], ["Communication", "通信", "IEEE 802.11a/b/g/n/ac/ax"], ["Input/Output", "输入输出口", "Card slot/USB-A*3/Micro USB/HDMI IN/RJ45/Power jack /Earphone"], ["VESA Mount", "VESA孔", "75*75mm"], ["Microphone", "麦克风", "Single microphone"], ["Speaker", "喇叭", "8Ω*2W*2"], ["Power Input", "电源输入", "Adapter 12V/1.5A"], ["Color", "颜色", "White/Black"], ["Product Size (LxWxH)", "产品尺寸", "255*30*172mm"]], "new": false}, {"id": "07-08", "cat": 7, "cn": "智能交互数字标牌", "en": "Interactive Digital Signage", "cp": 15, "size": "10.95", "sizes": ["10.95"], "main": "07-08-p1.jpg", "acc": ["07-08-p2.jpg"], "media": [{"src": "07-08-s1.jpg", "fit": "cover"}, {"src": "07-08-s2.jpg", "fit": "cover"}], "keys": [["Resolution", "1920×1200"], ["Platform", "RK3576S"], ["System", "Android 14"], ["Brightness", "280 cd/m²"]], "spec": [["Screen Size", "尺寸", "10.95\""], ["Panel Type", "屏类型", "LCD panel"], ["Resolution", "分辨率", "1920*1200"], ["Interactive Touch", "触控技术", "10-Point ,In cell,Capacitive touch screen"], ["Brightness", "亮度", "280cd/m2"], ["View Angle", "可视角", "80/80/80/80(L/R/U/D)"], ["Contrast Ratio", "对比度", "1500:1"], ["Aspect Ratio", "长宽比", "16:10"], ["Camera", "摄像头", "Routine angle 5.0MP"], ["Chipset", "主芯片", "RK3576S Quad core cortex A72+Quad core cortex A53"], ["System Memory", "内存", "4GB"], ["Flash Memory", "存储", "64G"], ["OS", "系统", "Android 14"], ["Communication", "通信", "IEEE 802.11a/b/g/n/ac/ax（Wi-Fi 6）Bluetooth 5.4"], ["Input/Output", "输入输出口", "TF Slot/Earphone/USB-A*2/RJ45/Type-C/Power jack"], ["G-sensor", "重力传感器", "Support 90 degrees"], ["Microphone", "麦克风", "Standard Quad Microphone , Support noise reduction and echo cancellation"], ["Speaker", "喇叭", "4Ω*2W*2"], ["Power Input", "电源输入", "Adapter 12V/1.5A"], ["Color", "颜色", "White/Black"], ["Product Size (LxWxH)", "产品尺寸", "258.2*20.25*169.45mm"]], "new": true}, {"id": "07-09", "cat": 7, "cn": "智能交互数字标牌", "en": "Interactive Digital Signage", "cp": 16, "size": "14", "sizes": ["14"], "main": "07-09-p1.jpg", "acc": [], "media": [{"src": "07-09-p2.jpg", "fit": "contain"}], "keys": [["Resolution", "1920×1080"], ["Platform", "RK3568 / RK3576S"], ["System", "Android 11–14"], ["Brightness", "250 cd/m²"]], "spec": [["Screen Size", "尺寸", "14\""], ["Panel Type", "屏类型", "LCD panel"], ["Resolution", "分辨率", "1920*1080"], ["Interactive Touch", "触控技术", "10-Point ,Capacitive touch screen"], ["Brightness", "亮度", "250cd/m2"], ["View Angle", "可视角", "85/85/85/85(L/R/U/D)"], ["Contrast Ratio", "对比度", "800:1/1000:1"], ["Aspect Ratio", "长宽比", "16:9"], ["Camera", "摄像头", "Routine angle 5.0MP"], ["Chipset", "主芯片", "RK3568 Quad core cortex A55\nRK3576S Quad core cortex A72+Quad core cortex A53"], ["System Memory", "内存", "2GB Optional 4GB"], ["Flash Memory", "存储", "16GB Optional 32GB/64G"], ["OS", "系统", "Android 11(RK3568)/Android 14(RK3576S)"], ["Communication", "通信", "IEEE 802.11a/b/g/n/ac/ax"], ["Input/Output", "输入输出口", "Card slot/USB Device /USB-A*2/Power jack/HDMI/RJ45/Earphone"], ["VESA Mount", "VESA孔", "100*100mm"], ["Microphone", "麦克风", "Single microphone"], ["Speaker", "喇叭", "8Ω*2W*2"], ["Power Input", "电源输入", "Adapter 12V/2A"], ["Color", "颜色", "White/Black"], ["Product Size (LxWxH)", "产品尺寸", "342.7*27.5*220mm"]], "new": false}, {"id": "07-10", "cat": 7, "cn": "智能交互数字标牌", "en": "Interactive Digital Signage", "cp": 16, "size": "15.6", "sizes": ["15.6"], "main": "07-10-p1.jpg", "acc": [], "media": [{"src": "07-10-p2.jpg", "fit": "contain"}], "keys": [["Resolution", "1920×1080"], ["Platform", "RK3568 / RK3576S"], ["System", "Android 11–14"], ["Brightness", "250 cd/m²"]], "spec": [["Screen Size", "尺寸", "15.6\""], ["Panel Type", "屏类型", "LCD panel"], ["Resolution", "分辨率", "1920*1080"], ["Interactive Touch", "触控技术", "10-Point ,Capacitive touch screen"], ["Brightness", "亮度", "250cd/m2"], ["View Angle", "可视角", "85/85/85/85(L/R/U/D)"], ["Contrast Ratio", "对比度", "800:1/1000:1"], ["Aspect Ratio", "长宽比", "16:9"], ["Camera", "摄像头", "Routine angle 5.0MP"], ["Chipset", "主芯片", "RK3568 Quad core cortex A55\nRK3576S Quad core cortex A72+Quad core cortex A53"], ["System Memory", "内存", "2GB Optional 4GB"], ["Flash Memory", "存储", "16GB Optional 32GB/64G"], ["OS", "系统", "Android 11(RK3568)/Android 14(RK3576S)"], ["Communication", "通信", "IEEE 802.11a/b/g/n/ac/ax"], ["Input/Output", "输入输出口", "Card slot/Mini USB /USB-A*2/Power jack/HDMI/RJ45/Earphone/Type-C"], ["VESA Mount", "VESA孔", "100*100mm"], ["Microphone", "麦克风", "Single microphone"], ["Speaker", "喇叭", "8Ω*2W*2"], ["Power Input", "电源输入", "Adapter 12V/2A"], ["Color", "颜色", "White/Black"], ["Product Size (LxWxH)", "产品尺寸", "388*27*245mm"]], "new": false}, {"id": "07-11", "cat": 7, "cn": "智能交互数字标牌", "en": "Interactive Digital Signage", "cp": 17, "size": "18.5–21.5", "sizes": ["18.5", "21.5"], "main": "07-11-p1.jpg", "acc": ["07-11-p2.jpg"], "media": [{"src": "07-11-s1.jpg", "fit": "cover"}, {"src": "07-11-s2.jpg", "fit": "cover"}], "keys": [["Resolution", "1920×1080"], ["Platform", "RK3568 / RK3576S / RK3588"], ["System", "Android 11–14"], ["Brightness", "250 cd/m²"]], "spec": [["Screen Size", "尺寸", "18.5\"/21.5\""], ["Panel Type", "屏类型", "LCD HD panel"], ["Resolution", "分辨率", "1920*1080"], ["Interactive Touch", "触控技术", "10-Point capacitive touch"], ["Brightness", "亮度", "250cd/m2"], ["View Angle", "可视角", "89/89/89/89(L/R/U/D); 85/85/85/85(L/R/U/D)"], ["Contrast Ratio", "对比度", "1200:1/800:1/4000:1"], ["Aspect Ratio", "长宽比", "16:9"], ["Camera", "摄像头", "Routine angle 5.0MP"], ["Chipset", "主芯片", "RK3568 Quad core cortex A55\nRK3576S Quad core cortex A72+Quad core cortex A53\nRK3588 Quad core cortex A55+Quad core cortex A76"], ["System Memory", "内存", "2GB Optional 4GB"], ["Flash Memory", "存储", "16GB Optional 32GB/64G"], ["OS", "系统", "Android 11(RK3568)/Android 12(RK3588)/Android 14(RK3576S)"], ["Communication", "通信", "IEEE 802.11a/b/g/n/ac/ax Bluetooth"], ["Input/Output", "输入输出口", "Card slot/Mini USB /USB-A*2/Power jack/HDMI/RJ45/Earphone"], ["VESA Mount", "VESA孔", "75*75mm/100*100mm"], ["Microphone", "麦克风", "Single microphone"], ["Speaker", "喇叭", "8Ω*3W*2"], ["Power Input", "电源输入", "Adapter 12V/3A"], ["Color", "颜色", "White/Black"], ["Product Size (LxWxH)", "产品尺寸", "468*37.5*288.3mm/539*39.5*331mm"]], "new": false}, {"id": "07-12", "cat": 7, "cn": "智能交互数字标牌", "en": "Interactive Digital Signage", "cp": 18, "size": "21.5", "sizes": ["21.5"], "main": "07-12-p1.jpg", "acc": [], "media": [{"src": "07-12-p2.jpg", "fit": "contain"}], "keys": [["Resolution", "1920×1080"], ["Platform", "RK3568 / RK3576S / RK3588"], ["System", "Android 11–14"], ["Brightness", "250 cd/m²"]], "spec": [["Screen Size", "尺寸", "21.5\""], ["Panel Type", "屏类型", "LCD HD panel"], ["Resolution", "分辨率", "1920*1080"], ["Interactive Touch", "触控技术", "10-Point capacitive touch"], ["Brightness", "亮度", "250cd/m2"], ["View Angle", "可视角", "85/85/85/85(L/R/U/D); 89/89/89/89(L/R/U/D)"], ["Contrast Ratio", "对比度", "800:1/4000:1"], ["Aspect Ratio", "长宽比", "16:9"], ["Camera", "摄像头", "Routine angle 5.0MP"], ["Chipset", "主芯片", "RK3568 Quad core cortex A55\nRK3576S Quad core cortex A72+Quad core cortex A53\nRK3588 Quad core cortex A55+Quad core cortex A76"], ["System Memory", "内存", "2GB Optional 4GB/8GB"], ["Flash Memory", "存储", "16GB Optional 32GB/64G"], ["OS", "系统", "Android 11(RK3568)/Android 12(RK3588)/Android 14(RK3576S)"], ["Communication", "通信", "IEEE 802.11a/b/g/n/ac/ax Bluetooth 5.4/5.2"], ["Input/Output", "输入输出口", "Card slot/Mini USB /USB-A*2/Power jack/HDMI/RJ45/Earphone"], ["VESA Mount", "VESA孔", "100*100mm"], ["Microphone", "麦克风", "Single microphone"], ["Speaker", "喇叭", "8Ω*2W*2"], ["Power Input", "电源输入", "Adapter 12V/3A"], ["Color", "颜色", "White/Black"], ["Product Size (LxWxH)", "产品尺寸", "504.5*19*302mm"]], "new": false}, {"id": "07-13", "cat": 7, "cn": "智能交互数字标牌", "en": "Interactive Digital Signage", "cp": 18, "size": "23.8–27", "sizes": ["23.8", "27"], "main": "07-13-p1.jpg", "acc": [], "media": [{"src": "07-13-p2.jpg", "fit": "contain"}], "keys": [["Resolution", "1920×1080"], ["Platform", "RK3568 / RK3576S / RK3588"], ["System", "Android 11–14"], ["Brightness", "250 cd/m²"]], "spec": [["Screen Size", "尺寸", "23.8\"/27\""], ["Panel Type", "屏类型", "LCD panel"], ["Resolution", "分辨率", "1920*1080"], ["Interactive Touch", "触控技术", "10-Point ,Capacitive touch screen"], ["Brightness", "亮度", "250cd/m2"], ["View Angle", "可视角", "85/85/85/85(L/R/U/D); 89/89/89/89(L/R/U/D)"], ["Contrast Ratio", "对比度", "800:1/3000:1"], ["Aspect Ratio", "长宽比", "16:9"], ["Camera", "摄像头", "Routine angle 5.0MP"], ["Chipset", "主芯片", "RK3568 Quad core cortex A55\nRK3576S Quad core cortex A72+Quad core cortex A53\nRK3588 Quad core cortex A55+Quad core cortex A76"], ["System Memory", "内存", "2GB Optional 4GB/8GB"], ["Flash Memory", "存储", "16GB Optional 32GB/64G"], ["OS", "系统", "Android 11(RK3568)/Android 12(RK3588)/Android 14(RK3576S)"], ["Communication", "通信", "IEEE 802.11a/b/g/n/ac/ax Bluetooth"], ["Input/Output", "输入输出口", "Card slot/Mini USB /USB-A*2/Power jack/HDMI/RJ45/Earphone/Type-C"], ["VESA Mount", "VESA孔", "100*100mm"], ["Microphone", "麦克风", "Single microphone"], ["Speaker", "喇叭", "8Ω*3W*2"], ["Power Input", "电源输入", "Adapter 12V/4A"], ["Color", "颜色", "White/Black"], ["Product Size (LxWxH)", "产品尺寸", "580*32.5*349.2mm/654*32.5*394.2mm"]], "new": false}, {"id": "07-14", "cat": 7, "cn": "智能交互数字标牌", "en": "Interactive Digital Signage", "cp": 19, "size": "32", "sizes": ["32"], "main": "07-14-p1.jpg", "acc": ["07-14-p2.jpg"], "media": [{"src": "07-14-s1.jpg", "fit": "cover"}, {"src": "07-14-s2.jpg", "fit": "cover"}], "keys": [["Resolution", "1920×1080"], ["Platform", "RK3568 / RK3576S / RK3588"], ["System", "Android 11–14"], ["Brightness", "250 cd/m²"]], "spec": [["Screen Size", "尺寸", "32\""], ["Panel Type", "屏类型", "LCD HD panel"], ["Resolution", "分辨率", "1920*1080"], ["Interactive Touch", "触控技术", "10-Point capacitive touch"], ["Brightness", "亮度", "250cd/m2"], ["View Angle", "可视角", "85/85/85/85(L/R/U/D); 89/89/89/89(L/R/U/D)"], ["Contrast Ratio", "对比度", "800:1/3000:1"], ["Aspect Ratio", "长宽比", "16:9"], ["Camera", "摄像头", "Routine angle 5.0MP"], ["Chipset", "主芯片", "RK3568 Quad core cortex A55\nRK3576S Quad core cortex A72+Quad core cortex A53\nRK3588 Quad core cortex A55+Quad core cortex A76"], ["System Memory", "内存", "2GB Optional 4GB/8GB"], ["Flash Memory", "存储", "16GB Optional 32GB/64G"], ["OS", "系统", "Android 11(RK3568)/Android 12(RK3588)/Android 14(RK3576S)"], ["Communication", "通信", "IEEE 802.11a/b/g/n/ac/ax Bluetooth"], ["Input/Output", "输入输出口", "Card slot/Mini USB /USB-A*2/Power jack/HDMI/RJ45/Earphone"], ["VESA Mount", "VESA孔", "100*100mm"], ["Microphone", "麦克风", "Single microphone"], ["Speaker", "喇叭", "8Ω*3W*2"], ["Power Input", "电源输入", "Adapter 12V/4A"], ["Color", "颜色", "White/Black"], ["Product Size (LxWxH)", "产品尺寸", "654*32.5*394.2mm"]], "new": false}, {"id": "07-15", "cat": 7, "cn": "智能交互数字标牌", "en": "Interactive Digital Signage", "cp": 20, "size": "43–55", "sizes": ["43", "55"], "main": "07-15-p1.jpg", "acc": ["07-15-p2.jpg"], "media": [{"src": "07-15-s1.jpg", "fit": "cover"}, {"src": "07-15-s2.jpg", "fit": "cover"}], "keys": [["Resolution", "1920×1080"], ["Platform", "RK3568 / RK3576S / RK3588"], ["System", "Android 11–14"], ["Brightness", "300 cd/m²"]], "spec": [["Screen Size", "尺寸", "43\"/55\""], ["Panel Type", "屏类型", "LCD HD panel"], ["Resolution", "分辨率", "1920*1080"], ["Interactive Touch", "触控技术", "10-Point capacitive touch"], ["Brightness", "亮度", "300cd/m2"], ["View Angle", "可视角", "85/85/85/85(L/R/U/D); 89/89/89/89(L/R/U/D)"], ["Contrast Ratio", "对比度", "1200:1"], ["Aspect Ratio", "长宽比", "16:9"], ["Camera", "摄像头", "Routine angle 5.0MP"], ["Chipset", "主芯片", "RK3568 Quad core cortex A55\nRK3576S Quad core cortex A72+Quad core cortex A53\nRK3588 Quad core cortex A55+Quad core cortex A76"], ["System Memory", "内存", "2GB Optional 4GB/8GB"], ["Flash Memory", "存储", "16GB Optional 32GB/64G"], ["OS", "系统", "Android 11(RK3568)/Android 12(RK3588)/Android 14(RK3576S)"], ["Communication", "通信", "IEEE 802.11a/b/g/n/ac/ax Bluetooth"], ["Input/Output", "输入输出口", "Card slot/Mini USB /USB-A*2/HDMI/RJ45/Earphone/Type-C/AC IN"], ["VESA Mount", "VESA孔", "400*400mm"], ["Microphone", "麦克风", "Single microphone"], ["Speaker", "喇叭", "8Ω*5W*2"], ["Power Input", "电源输入", "AC100V-240V input"], ["Color", "颜色", "Black"], ["Product Size (LxWxH)", "产品尺寸", "995.28*55.6*592.14mm/1263.18*56.50*747.28mm"]], "new": false}, {"id": "08-01", "cat": 8, "cn": "会议带灯智能交互数字标牌", "en": "Meeting Room Interactive Digital Signage With LED Light Bar", "cp": 21, "size": "8", "sizes": ["8"], "main": "08-01-p1.jpg", "acc": ["08-01-p2.jpg"], "media": [{"src": "08-01-s1.jpg", "fit": "cover"}, {"src": "08-01-s2.jpg", "fit": "cover"}], "keys": [["Resolution", "1280×800"], ["Platform", "RK3568 / RK3576S"], ["System", "Android 11–14"], ["Brightness", "320 cd/m²"]], "spec": [["Screen Size", "尺寸", "8\""], ["Panel Type", "屏类型", "LCD HD panel"], ["Resolution", "分辨率", "1280*800"], ["Interactive Touch", "触控技术", "5-Point capacitive touch"], ["Brightness", "亮度", "320cd/m2"], ["View Angle", "可视角", "80/80/80/80(L/R/U/D)"], ["Contrast Ratio", "对比度", "1200:1"], ["Aspect Ratio", "长宽比", "16:10"], ["Camera", "摄像头", "Routine angle 5.0MP"], ["Chipset", "主芯片", "RK3568 Quad core cortex A55\nRK3576S Quad core cortex A72+Quad core cortex A53"], ["System Memory", "内存", "2GB Optional 4GB"], ["Flash Memory", "存储", "16GB Optional 32GB/64G"], ["OS", "系统", "Android 11(RK3568)/Android 14(RK3576S)"], ["Communication", "通信", "IEEE 802.11a/b/g/n/ac/ax Bluetooth"], ["Input/Output", "输入输出口", "TF Slot/Earphone/USB-A*2/RJ45(POE)/Type-C/Power jack"], ["VESA Mount", "VESA孔", "75x75mm"], ["Microphone", "麦克风", "Dual microphone"], ["Speaker", "喇叭", "8Ω*2W*2"], ["LED Light bar", "LED灯条", "LED Light bar, RGB"], ["Power Input", "电源输入", "Adapter,12V/1.5A"], ["Color", "颜色", "White/Black"], ["Product Size (LxWxH)", "产品尺寸", "212.6*21.9*148mm"]], "new": false}, {"id": "08-02", "cat": 8, "cn": "会议带灯智能交互数字标牌", "en": "Meeting Room Interactive Digital Signage With LED Light Bar", "cp": 22, "size": "10.1", "sizes": ["10.1"], "main": "08-02-p1.jpg", "acc": [], "media": [{"src": "08-02-p2.jpg", "fit": "contain"}], "keys": [["Resolution", "1280×800"], ["Platform", "RK3288 / RK3568 / RK3576S"], ["System", "Android 5.1–14"], ["Brightness", "250 cd/m²"]], "spec": [["Screen Size", "尺寸", "10.1\""], ["Panel Type", "屏类型", "LCD panel"], ["Resolution", "分辨率", "1280*800"], ["Interactive Touch", "触控技术", "10-Point capacitive touch"], ["Brightness", "亮度", "250cd/m2; 280cd/m2"], ["View Angle", "可视角", "85/85/85/85(L/R/U/D)"], ["Contrast Ratio", "对比度", "800:1/1500:1"], ["Aspect Ratio", "长宽比", "16:10"], ["Camera", "摄像头", "Wide-angle 2.0MP with USB type"], ["Chipset", "主芯片", "RK3288 Quad core cortex A17\nRK3568 Quad core cortex A55\nRK3576S Quad core cortex A72+Quad core cortex A53"], ["System Memory", "内存", "2GB Optional 4GB"], ["Flash Memory", "存储", "16GB Optional 32GB/64G"], ["OS", "系统", "Android 5.1/8.1/10.0 (RK3288)Android 11(RK3568)/Android 14(RK3576S)"], ["Communication", "通信", "IEEE 802.11a/b/g/n(RK3288)\nIEEE 802.11a/b/g/n/ac/ax(RK3568/RK3576S)"], ["Input/Output", "输入输出口", "SIM Slot/SD/Earphone/USB*2/RJ45(POE)/Micro USB /DC IN/Type-C"], ["VESA Mount", "VESA孔", "75x75mm"], ["Microphone", "麦克风", "Single microphone"], ["Speaker", "喇叭", "4Ω*3W*2"], ["LED Light bar", "LED灯条", "LED Light bar, RGB"], ["Power Input", "电源输入", "Adapter,12V/1.5A"], ["Color", "颜色", "White/Black"], ["Product Size (LxWxH)", "产品尺寸", "255.85*31.7*175.83mm"]], "new": false}, {"id": "08-03", "cat": 8, "cn": "会议带灯智能交互数字标牌", "en": "Meeting Room Interactive Digital Signage With LED Light Bar", "cp": 22, "size": "10.1", "sizes": ["10.1"], "main": "08-03-p1.jpg", "acc": [], "media": [{"src": "08-03-p2.jpg", "fit": "contain"}], "keys": [["Resolution", "1280×800"], ["Platform", "RK3288 / RK3568 / RK3576S"], ["System", "Android 5.1–14"], ["Brightness", "250 cd/m²"]], "spec": [["Screen Size", "尺寸", "10.1\""], ["Panel Type", "屏类型", "LCD panel"], ["Resolution", "分辨率", "1280*800"], ["Interactive Touch", "触控技术", "10-Point capacitive touch"], ["Brightness", "亮度", "250cd/m2; 280cd/m2"], ["View Angle", "可视角", "85/85/85/85(L/R/U/D)"], ["Contrast Ratio", "对比度", "800:1/1500:1"], ["Aspect Ratio", "长宽比", "16:10"], ["Camera", "摄像头", "Wide-angle 2.0MP with USB type"], ["Chipset", "主芯片", "RK3288 Quad core cortex A17\nRK3568 Quad core cortex A55\nRK3576S Quad core cortex A72+Quad core cortex A53"], ["System Memory", "内存", "2GB Optional 4GB"], ["Flash Memory", "存储", "16GB Optional 32GB/64G"], ["OS", "系统", "Android 5.1/8.1/10.0 (RK3288)Android 11(RK3568)/Android 14(RK3576S)"], ["Communication", "通信", "IEEE 802.11a/b/g/n(RK3288)\nIEEE 802.11a/b/g/n/ac/ax(RK3568/RK3576S)"], ["Input/Output", "输入输出口", "SIM Slot/SD/Earphone/USB*2/RJ45(POE)/Micro USB /DC IN/Type-C"], ["VESA Mount", "VESA孔", "75x75mm"], ["Microphone", "麦克风", "Single microphone"], ["Speaker", "喇叭", "2*2W"], ["LED Light bar", "LED灯条", "LED Light bar, RGB"], ["Power Input", "电源输入", "Adapter,12V/1.5A"], ["Color", "颜色", "White/Black"], ["Product Size (LxWxH)", "产品尺寸", "273.3*30.2*189.7mm"]], "new": false}, {"id": "08-04", "cat": 8, "cn": "会议带灯智能交互数字标牌", "en": "Meeting Room Interactive Digital Signage With LED Light Bar", "cp": 23, "size": "10.95", "sizes": ["10.95"], "main": "08-04-p1.jpg", "acc": ["08-04-p2.jpg"], "media": [{"src": "08-04-s1.jpg", "fit": "cover"}, {"src": "08-04-s2.jpg", "fit": "cover"}], "keys": [["Resolution", "1920×1200"], ["Platform", "RK3576S"], ["System", "Android 14"], ["Brightness", "280 cd/m²"]], "spec": [["Screen Size", "尺寸", "10.95\""], ["Panel Type", "屏类型", "LCD panel"], ["Resolution", "分辨率", "1920*1200"], ["Interactive Touch", "触控技术", "10-Point In cell,Capacitive touch screen"], ["Brightness", "亮度", "280cd/m2"], ["View Angle", "可视角", "80/80/80/80(L/R/U/D)"], ["Contrast Ratio", "对比度", "1500:1"], ["Aspect Ratio", "长宽比", "16:10"], ["Camera", "摄像头", "5.0MP"], ["Chipset", "主芯片", "RK3576S Quad core cortex A72+Quad core cortex A53"], ["System Memory", "内存", "4GB"], ["Flash Memory", "存储", "64G"], ["OS", "系统", "Android 14"], ["Communication", "通信", "IEEE 802.11a/b/g/n/ac/ax（Wi-Fi 6）"], ["Input/Output", "输入输出口", "TF Slot/Earphone/USB-A*2/RJ45(POE)/Type-C/Power jack"], ["G-sensor", "重力传感器", "Support 90 degrees"], ["Microphone", "麦克风", "Standard Quad Microphone , Support noise reduction and echo cancellation"], ["Speaker", "喇叭", "4Ω*2W*2"], ["LED Light bar", "LED灯条", "LED Light bar, RGB"], ["Power Input", "电源输入", "Adapter,12V/2A"], ["Color", "颜色", "White/Black"], ["Product Size (LxWxH)", "产品尺寸", "260.3*22.25*171.45mm"]], "new": true}, {"id": "08-05", "cat": 8, "cn": "会议带灯智能交互数字标牌", "en": "Meeting Room Interactive Digital Signage With LED Light Bar", "cp": 24, "size": "10.1", "sizes": ["10.1"], "main": "08-05-p1.jpg", "acc": [], "media": [{"src": "08-05-p2.jpg", "fit": "contain"}], "keys": [["Resolution", "1280×800"], ["Platform", "RK3288 / RK3566 / RK3568"], ["System", "Android 5.1–14"], ["Brightness", "250 cd/m²"]], "spec": [["Screen Size", "尺寸", "10.1\""], ["Panel Type", "屏类型", "LCD panel"], ["Resolution", "分辨率", "1280*800"], ["Interactive Touch", "触控技术", "10-Point capacitive touch"], ["Brightness", "亮度", "250cd/m2; 280cd/m2"], ["View Angle", "可视角", "85/85/85/85(L/R/U/D)"], ["Contrast Ratio", "对比度", "800:1/1500:1"], ["Aspect Ratio", "长宽比", "16:10"], ["Camera", "摄像头", "Wide-angle 2.0MP with USB type"], ["Chipset", "主芯片", "RK3288 Quad core cortex A17\nRK3566/RK3568 Quad core cortex A55\nRK3576S Quad core cortex A72+Quad core cortex A53"], ["System Memory", "内存", "2GB Optional 4GB"], ["Flash Memory", "存储", "16GB Optional 32GB/64G"], ["OS", "系统", "Android 5.1/8.1/10.0 (RK3288); Android 11(RK3568/RK3566);\nAndroid 14(RK3576S)"], ["Communication", "通信", "IEEE 802.11a/b/g/n/ac(RK3288/RK3566)\nIEEE 802.11a/b/g/n/ac/ax(RK3568/RK3576S)"], ["Input/Output", "输入输出口", "Card slot/Earphone/USB*2/RJ45(POE)/Micro USB /DC IN/Type-C"], ["VESA Mount", "VESA孔", "204.5mm"], ["Microphone", "麦克风", "Single microphone"], ["Speaker", "喇叭", "2W*2"], ["LED Light bar", "LED灯条", "LED Light bar, RGB"], ["Power Input", "电源输入", "Adapter,12V/1.5A"], ["Color", "颜色", "White/Black"], ["Product Size (LxWxH)", "产品尺寸", "275.36*25*170.36mm"]], "new": false}, {"id": "08-06", "cat": 8, "cn": "会议带灯智能交互数字标牌", "en": "Meeting Room Interactive Digital Signage With LED Light Bar", "cp": 24, "size": "10.1", "sizes": ["10.1"], "main": "08-06-p1.jpg", "acc": [], "media": [{"src": "08-06-p2.jpg", "fit": "contain"}], "keys": [["Resolution", "1280×800"], ["Platform", "RK3288 / RK3566 / RK3568"], ["System", "Android 5.1–14"], ["Brightness", "250 cd/m²"]], "spec": [["Screen Size", "尺寸", "10.1\""], ["Panel Type", "屏类型", "LCD panel"], ["Resolution", "分辨率", "1280*800"], ["Interactive Touch", "触控技术", "10-Point capacitive touch"], ["Brightness", "亮度", "250cd/m2; 280cd/m2"], ["View Angle", "可视角", "85/85/85/85(L/R/U/D)"], ["Contrast Ratio", "对比度", "800:1/1500:1"], ["Aspect Ratio", "长宽比", "16:10"], ["Camera", "摄像头", "Routine angle 5.0MP"], ["Chipset", "主芯片", "RK3288 Quad core cortex A17\nRK3566/RK3568 Quad core cortex A55\nRK3576S Quad core cortex A72+Quad core cortex A53"], ["System Memory", "内存", "2GB Optional 4GB"], ["Flash Memory", "存储", "16GB Optional 32GB/64G"], ["OS", "系统", "Android 5.1/8.1/10.0 (RK3288); Android 11(RK3568/RK3566);\nAndroid 14(RK3576S)"], ["Communication", "通信", "IEEE 802.11a/b/g/n/ac(RK3288/RK3566)\nIEEE 802.11a/b/g/n/ac/ax(RK3568/RK3576S)"], ["Input/Output", "输入输出口", "SIM Slot/SD/Earphone/USB*2/RJ45(POE)/Micro USB /DC IN/Type-C"], ["VESA Mount", "VESA孔", "75x75mm"], ["Microphone", "麦克风", "Single microphone"], ["Speaker", "喇叭", "2*2W"], ["LED Light bar", "LED灯条", "LED Light bar, RGB"], ["Power Input", "电源输入", "Adapter,12V/1.5A"], ["Color", "颜色", "White/Black"], ["Product Size (LxWxH)", "产品尺寸", "259.36*28*178.36mm"]], "new": false}, {"id": "08-07", "cat": 8, "cn": "会议带灯智能交互数字标牌", "en": "Meeting Room Interactive Digital Signage With LED Light Bar", "cp": 25, "size": "13.3–15.6", "sizes": ["13.3", "15.6"], "main": "08-07-p1.jpg", "acc": ["08-07-p2.jpg"], "media": [{"src": "08-07-s1.jpg", "fit": "cover"}, {"src": "08-07-s2.jpg", "fit": "cover"}], "keys": [["Resolution", "1920×1080"], ["Platform", "RK3568 / RK3576S"], ["System", "Android 11–14"], ["Brightness", "250 cd/m²"]], "spec": [["Screen Size", "尺寸", "13.3\"/15.6\""], ["Panel Type", "屏类型", "LCD panel"], ["Resolution", "分辨率", "1920*1080"], ["Interactive Touch", "触控技术", "10-Point capacitive touch"], ["Brightness", "亮度", "250cd/m2; 300cd/m2"], ["View Angle", "可视角", "80/80/80/80(L/R/U/D); 85/85/85/85(L/R/U/D)"], ["Contrast Ratio", "对比度", "1500:1/700:1/1000:1"], ["Aspect Ratio", "长宽比", "16:9"], ["Camera", "摄像头", "Wide-angle 2.0MP with USB type"], ["Chipset", "主芯片", "RK3568 Quad core cortex A55\nRK3576S Quad core cortex A72+Quad core cortex A53"], ["System Memory", "内存", "2GB Optional 4GB"], ["Flash Memory", "存储", "16GB Optional 32GB/64G"], ["OS", "系统", "Android 11(RK3568/RK3566)\nAndroid 14(RK3576S)"], ["Communication", "通信", "IEEE 802.11a/b/g/n/ac/ax"], ["Input/Output", "输入输出口", "Card slot/Earphone/USB*2/RJ45(POE)/Micro USB /DC IN/Type-C"], ["VESA Mount", "VESA孔", "75x75mm/100x100mm"], ["Microphone", "麦克风", "Single microphone"], ["Speaker", "喇叭", "2W*2"], ["LED Light bar", "LED灯条", "LED Light bar, RGB"], ["Power Input", "电源输入", "Adapter,12V/1.5A; 12V/2A"], ["Color", "颜色", "White/Black"], ["Product Size (LxWxH)", "产品尺寸", "348.56*30.2*223.74mm/401.81*30.2*252.91mm"]], "new": false}, {"id": "08-08", "cat": 8, "cn": "会议带灯智能交互数字标牌", "en": "Meeting Room Interactive Digital Signage With LED Light Bar", "cp": 26, "size": "13.3–15.6", "sizes": ["13.3", "15.6"], "main": "08-08-p1.jpg", "acc": ["08-08-p2.jpg"], "media": [{"src": "08-08-s1.jpg", "fit": "cover"}, {"src": "08-08-s2.jpg", "fit": "cover"}], "keys": [["Resolution", "1920×1080"], ["Platform", "RK3568 / RK3576S"], ["System", "Android 11–14"], ["Brightness", "250 cd/m²"]], "spec": [["Screen Size", "尺寸", "13.3\"15.6\""], ["Panel Type", "屏类型", "LCD panel"], ["Resolution", "分辨率", "1920*1080"], ["Interactive Touch", "触控技术", "10-Point Capacitive touch"], ["Brightness", "亮度", "250cd/m2; 300cd/m2"], ["View Angle", "可视角", "80/80/80/80(L/R/U/D); 85/85/85/85(L/R/U/D)"], ["Contrast Ratio", "对比度", "700:1/1000:1/1500:1"], ["Aspect Ratio", "长宽比", "16:9"], ["Camera", "摄像头", "5.0MP with USB type"], ["Chipset", "主芯片", "RK3568 Quad core cortex A55\nRK3576S Quad core cortex A72+Quad core cortex A53"], ["System Memory", "内存", "2GB Optional 4GB"], ["Flash Memory", "存储", "16GB Optional 32GB/64G"], ["OS", "系统", "Android 11(RK3568/RK3566)\nAndroid 14(RK3576S)"], ["Communication", "通信", "IEEE 802.11a/b/g/n/ac/ax"], ["Input/Output", "输入输出口", "Card slot/Earphone/USB-A*2/RJ45(POE)/Micro USB /DC IN/Type-C"], ["VESA Mount", "VESA孔", "75x75mm"], ["Microphone", "麦克风", "Single microphone"], ["Speaker", "喇叭", "3W*2/2W*2"], ["LED Light bar", "LED灯条", "LED Light bar, RGB"], ["Power Input", "电源输入", "Adapter,12V/2A"], ["Color", "颜色", "White/Black"], ["Product Size (LxWxH)", "产品尺寸", "333*28.5*225mm/397.4*28.5*256.4mm"]], "new": false}, {"id": "08-09", "cat": 8, "cn": "会议带灯智能交互数字标牌", "en": "Meeting Room Interactive Digital Signage With LED Light Bar", "cp": 27, "size": "14–15.6", "sizes": ["14", "15.6"], "main": "08-09-p1.jpg", "acc": ["08-09-p2.jpg"], "media": [{"src": "08-09-s1.jpg", "fit": "cover"}, {"src": "08-09-s2.jpg", "fit": "cover"}], "keys": [["Resolution", "1920×1080"], ["Platform", "RK3576S"], ["System", "Android 14"], ["Brightness", "250 cd/m²"]], "spec": [["Screen Size", "尺寸", "14\"/15.6\""], ["Panel Type", "屏类型", "LCD panel"], ["Resolution", "分辨率", "1920*1080"], ["Interactive Touch", "触控技术", "10-Point Capacitive touch screen"], ["Brightness", "亮度", "250cd/m2"], ["View Angle", "可视角", "85/85/85/85(L/R/U/D)"], ["Contrast Ratio", "对比度", "1000:1"], ["Aspect Ratio", "长宽比", "16:9"], ["Camera", "摄像头", "5.0MP with USB type"], ["Chipset", "主芯片", "RK3576S Quad core cortex A72+Quad core cortex A53"], ["System Memory", "内存", "4GB"], ["Flash Memory", "存储", "64G"], ["OS", "系统", "Android 14"], ["Communication", "通信", "IEEE 802.11a/b/g/n/ac/ax（Wi-Fi 6）"], ["Input/Output", "输入输出口", "RJ45(POE)/USB-A*2/Type-C/HDMI IN/Power Jack"], ["G-sensor", "重力传感器", "Support 90 degrees"], ["Microphone", "麦克风", "Standard Quad Microphone , Support noise reduction and echo cancellation"], ["Speaker", "喇叭", "4Ω*3W*2"], ["LED light bar", "LED灯条", "LED light bar with RGB and mixed color"], ["Power Input", "电源输入", "Adapter,12V/2A"], ["Color", "颜色", "White/Black"], ["Product Size (LxWxH)", "产品尺寸", "333*28.5*225mm"]], "new": true}, {"id": "08-10", "cat": 8, "cn": "会议带灯智能交互数字标牌", "en": "Meeting Room Interactive Digital Signage With LED Light Bar", "cp": 28, "size": "21.5", "sizes": ["21.5"], "main": "08-10-p1.jpg", "acc": [], "media": [{"src": "08-10-p2.jpg", "fit": "contain"}], "keys": [["Resolution", "1080×1920"], ["Platform", "RK3576S"], ["System", "Android"], ["Brightness", "250 cd/m²"]], "spec": [["Screen Size", "尺寸", "21.5\""], ["Panel Type", "屏类型", "LCD panel"], ["Resolution", "分辨率", "1080*1920"], ["Interactive Touch", "触控技术", "10-Point Capacitive touch screen"], ["Brightness", "亮度", "250cd/m2"], ["View Angle", "可视角", "89/89/89/89(L/R/U/D)"], ["Contrast Ratio", "对比度", "3000:1"], ["Aspect Ratio", "长宽比", "16:9"], ["Camera", "摄像头", "5.0MP"], ["Chipset", "主芯片", "RK3576S Quad core cortex A72+Quad core cortex A53"], ["System Memory", "内存", "4GB"], ["Flash Memory", "存储", "32GB"], ["OS", "系统", "Android"], ["Communication", "通信", "IEEE 802.11a/b/g/n/ac/ax (Wi-Fi 6)"], ["Input/Output", "输入输出口", "RJ45(POE)/USB-A*2/Type-C/HDMI IN/Power Jack"], ["G-sensor", "重力传感器", "Support 90 degree rotation"], ["Microphone", "麦克风", "Single microphone"], ["Speaker", "喇叭", "4Ω*5W*2"], ["LED Light bar", "LED灯条", "LED Light bar, RGB"], ["Power Input", "电源输入", "Adapter,12V/4.0A"], ["Color", "颜色", "White/Black"], ["Product Size (LxWxH)", "产品尺寸", "520.6*27.5*312.5mm"]], "new": false}, {"id": "08-11", "cat": 8, "cn": "会议带灯智能交互数字标牌", "en": "Meeting Room Interactive Digital Signage With LED Light Bar", "cp": 28, "size": "23.8–32", "sizes": ["23.8", "27", "32"], "main": "08-11-p1.jpg", "acc": [], "media": [{"src": "08-11-p2.jpg", "fit": "contain"}], "keys": [["Resolution", "1920×1080"], ["Platform", "RK3576S"], ["System", "Android 14"], ["Brightness", "250 cd/m²"]], "spec": [["Screen Size", "尺寸", "23.8\"/27\"/32\""], ["Panel Type", "屏类型", "LCD panel"], ["Resolution", "分辨率", "1920*1080"], ["Interactive Touch", "触控技术", "10-Point Capacitive touch screen"], ["Brightness", "亮度", "250cd/m2; 300cd/m2"], ["View Angle", "可视角", "89/89/89/89(L/R/U/D)"], ["Contrast Ratio", "对比度", "1000:1/4000:1"], ["Aspect Ratio", "长宽比", "16:9"], ["Camera", "摄像头", "8.0MP"], ["Chipset", "主芯片", "RK3576S Quad core cortex A72+Quad core cortex A53"], ["System Memory", "内存", "4GB"], ["Flash Memory", "存储", "64G"], ["OS", "系统", "Android 14"], ["Communication", "通信", "IEEE 802.11a/b/g/n/ac/ax（Wi-Fi 6）"], ["Input/Output", "输入输出口", "RJ45/USB-A*2/Type-C/HDMI IN/Power Jack"], ["G-sensor", "重力传感器", "Support 90 degrees"], ["Microphone", "麦克风", "Standard Quad Microphone , Support noise reduction and echo cancellation"], ["Speaker", "喇叭", "4Ω*5W*2"], ["LED Light bar", "LED灯条", "LED Light bar, RGB and mixed color"], ["Power Input", "电源输入", "Adapter,18V/3A; 18V/5A"], ["Color", "颜色", "White/Black"], ["Product Size (LxWxH)", "产品尺寸", "578*30.5*347.8mm/647*29.6*385.8mm; 750.2*30.37*444.45mm"]], "new": true}, {"id": "09-01", "cat": 9, "cn": "L形智能交互数字标牌", "en": "L-Type Interactive Digital Signage", "cp": 29, "size": "15.6", "sizes": ["15.6"], "main": "09-01-p1.jpg", "acc": ["09-01-p2.jpg"], "media": [{"src": "09-01-s1.jpg", "fit": "cover"}, {"src": "09-01-s2.jpg", "fit": "cover"}], "keys": [["Resolution", "1080×1920"], ["Platform", "RK3576S / RK3588S2"], ["System", "Android 15–16"], ["Brightness", "250 cd/m²"]], "spec": [["Screen Size", "尺寸", "15.6\""], ["Panel Type", "屏类型", "LCD panel"], ["Resolution", "分辨率", "1080*1920"], ["Interactive Touch", "触控技术", "10-Point ,Full Lamination,Capacitive touch screen"], ["Brightness", "亮度", "250cd/m2"], ["View Angle", "可视角", "85/85/85/85(L/R/U/D)"], ["Contrast Ratio", "对比度", "1000:1"], ["Aspect Ratio", "长宽比", "16:9"], ["Camera", "摄像头", "1300W&4800W (Optional)"], ["Chipset", "主芯片", "RK3576S Quad core cortex A72+Quad core cortex A53\nRK3588S2 Quad core cortex A76+Quad core cortex A55"], ["System Memory", "内存", "4GB"], ["Flash Memory", "存储", "64GB"], ["OS", "系统", "Android 15/Android 16"], ["Communication", "通信", "IEEE 802.11a/b/g/n/ac/ax (Wi-Fi 6 )\nBluetooth 5.4"], ["Input/Output", "输入输出口", "RJ45/USB-A*2/Type-C/Power Jack"], ["Battery", "内置电池", "10000mAh"], ["Microphone", "麦克风", "Standard Quad Microphone , Support noise reduction and echo cancellation"], ["Speaker", "喇叭", "Box speaker 4Ω5W"], ["Power Input", "电源输入", "Adapter 12V/3A"], ["Color", "颜色", "White/Black"], ["Product Size (LxWxH)", "产品尺寸", "222.9*36.94*436.4mm"]], "new": true}, {"id": "09-02", "cat": 9, "cn": "L形智能交互数字标牌", "en": "L-Type Interactive Digital Signage", "cp": 30, "size": "15.6", "sizes": ["15.6"], "main": "09-02-p1.jpg", "acc": ["09-02-p2.jpg"], "media": [{"src": "09-02-s1.jpg", "fit": "cover"}, {"src": "09-02-s2.jpg", "fit": "cover"}], "keys": [["Resolution", "1080×1920"], ["Platform", "RK3576S"], ["System", "Android 15"], ["Brightness", "250 cd/m²"]], "spec": [["Screen Size", "尺寸", "15.6\""], ["Panel Type", "屏类型", "LCD panel"], ["Resolution", "分辨率", "1080*1920"], ["Interactive Touch", "触控技术", "10-Point ,Full Lamination,Capacitive touch screen"], ["Brightness", "亮度", "250cd/m2"], ["View Angle", "可视角", "85/85/85/85(L/R/U/D)"], ["Contrast Ratio", "对比度", "1000:1"], ["Aspect Ratio", "长宽比", "16:9"], ["Camera", "摄像头", "5.0MP"], ["Chipset", "主芯片", "RK3576S Quad core cortex A72+Quad core cortex A53"], ["System Memory", "内存", "4GB"], ["Flash Memory", "存储", "64GB"], ["OS", "系统", "Android 15"], ["Communication", "通信", "IEEE 802.11a/b/g/n/ac/ax (Wi-Fi 6 )\nBluetooth 5.4"], ["Input/Output", "输入输出口", "RJ45/USB-A*2/Type-C/Power Jack"], ["POE/RFID/NFC", "POE/RFID/NFC", "Optional"], ["Microphone", "麦克风", "Standard Quad Microphone , Support noise reduction and echo cancellation"], ["Speaker", "喇叭", "4Ω*3W*2"], ["Power Input", "电源输入", "Adapter 12V/2A"], ["Color", "颜色", "White/Black"], ["Product Size (LxWxH)", "产品尺寸", "220*173.9*365mm"]], "new": true}, {"id": "09-03", "cat": 9, "cn": "L形智能交互数字标牌", "en": "L-Type Interactive Digital Signage", "cp": 31, "size": "8–10.1", "sizes": ["8", "10.1"], "main": "09-03-p1.jpg", "acc": [], "media": [{"src": "09-03-p2.jpg", "fit": "contain"}], "keys": [["Resolution", "800×1280"], ["Platform", "RK3568 / RK3576S"], ["System", "Android 11–14"], ["Brightness", "250 cd/m²"]], "spec": [["Screen Size", "尺寸", "8\"/10.1\""], ["Panel Type", "屏类型", "LCD panel"], ["Resolution", "分辨率", "800*1280"], ["Interactive Touch", "触控技术", "10-Point ,Capacitive touch screen"], ["Brightness", "亮度", "250cd/m2"], ["View Angle", "可视角", "80/80/80/80(L/R/U/D)"], ["Contrast Ratio", "对比度", "800:1/1200:1"], ["Aspect Ratio", "长宽比", "10:16"], ["Camera", "摄像头", "5.0MP"], ["Chipset", "主芯片", "RK3568 Quad core cortex A55\nRK3576S Quad core cortex A72+Quad core cortex A53"], ["System Memory", "内存", "2GB/4GB"], ["Flash Memory", "存储", "16GB/64GB"], ["OS", "系统", "Android 11/13(RK3568); Android 14(RK3576S)"], ["Communication", "通信", "IEEE 802.11a/b/g/n/ac/ax（Wi-Fi 6）\nBluetooth 5.4"], ["Input/Output", "输入输出口", "TF Slot/Earphone/USB-A*2/RJ45/Type-C/Power jack"], ["POE/RFID/NFC", "POE/RFID/NFC", "Optional"], ["Microphone", "麦克风", "Standard Quad Microphone , Support noise reduction and echo cancellation"], ["Speaker", "喇叭", "2W*2"], ["Power Input", "电源输入", "Adapter 12V/1.5A"], ["Color", "颜色", "White/Black"], ["Product Size (LxWxH)", "产品尺寸", "132*104.03*211.8mm/160.20*114.03*255.5mm"]], "new": false}, {"id": "09-04", "cat": 9, "cn": "L形智能交互数字标牌", "en": "L-Type Interactive Digital Signage", "cp": 31, "size": "10.95", "sizes": ["10.95"], "main": "09-04-p1.jpg", "acc": [], "media": [{"src": "09-04-p2.jpg", "fit": "contain"}], "keys": [["Resolution", "1200×1920"], ["Platform", "RK3576S"], ["System", "Android 14"], ["Brightness", "280nits"]], "spec": [["Screen Size", "尺寸", "10.95\""], ["Panel Type", "屏类型", "LCD panel"], ["Resolution", "分辨率", "1200*1920"], ["Interactive Touch", "触控技术", "10-Point ,In cell,Capacitive touch screen"], ["Brightness", "亮度", "280nits"], ["View Angle", "可视角", "80/80/80/80(L/R/U/D)"], ["Contrast Ratio", "对比度", "1500:1"], ["Aspect Ratio", "长宽比", "10:16"], ["Camera", "摄像头", "5.0MP"], ["Chipset", "主芯片", "RK3576S Quad core cortex A72+Quad core cortex A53"], ["System Memory", "内存", "4GB"], ["Flash Memory", "存储", "64GB"], ["OS", "系统", "Android 14"], ["Communication", "通信", "IEEE 802.11a/b/g/n/ac/ax（Wi-Fi 6）\nBluetooth 5.4"], ["Input/Output", "输入输出口", "TF Slot/Earphone/USB-A*2/RJ45/Type-C/Power jack"], ["POE/RFID/NFC", "POE/RFID/NFC", "Optional"], ["Microphone", "麦克风", "Standard Quad Microphone , Support noise reduction and echo cancellation"], ["Speaker", "喇叭", "2W*2"], ["Power Input", "电源输入", "Adapter 12V/1.5A"], ["Color", "颜色", "White/Black"], ["Product Size (LxWxH)", "产品尺寸", "170.45*122*252.44mm"]], "new": true}, {"id": "09-05", "cat": 9, "cn": "L形智能交互数字标牌", "en": "L-Type Interactive Digital Signage", "cp": 32, "size": "8–10.1", "sizes": ["8", "10.1"], "main": "09-05-p1.jpg", "acc": ["09-05-p2.jpg"], "media": [{"src": "09-05-s1.jpg", "fit": "cover"}, {"src": "09-05-s2.jpg", "fit": "cover"}], "keys": [["Resolution", "1280×800"], ["Platform", "RK3128 / RK3288 / RK3568"], ["System", "Android 6–14"], ["Brightness", "250 cd/m²"]], "spec": [["Screen Size", "尺寸", "8\"/10.1\""], ["Panel Type", "屏类型", "LCD panel"], ["Resolution", "分辨率", "1280*800"], ["Interactive Touch", "触控技术", "5-Point/10-Point capacitive touch"], ["Brightness", "亮度", "250cd/m2"], ["View Angle", "可视角", "80/80/80/80(L/R/U/D); 85/85/85/85(L/R/U/D)"], ["Contrast Ratio", "对比度", "800:1/1200:1"], ["Aspect Ratio", "长宽比", "10:16"], ["Camera", "摄像头", "Routine angle 2.0MP/5.0MP"], ["Chipset", "主芯片", "RK3128 Quad core cortex A7\nRK3288 Quad core cortex A17\nRK3568 Quad core cortex A55\nRK3576S Quad core cortex A72+Quad core cortex A53"], ["System Memory", "内存", "1GB/2GB/4GB"], ["Flash Memory", "存储", "16GB/64GB"], ["OS", "系统", "Android 6.0; Android 8.1/10.0; Android 11/13; Android 14"], ["Communication", "通信", "802.11b/g/n(RK3128/RK3288)\nIEEE 802.11a/b/g/n/ac/ax（Wi-Fi 6）(RK3568/RK3576S)"], ["Input/Output", "输入输出口", "TF Slot/Earphone/USB-A*2/RJ45/Type-C/Power jack"], ["NFC", "NFC", "Optional"], ["Microphone", "麦克风", "Standard single microphone ,Optional dual microphone"], ["Speaker", "喇叭", "3W*2/2*1W"], ["Power Input", "电源输入", "Adapter 12V/1.5A"], ["Color", "颜色", "White/Black"], ["Product Size (LxWxH)", "产品尺寸", "204.3*103.42*139.44mm/256.58*109.2*185.76mm"]], "new": false}, {"id": "09-06", "cat": 9, "cn": "L形智能交互数字标牌", "en": "L-Type Interactive Digital Signage", "cp": 33, "size": "10.1", "sizes": ["10.1"], "main": "09-06-p1.jpg", "acc": [], "media": [{"src": "09-06-p2.jpg", "fit": "contain"}], "keys": [["Resolution", "1280×800"], ["Platform", "RK3568"], ["System", "Android 11–13"], ["Brightness", "250 cd/m²"]], "spec": [["Screen Size", "尺寸", "10.1\""], ["Panel Type", "屏类型", "LCD panel"], ["Resolution", "分辨率", "1280*800"], ["Interactive Touch", "触控技术", "10-Point capacitive touch"], ["Brightness", "亮度", "250cd/m2"], ["View Angle", "可视角", "85/85/85/85(L/R/U/D)"], ["Contrast Ratio", "对比度", "800:1"], ["Aspect Ratio", "长宽比", "16:10"], ["Camera", "摄像头", "/"], ["Chipset", "主芯片", "RK3568 Quad core cortex A55"], ["System Memory", "内存", "2GB"], ["Flash Memory", "存储", "16GB"], ["OS", "系统", "Android 11/13"], ["Communication", "通信", "IEEE 802.11a/b/g/n/ac/ax（Wi-Fi 6）\nBluetooth 5.4"], ["Input/Output", "输入输出口", "RJ45/USB-A*4/HDMI/DC IN/Earphone/TF card slo"], ["Microphone", "麦克风", "Standard single microphone"], ["Speaker", "喇叭", "4Ω*3W*2"], ["LED Light bar", "LED灯条", "/"], ["Power Input", "电源输入", "Adapter 12V/1.5A"], ["Color", "颜色", "White/Black"], ["Product Size (LxWxH)", "产品尺寸", "243.18*103.26*162.53mm"]], "new": false}, {"id": "09-07", "cat": 9, "cn": "L形智能交互数字标牌", "en": "L-Type Interactive Digital Signage", "cp": 33, "size": "10.1", "sizes": ["10.1"], "main": "09-07-p1.jpg", "acc": [], "media": [{"src": "09-07-p2.jpg", "fit": "contain"}], "keys": [["Resolution", "1280×800"], ["Platform", "RK3568 / RK3576S"], ["System", "Android 11–14"], ["Brightness", "250 cd/m²"]], "spec": [["Screen Size", "尺寸", "10.1\""], ["Panel Type", "屏类型", "LCD panel"], ["Resolution", "分辨率", "1280*800"], ["Interactive Touch", "触控技术", "10-Point capacitive touch"], ["Brightness", "亮度", "250cd/m2"], ["View Angle", "可视角", "85/85/85/85(L/R/U/D)"], ["Contrast Ratio", "对比度", "800:1"], ["Aspect Ratio", "长宽比", "10:16"], ["Camera", "摄像头", "5.0MP"], ["Chipset", "主芯片", "RK3568 Quad core cortex A55\nRK3576S Quad core cortex A72+Quad core cortex A53"], ["System Memory", "内存", "2GB/4GB"], ["Flash Memory", "存储", "16GB/64GB"], ["OS", "系统", "Android 11/13(RK3568); Android 14(RK3576S)"], ["Communication", "通信", "IEEE 802.11a/b/g/n/ac/ax（Wi-Fi 6）\nBluetooth 5.4"], ["Input/Output", "输入输出口", "TF card slot/Earphone/USB-A*2/RJ45/Type-C/DC IN"], ["Microphone", "麦克风", "Standard single microphone"], ["Speaker", "喇叭", "4Ω*3W*2"], ["LED Light bar", "LED灯条", "LED Light bar, RGB"], ["Power Input", "电源输入", "Adapter 12V/1.5A"], ["Color", "颜色", "White/Black"], ["Product Size (LxWxH)", "产品尺寸", "256*109.1*180.2mm"]], "new": false}, {"id": "09-08", "cat": 9, "cn": "L形智能交互数字标牌", "en": "L-Type Interactive Digital Signage", "cp": 34, "size": "10.95", "sizes": ["10.95"], "main": "09-08-p1.jpg", "acc": ["09-08-p2.jpg"], "media": [{"src": "09-08-s1.jpg", "fit": "cover"}, {"src": "09-08-s2.jpg", "fit": "cover"}], "keys": [["Resolution", "1920×1200"], ["Platform", "RK3576S"], ["System", "Android 14"], ["Brightness", "280 cd/m²"]], "spec": [["Screen Size", "尺寸", "10.95\""], ["Panel Type", "屏类型", "LCD panel"], ["Resolution", "分辨率", "1920*1200"], ["Interactive Touch", "触控技术", "10-Point In cell,Capacitive touch screen"], ["Brightness", "亮度", "280cd/m2"], ["View Angle", "可视角", "80/80/80/80(L/R/U/D)"], ["Contrast Ratio", "对比度", "1500:1"], ["Aspect Ratio", "长宽比", "16:10"], ["Camera", "摄像头", "5.0MP"], ["Chipset", "主芯片", "RK3576S Quad core cortex A72+Quad core cortex A53"], ["System Memory", "内存", "4GB"], ["Flash Memory", "存储", "64GB"], ["OS", "系统", "Android 14"], ["Communication", "通信", "IEEE 802.11a/b/g/n/ac/ax（Wi-Fi 6）\nBluetooth 5.4"], ["Input/Output", "输入输出口", "RJ45/USB-A*2/Type-C/DC IN/Earphone/TF card slo"], ["Microphone", "麦克风", "Standard Quad Microphone , Support noise reduction and echo cancellation"], ["Speaker", "喇叭", "4Ω*2W*2"], ["Power Input", "电源输入", "Adapter 12V/1.5A"], ["Color", "颜色", "White/Black"], ["Product Size (LxWxH)", "产品尺寸", "257.8*112.4*161.8mm"]], "new": true}, {"id": "10-01", "cat": 10, "cn": "桌面式智能交互数字标牌", "en": "Desktop Type Interactive Digital Signage", "cp": 35, "size": "15.6", "sizes": ["15.6"], "main": "10-01-p1.jpg", "acc": [], "media": [{"src": "10-01-p2.jpg", "fit": "contain"}], "keys": [["Resolution", "1920×1080"], ["Platform", "RK3576S"], ["System", "Android 14"], ["Brightness", "300 cd/m²"]], "spec": [["Screen Size", "尺寸", "15.6\""], ["Panel Type", "屏类型", "LCD panel"], ["Resolution", "分辨率", "1920*1080"], ["Interactive Touch", "触控技术", "10-Point, Capacitive touch screen"], ["Brightness", "亮度", "300cd/m2"], ["View Angle", "可视角", "85/85/85/85(L/R/U/D)"], ["Contrast Ratio", "对比度", "1000:1"], ["Aspect Ratio", "长宽比", "16:9"], ["Chipset", "主芯片", "RK3576S Quad core cortex A72+Quad core cortex A53"], ["System Memory", "内存", "4GB"], ["Flash Memory", "存储", "64GB"], ["OS", "系统", "Android 14"], ["Communication", "通信", "IEEE 802.11a/b/g/n/ac/ax（Wi-Fi 6）\nBluetooth 5.4"], ["Input/Output", "输入输出口", "RJ45/USB-A*2/Type-C/HDMI IN/DC IN"], ["Microphone", "麦克风", "Standard Quad Microphone , Support noise reduction and echo cancellation"], ["Speaker", "喇叭", "2*5W"], ["Power Input", "电源输入", "Adapter 12V/2A"], ["Color", "颜色", "White/Black"], ["Product Size (LxWxH)", "产品尺寸", "364.9*73.33*211.25mm"]], "new": true}, {"id": "10-02", "cat": 10, "cn": "桌面式智能交互数字标牌", "en": "Desktop Type Interactive Digital Signage", "cp": 35, "size": "8–10.1", "sizes": ["8", "10.1"], "main": "10-02-p1.jpg", "acc": [], "media": [{"src": "10-02-p2.jpg", "fit": "contain"}], "keys": [["Resolution", "1280×800"], ["Platform", "RK3576S / RK3568"], ["System", "Android 11–14"], ["Brightness", "250 cd/m²"]], "spec": [["Screen Size", "尺寸", "8\"/10.1\""], ["Panel Type", "屏类型", "LCD panel"], ["Resolution", "分辨率", "1280*800"], ["Interactive Touch", "触控技术", "10-Point, Capacitive touch screen"], ["Brightness", "亮度", "250cd/m2"], ["View Angle", "可视角", "80/80/80/80(L/R/U/D); 85/85/85/85(L/R/U/D)"], ["Contrast Ratio", "对比度", "1000:1/800:1"], ["Aspect Ratio", "长宽比", "10:16"], ["Chipset", "主芯片", "RK3576S Quad core cortex A72+Quad core cortex A53\nRK3568 Quad core cortex A55"], ["System Memory", "内存", "2GB/4GB"], ["Flash Memory", "存储", "16GB/64GB"], ["OS", "系统", "Android 14(RK3576S); Android 11/13(RK3568)"], ["Communication", "通信", "IEEE 802.11a/b/g/n/ac/ax（Wi-Fi 6）\nBluetooth 5.4"], ["Input/Output", "输入输出口", "TF Slot/Earphone/USB-A*2/RJ45/Type-C/Power jack"], ["Microphone", "麦克风", "Standard Quad Microphone , Support noise reduction and echo cancellation"], ["Speaker", "喇叭", "2*2W"], ["Power Input", "电源输入", "Adapter 12V/1.5A"], ["Color", "颜色", "White/Black"], ["Product Size (LxWxH)", "产品尺寸", "196.11*54.97*129.37mm/236.14*63.25*156.83mm"]], "new": false}, {"id": "10-03", "cat": 10, "cn": "桌面式智能交互数字标牌", "en": "Desktop Type Interactive Digital Signage", "cp": 36, "size": "10.1", "sizes": ["10.1"], "main": "10-03-p1.jpg", "acc": ["10-03-p2.jpg"], "media": [{"src": "10-03-s1.jpg", "fit": "cover"}, {"src": "10-03-s2.jpg", "fit": "cover"}], "keys": [["Resolution", "1280×800"], ["Platform", "RK3288 / RK3568"], ["System", "Android 8.1–13"], ["Brightness", "250 cd/m²"]], "spec": [["Screen Size", "尺寸", "10.1\""], ["Panel Type", "屏类型", "LCD panel"], ["Resolution", "分辨率", "1280*800"], ["Interactive Touch", "触控技术", "10-Point, Capacitive touch screen"], ["Brightness", "亮度", "250cd/m2"], ["View Angle", "可视角", "85/85/85/85(L/R/U/D)"], ["Contrast Ratio", "对比度", "800:1"], ["Aspect Ratio", "长宽比", "16:10"], ["Chipset", "主芯片", "RK3288 Quad core cortex A17\nRK3568 Quad core cortex A55"], ["System Memory", "内存", "2GB/4GB"], ["Flash Memory", "存储", "16GB/optional 32GB/64GB"], ["OS", "系统", "Android 8.1/10.0(RK3288); Android 11/13(RK3568)"], ["Communication", "通信", "802.11b/g/n(RK3288)\nIEEE 802.11a/b/g/n/ac/ax(RK3568)"], ["Input/Output", "输入输出口", "TF Slot/Earphone/USB-A*2/RJ45/Type-C/Power jack"], ["Microphone", "麦克风", "Single microphone"], ["Speaker", "喇叭", "2*3W"], ["Power Input", "电源输入", "Adapter 12V/2A"], ["Color", "颜色", "White/Black"], ["Product Size (LxWxH)", "产品尺寸", "239.29*131.97*162.98mm"]], "new": false}, {"id": "11-01", "cat": 11, "cn": "智能家居控制面板", "en": "Smart Home Control Panel", "cp": 37, "size": "10.1–15.6", "sizes": ["10.1", "15.6"], "main": "11-01-p1.jpg", "acc": ["11-01-p2.jpg"], "media": [{"src": "11-01-s1.jpg", "fit": "cover"}, {"src": "11-01-s2.jpg", "fit": "cover"}], "keys": [["Resolution", "1280×800/1920×1080"], ["Platform", "RK3576S"], ["System", "Android 14"], ["Brightness", "250 cd/m²"]], "spec": [["Screen Size", "尺寸", "10.1\"/15.6\""], ["Panel Type", "屏类型", "LCD panel"], ["Resolution", "分辨率", "1280*800/1920*1080"], ["Interactive Touch", "触控技术", "10-Point Full Lamination,Capacitive touch screen"], ["Brightness", "亮度", "250cd/m2"], ["View Angle", "可视角", "85/85/85/85(L/R/U/D)"], ["Contrast Ratio", "对比度", "800:1/1000:1"], ["Aspect Ratio", "长宽比", "16:10"], ["Camera", "摄像头", "5.0MP"], ["Chipset", "主芯片", "RK3576S Quad core cortex A72+Quad core cortex A53"], ["System Memory", "内存", "4GB"], ["Flash Memory", "存储", "64GB"], ["OS", "系统", "Android 14"], ["Communication", "通信", "IEEE 802.11a/b/g/n/ac/ax (Wi-Fi 6)\nBluetooth 5.3"], ["Input/Output", "输入输出口", "Relay port/I/O port/IR port/RS-485 Serial port/RS-232 Serial port/RJ45(POE)/Type-C/DC IN"], ["Speaker", "喇叭", "4Ω*2W*2"], ["Temperature and humidity sensor", "温湿度传感器", "Support"], ["LED light strip", "LED灯条", "RGB"], ["Power Input", "电源输入", "Adapter,12V/1.5A; 12V/2A"], ["Color", "颜色", "White/Black"], ["Product Size (LxWxH)", "产品尺寸", "243.07*38.15*159.67mm/363.25*38.15*394.5mm"]], "new": false}, {"id": "12-01", "cat": 12, "cn": "医疗智能交互数字标牌", "en": "Medical Interactive Digital Signage", "cp": 38, "size": "10.1–15.6", "sizes": ["10.1", "13.3", "15.6"], "main": "12-01-p1.jpg", "acc": ["12-01-p2.jpg"], "media": [{"src": "12-01-s1.jpg", "fit": "cover"}, {"src": "12-01-s2.jpg", "fit": "cover"}], "keys": [["Resolution", "1280×800/1920×1080"], ["Platform", "RK3568 / RK3576S"], ["System", "Android 11–16"], ["Brightness", "250 cd/m²"]], "spec": [["Screen Size", "尺寸", "10.1\"/13.3\"/15.6\""], ["Panel Type", "屏类型", "LCD panel"], ["Resolution", "分辨率", "1280*800/1920*1080"], ["Interactive Touch", "触控技术", "10-Point capacitive touch"], ["Brightness", "亮度", "250cd/m2"], ["View Angle", "可视角", "80/80/80/80(L/R/U/D)；85/85/85/85(L/R/U/D)"], ["Contrast Ratio", "对比度", "600:1/800:1/1000:1"], ["Aspect Ratio", "长宽比", "16:9/16:10"], ["Camera", "摄像头", "Routine angle 5.0MP"], ["Chipset", "主芯片", "RK3568 Quad core cortex A55\nRK3576S Quad core cortex A72+Quad core cortex A53"], ["System Memory", "内存", "2GB Optional 4GB"], ["Flash Memory", "存储", "16GB Optional 32GB/64GB"], ["OS", "系统", "Android 11(RK3568)/Android 16(RK3576S)"], ["Communication", "通信", "IEEE 802.11a/b/g/n/ac,2.4G/5G(RK3568)\nIEEE 802.11a/b/g/n/ac/ax (Wi-Fi6)(RK3576S)"], ["Input/Output", "输入输出口", "Type-c/DC IN/RJ45(POE)/Voice control port/USB-A/Serial/Earphone"], ["Speaker", "喇叭", "2*3W"], ["Light sensor", "光感", "Support"], ["NFC/RFID", "NFC/RFID", "Optional"], ["Power Input", "电源输入", "Adapter,12V/1.5A; 12V/2A"], ["Color", "颜色", "White"], ["Product Size (LxWxH)", "产品尺寸", "266.11*28.90*184.89mm/337.32*26.6*228.26mm/399.39*28.9*263.54mm"]], "new": false}, {"id": "13-01", "cat": 13, "cn": "触控显示器", "en": "Touchscreen monitor", "cp": 39, "size": "15.6", "sizes": ["15.6"], "main": "13-01-p1.jpg", "acc": [], "media": [{"src": "13-01-p2.jpg", "fit": "contain"}], "keys": [["Resolution", "1920×1080"], ["Platform", "RTD2555T"], ["Touch IC", "WDT8730A"], ["Brightness", "400 cd/m²"]], "spec": [["Screen Size", "尺寸", "15.6\""], ["Panel Type", "屏类型", "LCD panel"], ["Resolution", "分辨率", "1920*1080"], ["Interactive Touch", "触控技术", "10-Point Capacitive touch screen"], ["Brightness", "亮度", "400cd/m2"], ["View Angle", "可视角", "89/89/89/89(L/R/U/D)"], ["Contrast Ratio", "对比度", "1000:1"], ["Aspect Ratio", "长宽比", "16:9"], ["Camera", "摄像头", "Optional,External camera,8.0 MP"], ["Chipset", "主芯片", "Realtek RTD2555T"], ["Touch IC", "触摸IC", "WDT8730A"], ["XY Channel", "通道数", "41*23"], ["Input/Output", "输入输出口", "USB-A/USB-B/Type-C/DP/HDMI IN/Line out/DC IN"], ["VESA Mount", "VESA孔", "75*75mm"], ["Speaker", "喇叭", "4Ω/3W*2"], ["Power Input", "电源输入", "Adapter,12V/2A"], ["Color", "颜色", "Black/White"], ["Product Size (LxWxH)", "产品尺寸", "373.01*28.59*222.42mm"]], "new": false}, {"id": "13-02", "cat": 13, "cn": "触控显示器", "en": "Touchscreen monitor", "cp": 39, "size": "21.5–23.8", "sizes": ["21.5", "23.8"], "main": "13-02-p1.jpg", "acc": [], "media": [{"src": "13-02-p2.jpg", "fit": "contain"}], "keys": [["Resolution", "1920×1080"], ["Platform", "RTD2555T"], ["Touch IC", "WDT8752A / WDT8761A"], ["Brightness", "400 cd/m²"]], "spec": [["Screen Size", "尺寸", "21.5\"/23.8\""], ["Panel Type", "屏类型", "LCD panel"], ["Resolution", "分辨率", "1920*1080"], ["Interactive Touch", "触控技术", "10-Point Capacitive touch screen"], ["Brightness", "亮度", "400cd/m2"], ["View Angle", "可视角", "89/89/89/89(L/R/U/D)"], ["Contrast Ratio", "对比度", "1300:1/3000:1"], ["Aspect Ratio", "长宽比", "16:9"], ["Camera", "摄像头", "Optional,External camera,8.0 MP"], ["Chipset", "主芯片", "Realtek RTD2555T"], ["Touch IC", "触摸IC", "WDT8752A(21.5\")/WDT8761A(23.8\")"], ["XY Channel", "通道数", "61*35(21.5\")/78*44(23.8\")"], ["Input/Output", "输入输出口", "USB-A/USB-B/Type-C/DP/HDMI IN/Line out/DC IN"], ["VESA Mount", "VESA孔", "75*75mm/100×100mm"], ["Speaker", "喇叭", "4Ω5W*2"], ["Power Input", "电源输入", "Adapter,12V/3A(21.5\"); 12V/5A(23.8\")"], ["Color", "颜色", "Black/White"], ["Product Size (LxWxH)", "产品尺寸", "512.72*33*304.64mm/569.22*34.4*338.62mm"]], "new": false}]};
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const nl = s => esc(s).replace(/\n/g, '<br>');
+const pad = n => String(n).padStart(2, '0');
+const FIRST_PRODUCT_PAGE = 4;
 
-    <div class="feats">
-      <div class="feat"><h3>100% aging test</h3><p>Every unit runs a 24-hour burn-in before packing. Failures are caught here, not at your customer's site.</p></div>
-      <div class="feat"><h3>OEM / ODM</h3><p>Your logo, your boot animation, your enclosure colour, your pre-loaded CMS. Tooling available for volume projects.</p></div>
-      <div class="feat"><h3>Certified for export</h3><p>CE, FCC, RoHS and ISO9001. Documentation pack supplied with every shipment.</p></div>
-      <div class="feat"><h3>Samples from 1 unit</h3><p>Validate the hardware before you commit. Sample cost is credited against your first bulk order.</p></div>
-      <div class="feat"><h3>Quote in 24 hours</h3><p>Send your spec or a competitor's datasheet — you get pricing and lead time within one business day.</p></div>
-      <div class="feat"><h3>Spare parts kept</h3><p>Panels, boards and PSUs stocked for the models you buy, so field replacements do not need a new tooling run.</p></div>
+// ---------- interface & editorial text ----------
+const T = {
+  zh: {
+    htmlLang: 'zh-CN', nav: '翻页', prev: '上一页', next: '下一页', jump: '跳转到类别',
+    hint: '点击页面、← → 键或左右滑动翻页', cover: '封面', back: '封底', contents: '目录',
+    pages: n => `共 ${n} 页`,
+    coverLine: '智能交互数字标牌 · 产品手册',
+    coverAlt: ['收银一体机在超市收银台使用', 'L 形智能交互数字标牌'],
+    introRun: '关于本手册', introTitle: '从 8" 到 55"',
+    lede: '覆盖零售、餐饮、会议室、医疗与智能家居场景的安卓商用显示终端。全系支持电容触控，主流型号采用 RK3576S 八核平台与 Android 14，Wi‑Fi 6 与 PoE 供电可选。',
+    stats: ['产品类别', '产品型号', '新品'],
+    note: '每款产品占一个跨页：左页为产品图与关键参数，右页为应用场景与完整规格。参数均摘自 GZY product catalogue 2026（2026.03 版），页脚标注对应的原目录页码。',
+    tocRun: ['目录', 'Contents'], tocTitle: '产品目录', models: n => `${n} 款`,
+    avail: '可选尺寸', origPage: p => `原目录 P${p}`, specRun: ['规格参数', 'Specifications'],
+    name: p => p.cn, sub: p => p.en, runL: p => `${pad(p.cat)} · ${p.cn}`, runR: p => p.en,
+    catName: c => c.cn, contactSub: '联系我们',
+  },
+  en: {
+    htmlLang: 'en', nav: 'Page navigation', prev: 'Previous page', next: 'Next page', jump: 'Jump to category',
+    hint: 'Click a page, use the ← → keys or swipe to turn pages', cover: 'Cover', back: 'Back cover', contents: 'Contents',
+    pages: n => `${n} pages`,
+    coverLine: 'Commercial Display Catalogue',
+    coverAlt: ['All-in-one cash register at a supermarket checkout', 'L-type interactive digital signage'],
+    introRun: 'About this catalogue', introTitle: 'From 8" to 55"',
+    lede: 'Android commercial display terminals for retail, food service, meeting rooms, healthcare and smart homes. Every model has capacitive touch; mainstream models run the octa-core RK3576S platform with Android 14, with Wi‑Fi 6 and PoE power available.',
+    stats: ['Categories', 'Models', 'New models'],
+    note: 'Each product takes one spread: photos and key figures on the left, application scenes and the full specification on the right. All data comes from the GZY product catalogue 2026 (March 2026 edition); page footers give the original catalogue page.',
+    tocRun: ['Contents', 'GZY 2026'], tocTitle: 'Contents', models: n => `${n} model${n > 1 ? 's' : ''}`,
+    avail: 'Available in', origPage: p => `Catalogue p.${p}`, specRun: ['Specifications', 'GZY 2026'],
+    name: p => p.en, sub: () => '', runL: p => `${pad(p.cat)} · ${p.en}`, runR: () => 'GZY 2026',
+    catName: c => c.en, contactSub: '',
+  },
+};
+let lang = 'en';
+try { lang = localStorage.getItem('gzy-lang') || 'en'; } catch (e) {}
+const qp = new URLSearchParams(location.search).get('lang');
+if (qp === 'en' || qp === 'zh') lang = qp;
+const t = () => T[lang];
+
+// ---------- page builders (each returns {cls, html}) ----------
+const cover = () => ({ cls: 'cover', html: `
+  <div class="pg">
+    <div class="brand">GZY<span>SHENZHEN GZY TECHNOLOGY</span></div>
+    <h1>Interactive<em>Digital Signage</em></h1>
+    <div class="cn ${lang}">${t().coverLine}</div>
+    <div class="hero">
+      <img src="img/03-01-s1.jpg" alt="${t().coverAlt[0]}">
+      <img class="mono" src="img/09-04-p2.jpg" alt="${t().coverAlt[1]}">
     </div>
-  </div>
-</section>
-
-<!-- ============ 规格表（对 SEO 很有用，搜索引擎爱抓参数） ============ -->
-<section class="section" id="specs">
-  <div class="wrap">
-    <div class="eyebrow">Reference specification</div>
-    <h2>Floor-standing Android touch kiosk</h2>
-    <p class="lede">A typical configuration. Nearly every line below can be changed for your project.</p>
-
-    <div class="table-scroll">
-      <table>
-        <tbody>
-          <tr><th>Screen sizes</th><td>32&quot; / 43&quot; / 55&quot; / 65&quot;</td></tr>
-          <tr><th>Resolution</th><td>1920 × 1080, 9:16 portrait</td></tr>
-          <tr><th>Brightness</th><td>700 cd/m² standard · high-brightness options available</td></tr>
-          <tr><th>Panel</th><td>LCD IPS, contrast 1200:1</td></tr>
-          <tr><th>Touch</th><td>10-point capacitive</td></tr>
-          <tr><th>Processor</th><td>Rockchip RK3566 / RK3568 / RK3576 / RK3588 · MStar V53</td></tr>
-          <tr><th>Memory</th><td>2GB / 4GB / 8GB RAM · 16GB / 32GB / 64GB storage</td></tr>
-          <tr><th>Operating system</th><td>Android 13, Android 14 or Linux</td></tr>
-          <tr><th>Network</th><td>WiFi 802.11 b/g/n · 10/100M Ethernet · Bluetooth 4.0</td></tr>
-          <tr><th>Ports</th><td>HDMI · VGA · USB 3.0</td></tr>
-          <tr><th>Audio</th><td>2 × 5W speakers</td></tr>
-          <tr><th>Operating temp.</th><td>0–40 °C (outdoor versions rated wider)</td></tr>
-          <tr><th>Weight</th><td>≈ 45 kg (55&quot; version)</td></tr>
-        </tbody>
-      </table>
+    <div class="foot">
+      <span>PRODUCT CATALOGUE<br>${DATA.cats.length} SERIES · ${DATA.products.length} MODELS</span>
+      <strong>2026</strong>
     </div>
-  </div>
-</section>
+  </div>` });
 
-<!-- ============ 下单流程 ============ -->
-<section class="section section--soft" id="process">
-  <div class="wrap">
-    <div class="eyebrow">How to order</div>
-    <h2>From enquiry to shipment</h2>
-
-    <div class="steps">
-      <div class="step"><h3>Send your spec</h3><p>Size, quantity, OS and any custom requirement. A competitor's datasheet works too.</p></div>
-      <div class="step"><h3>Quote within 24h</h3><p>Unit price, tooling cost if any, lead time and shipping options — EXW, FOB or DDP.</p></div>
-      <div class="step"><h3>Approve a sample</h3><p>One unit built to your spec. Sample fee is credited against the bulk order.</p></div>
-      <div class="step"><h3>Production &amp; QC</h3><p>24-hour burn-in on every unit, photos before packing, then shipment with full certification pack.</p></div>
+const intro = () => ({ cls: '', html: `
+  <div class="pg intro">
+    <div class="run"><span>GZY · 2026</span><span>${t().introRun}</span></div>
+    <h2>${esc(t().introTitle)}</h2>
+    <p class="lede">${t().lede}</p>
+    <div class="stats">
+      <div><strong>${DATA.cats.length}</strong><span>${t().stats[0]}</span></div>
+      <div><strong>${DATA.products.length}</strong><span>${t().stats[1]}</span></div>
+      <div><strong>${DATA.products.filter(p => p.new).length}</strong><span>${t().stats[2]}</span></div>
     </div>
-  </div>
-</section>
-
-<!-- ============ 询盘表单 ============ -->
-<section class="section contact" id="contact">
-  <div class="wrap">
-    <div class="contact-grid">
-      <div>
-        <div class="eyebrow">Get a quote</div>
-        <h2>Tell us what you need</h2>
-        <p class="lede">Reply within one business day, in English. No obligation, no auto-mailing list.</p>
-
-        <!-- 【改联系】 -->
-        <ul class="contact-info">
-          <li><b>Email</b><a href="mailto:info@eellnet.com">info@eellnet.com</a></li>
-          <li><b>WhatsApp / Phone</b><a href="tel:+8617757838687">+86 177 5783 8687</a></li>
-          <li><b>Factory</b>Shenzhen, Guangdong, China</li>
-          <li><b>Main site</b><a href="https://www.eellnet.com/" target="_blank" rel="noopener">www.eellnet.com</a></li>
-        </ul>
-      </div>
-
-      <!--
-        【改表单】★★ 必改 ★★
-        GitHub Pages 是纯静态的，不能自己处理表单提交，要接一个免费的表单服务。
-
-        步骤：
-        1. 去 https://formspree.io 用 info@eellnet.com 注册（免费版每月 50 条询盘）
-        2. 新建一个 form，它会给你一串地址，长这样：
-           https://formspree.io/f/xabcdefg
-        3. 把下面 action="..." 里的 YOUR_FORM_ID 换成你拿到的那串 ID
-
-        暂时不想注册？把 action 改成：
-           action="mailto:info@eellnet.com" method="post" enctype="text/plain"
-        效果是打开访客的邮件客户端，体验差一些，但能先跑通。
-      -->
-      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-        <div class="row">
-          <div class="field">
-            <label for="name">Your name *</label>
-            <input id="name" name="name" type="text" required>
-          </div>
-          <div class="field">
-            <label for="company">Company</label>
-            <input id="company" name="company" type="text">
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="field">
-            <label for="email">Email *</label>
-            <input id="email" name="email" type="email" required>
-          </div>
-          <div class="field">
-            <label for="country">Country</label>
-            <input id="country" name="country" type="text">
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="field">
-            <label for="product">Product interest</label>
-            <select id="product" name="product">
-              <option>Outdoor high-brightness display</option>
-              <option>Wall-mounted touch AIO</option>
-              <option>Floor-standing kiosk</option>
-              <option>Media player / mini PC</option>
-              <option>Custom OEM/ODM project</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="qty">Quantity</label>
-            <input id="qty" name="quantity" type="text" placeholder="e.g. 1 sample, then 200">
-          </div>
-        </div>
-
-        <div class="field">
-          <label for="msg">Requirements *</label>
-          <textarea id="msg" name="message" required placeholder="Screen size, brightness, OS, mounting, timeline…"></textarea>
-        </div>
-
-        <!-- 蜜罐字段：防垃圾邮件，人看不见，机器人会填 -->
-        <input type="text" name="_gotcha" style="display:none">
-
-        <button class="btn btn--primary" type="submit">Send enquiry</button>
-        <p class="formnote">We reply within 1 business day · Your details stay with us</p>
-      </form>
+    <div class="chips">
+      <span>RK3568</span><span>RK3576S</span><span>RK3588S2</span><span>MT8781</span>
+      <span>Android 11–16</span><span>Wi‑Fi 6</span><span>PoE</span><span>NFC / RFID</span>
     </div>
-  </div>
-</section>
+    <p class="note">${t().note}</p>
+    <div class="folio"><span>02</span><span>GZY Product Catalogue 2026</span></div>
+  </div>` });
 
-<!-- ============ 页脚 ============ -->
-<footer>
-  <div class="wrap foot">
-    <div>© 2026 EELL Signage · Shenzhen GZY Technology Co., Ltd.</div>
-    <div><a href="https://www.eellnet.com/" target="_blank" rel="noopener">www.eellnet.com</a> · <a href="mailto:info@eellnet.com">info@eellnet.com</a></div>
-  </div>
-</footer>
+const toc = () => ({ cls: '', html: `
+  <div class="pg toc">
+    <div class="run"><span>${t().tocRun[0]}</span><span><b>${t().tocRun[1]}</b></span></div>
+    <h2>${t().tocTitle}</h2>
+    <ol>${DATA.cats.map(c => `
+      <li><button data-go="${c.page}">
+        <span class="n">${pad(c.no)}</span>
+        <span class="t">${esc(t().catName(c))}<span class="cnt">${t().models(c.n)}</span>${lang === 'zh' ? `<small>${esc(c.en)}</small>` : ''}</span>
+        <span class="p">${pad(c.page)}</span>
+      </button></li>`).join('')}
+    </ol>
+    <div class="folio"><span>GZY Product Catalogue 2026</span><span>03</span></div>
+  </div>` });
 
-<!-- 结构化数据：帮助 Google 识别你是制造商，可能显示富摘要 -->
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"Organization",
-  "name":"EELL Signage",
-  "legalName":"Shenzhen GZY Technology Co., Ltd",
-  "url":"https://eellnet.github.io/",
-  "sameAs":["https://www.eellnet.com/"],
-  "email":"info@eellnet.com",
-  "telephone":"+86-177-5783-8687",
-  "foundingDate":"2014",
-  "address":{"@type":"PostalAddress","addressLocality":"Shenzhen","addressRegion":"Guangdong","addressCountry":"CN"},
-  "description":"Manufacturer of outdoor high-brightness displays, wall-mounted Android touch all-in-ones, floor-standing kiosks and media players, 10.1\" to 98\"."
+function productLeft(p, no) {
+  const keys = p.keys.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('');
+  const acc = p.acc.length ? `<div class="acc n${p.acc.length}">${p.acc.map(a =>
+    `<figure><img src="img/${a}" alt="" loading="lazy"></figure>`).join('')}</div>` : '';
+  const avail = p.sizes.length > 1 ? `<div class="avail">${t().avail} <b>${p.sizes.map(s => s + '″').join(' · ')}</b></div>` : '';
+  const sub = t().sub(p);
+  return { cls: '', html: `
+    <div class="pg">
+      <div class="run"><span>${esc(t().runL(p))}</span><span>${esc(t().runR(p))}</span></div>
+      ${p.new ? '<span class="tag">NEW</span>' : ''}
+      <div class="kicker">Series ${pad(p.cat)} · ${p.id.slice(3)}</div>
+      <div class="pname ${lang}">${esc(t().name(p))}</div>
+      ${sub ? `<div class="pname-en">${esc(sub)}</div>` : ''}
+      <div class="size">${p.size}<small>″</small></div>
+      ${avail}
+      <div class="shot">${p.main ? `<img src="img/${p.main}" alt="${esc(p.size + '″ ' + t().name(p))}" loading="lazy">` : ''}</div>
+      ${acc}
+      <dl class="keys">${keys}</dl>
+      <div class="folio"><span>${pad(no)}</span><span>${t().origPage(p.cp)}</span></div>
+    </div>` };
 }
-</script>
 
-</body>
-</html>
+function productRight(p, no) {
+  const m = p.media;
+  const media = m.length ? `<div class="media ${m.length > 1 ? 'two' : 'one'}">${m.map(x =>
+    `<img class="${x.fit}" src="img/${x.src}" alt="" loading="lazy">`).join('')}</div>` : '';
+  const rows = p.spec.map(([en, cn, v]) =>
+    `<tr><td>${esc(en)}${lang === 'zh' ? `<small>${esc(cn)}</small>` : ''}</td><td>${nl(v)}</td></tr>`).join('');
+  return { cls: '', html: `
+    <div class="pg fit">
+      <div class="run"><span>${t().specRun[0]}</span><span><b>${t().specRun[1]}</b></span></div>
+      ${media}
+      <div class="spec-h"><h3>${p.size}″ ${esc(t().name(p))}</h3><span>${p.id}</span></div>
+      <table class="spec">${rows}</table>
+      <div class="folio"><span>GZY Product Catalogue 2026</span><span>${pad(no)}</span></div>
+    </div>` };
+}
+
+const backCover = () => ({ cls: 'backcover', html: `
+  <div class="pg">
+    <h2>Contact Us</h2>
+    ${t().contactSub ? `<div class="zh">${t().contactSub}</div>` : ''}
+    <dl>
+      <div><dt>Company</dt><dd>Shenzhen GZY Technology Co., Ltd</dd></div>
+      <div><dt>Telephone</dt><dd class="mono">17757838687</dd></div>
+      <div><dt>Mail</dt><dd class="mono">info@eellnet.com</dd></div>
+      <div><dt>Address</dt><dd>Bao'an District<br>Room 704, Building 14, Jingfa Manufacturing Area, Gushu Community, Xixiang Street<br>Shenzhen, Guangdong 518000<br>China</dd></div>
+    </dl>
+    <div class="bar"></div>
+  </div>` });
+
+DATA.cats.forEach(c => {
+  const i = DATA.products.findIndex(p => p.cat === c.no);
+  c.page = FIRST_PRODUCT_PAGE + i * 2;
+});
+const TOTAL = 3 + DATA.products.length * 2 + 1;
+
+// ---------- elements & state ----------
+const book = document.getElementById('book');
+const viewport = document.getElementById('viewport');
+const stage = document.getElementById('stage');
+const scaler = document.getElementById('scaler');
+const info = document.getElementById('pageInfo');
+const prevBtn = document.getElementById('prev');
+const nextBtn = document.getElementById('next');
+const jump = document.getElementById('jump');
+const leaves = [];
+let single = false;
+let cur = 1;            // page shown (single) or the left page of the spread / 1 for cover (double)
+let flipped = 0;
+const leavesFor = n => (n % 2 ? (n - 1) / 2 : n / 2);   // leaves turned so page n is visible
+
+// ---------- (re)build the whole book in the current language ----------
+function build() {
+  const pages = [cover(), intro(), toc()];
+  DATA.products.forEach(p => {
+    pages.push(productLeft(p, pages.length + 1));
+    pages.push(productRight(p, pages.length + 1));
+  });
+  pages.push(backCover());
+
+  clearTimeout(setFlipped.t);
+  book.innerHTML = '';
+  leaves.length = 0;
+  for (let i = 0; i < pages.length; i += 2) {
+    const leaf = document.createElement('div');
+    leaf.className = 'leaf';
+    [pages[i], pages[i + 1]].forEach((pg, k) => {
+      const face = document.createElement('div');
+      face.className = `face ${k ? 'back' : 'front'} ${pg ? pg.cls : ''}`;
+      if (pg) face.innerHTML = pg.html;
+      leaf.append(face);
+    });
+    book.append(leaf);
+    leaves.push(leaf);
+  }
+  // category thumb tabs on the outer edge of product pages
+  DATA.products.forEach((p, i) => {
+    const first = FIRST_PRODUCT_PAGE + i * 2;
+    [first, first + 1].forEach(n => {
+      const face = leaves[Math.floor((n - 1) / 2)].children[(n - 1) % 2];
+      const tab = document.createElement('div');
+      tab.className = 'cat-mark';
+      tab.style.top = `${60 + (p.cat - 1) * 46}px`;
+      tab.textContent = pad(p.cat);
+      face.append(tab);
+    });
+  });
+
+  // interface text
+  const L = t();
+  document.documentElement.lang = L.htmlLang;
+  document.title = lang === 'en' ? 'GZY Catalogue 2026' : 'GZY 产品手册 2026';
+  document.getElementById('controls').setAttribute('aria-label', L.nav);
+  prevBtn.setAttribute('aria-label', L.prev);
+  nextBtn.setAttribute('aria-label', L.next);
+  document.getElementById('jumpLabel').textContent = L.jump;
+  document.getElementById('hint').textContent = L.hint;
+  jump.innerHTML = `<option value="1">${L.cover}</option><option value="3">${L.contents}</option>` +
+    DATA.cats.map(c => `<option value="${c.page}">${pad(c.no)} ${esc(L.catName(c))}</option>`).join('') +
+    `<option value="${TOTAL}">${L.back}</option>`;
+  document.querySelectorAll('.lang button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
+
+  flipped = leavesFor(cur);
+  restack();
+  show(cur);
+  fitAll();
+}
+
+// shrink the scene strip, then the table type, until each spec page fits
+function fitAll() {
+  document.querySelectorAll('.pg.toc').forEach(pg => {
+    let ts = 13;
+    pg.style.setProperty('--ts', ts + 'px');
+    while (pg.scrollHeight > pg.clientHeight + 1 && ts > 9) pg.style.setProperty('--ts', (ts -= .25) + 'px');
+  });
+  document.querySelectorAll('.pg.fit').forEach(pg => {
+    const media = pg.querySelector('.media');
+    const over = () => pg.scrollHeight > pg.clientHeight;
+    let fs = 11.5, guard = 0;
+    pg.style.setProperty('--fs', fs + 'px');
+    if (media) { media.style.height = ''; media.hidden = false; }
+    // 1) trim the photo strip, 2) tighten the table, 3) drop the photos, 4) tighten further
+    while (over() && guard++ < 200) {
+      if (media && !media.hidden && media.offsetHeight > 150) media.style.height = (media.offsetHeight - 10) + 'px';
+      else if (fs > 9.5) pg.style.setProperty('--fs', (fs -= .25) + 'px');
+      else if (media && !media.hidden && media.offsetHeight > 110) media.style.height = (media.offsetHeight - 10) + 'px';
+      else if (fs > 8.75) pg.style.setProperty('--fs', (fs -= .25) + 'px');
+      else if (media && !media.hidden) media.hidden = true;
+      else if (fs > 8) pg.style.setProperty('--fs', (fs -= .25) + 'px');
+      else break;
+    }
+  });
+}
+
+// ---------- navigation ----------
+function setFlipped(target) {
+  if (target === flipped) return;
+  const dir = target > flipped ? 1 : -1;
+  const moving = dir > 0 ? leaves.slice(flipped, target) : leaves.slice(target, flipped).reverse();
+  const shown = moving.length > 8 ? [...moving.slice(0, 4), ...moving.slice(-4)] : moving;
+  moving.forEach(leaf => { if (!shown.includes(leaf)) leaf.classList.toggle('flipped', dir > 0); });
+  shown.forEach((leaf, k) => setTimeout(() => {
+    leaf.classList.add('turning');
+    leaf.style.zIndex = 500 + k;
+    leaf.classList.toggle('flipped', dir > 0);
+    setTimeout(() => leaf.classList.remove('turning'), 900);
+  }, k * 110));
+  flipped = target;
+  clearTimeout(setFlipped.t);
+  setFlipped.t = setTimeout(restack, shown.length * 110 + 950);
+}
+function restack() {
+  leaves.forEach((leaf, i) => {
+    leaf.classList.toggle('flipped', i < flipped);
+    leaf.style.zIndex = i < flipped ? i + 1 : leaves.length - i;
+  });
+}
+
+function show(n) {
+  n = Math.max(1, Math.min(TOTAL, n));
+  if (!single && n > 1 && n < TOTAL && n % 2) n -= 1;   // spreads start on even pages
+  cur = n;
+  setFlipped(leavesFor(n));
+  book.classList.remove('closed-front', 'closed-back', 'show-left', 'show-right');
+  if (single) book.classList.add(n % 2 ? 'show-right' : 'show-left');
+  else if (flipped === 0) book.classList.add('closed-front');
+  else if (flipped === leaves.length) book.classList.add('closed-back');
+  const L = t();
+  const label = n === 1 ? L.cover : n === TOTAL ? L.back : single ? `${n}` : `${n}–${n + 1}`;
+  info.innerHTML = `${label}<small>${L.pages(TOTAL)}</small>`;
+  prevBtn.disabled = n === 1;
+  nextBtn.disabled = n === TOTAL || (!single && n + 1 >= TOTAL && n !== 1);
+  let sel = 1;
+  [...jump.options].forEach(o => { if (+o.value <= n + (single ? 0 : 1)) sel = +o.value; });
+  jump.value = String(sel);
+}
+const step = d => {
+  if (mq.matches) return mShow(mCur + d);
+  if (single) return show(cur + d);
+  if (d > 0) show(cur === 1 ? 2 : cur + 2);
+  else show(cur <= 2 ? 1 : cur - 2);
+};
+
+function setLang(l) {
+  if (l === lang) return;
+  lang = l;
+  try { localStorage.setItem('gzy-lang', l); } catch (e) {}
+  build();
+  mBuild();
+  setTimeout(fitAll, 300);
+}
+document.querySelectorAll('.lang button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+
+let sx = null, suppress = false;
+book.addEventListener('click', e => {
+  if (suppress) { suppress = false; return; }
+  const go = e.target.closest('[data-go]');
+  if (go) return show(+go.dataset.go);
+  const face = e.target.closest('.face');
+  if (!face) return;
+  step(face.classList.contains('back') ? -1 : 1);
+});
+prevBtn.onclick = () => step(-1);
+nextBtn.onclick = () => step(1);
+jump.onchange = () => show(+jump.value);
+addEventListener('keydown', e => {
+  if (e.target === jump) return;
+  if (e.key === 'ArrowRight' || e.key === 'PageDown') step(1);
+  if (e.key === 'ArrowLeft' || e.key === 'PageUp') step(-1);
+  if (e.key === 'Home') mq.matches ? mShow(1) : show(1);
+  if (e.key === 'End') mq.matches ? mShow(TOTAL) : show(TOTAL);
+});
+book.addEventListener('pointerdown', e => { sx = e.clientX; });
+book.addEventListener('pointerup', e => {
+  if (sx === null) return;
+  const dx = e.clientX - sx; sx = null;
+  if (Math.abs(dx) > 40) { suppress = true; step(dx < 0 ? 1 : -1); }
+});
+
+// fit the fixed-size book to the window; narrow screens get one page at a time
+function fit() {
+  const w = stage.clientWidth, h = stage.clientHeight;
+  const wantSingle = w < 760;
+  const pageW = 520, pageH = 700, bookW = wantSingle ? pageW : pageW * 2;
+  const s = Math.min(w / (bookW + (wantSingle ? 0 : 60)), h / (pageH + 40), 1.25);
+  scaler.style.width = bookW + 'px';
+  scaler.style.transform = 'none';
+  scaler.style.margin = '0';
+  scaler.style.height = pageH + 'px';
+  scaler.style.zoom = s;
+  viewport.style.width = bookW + 'px';
+  viewport.style.height = pageH + 'px';
+  viewport.classList.toggle('single', wantSingle);
+  book.style.marginLeft = wantSingle ? `-${pageW / 2}px` : '0';
+  if (wantSingle !== single) { single = wantSingle; show(cur); }
+}
+
+// ================= phone layout =================
+const SHORT = {
+  en: ['All-in-One PC', 'Commercial Tablet', 'Cash Register', 'Kitchen Digital Signage', 'Digital Signage',
+       'Ultra-narrow Bezel Signage', 'Interactive Digital Signage', 'Meeting Room Signage', 'L-Type Signage',
+       'Desktop Signage', 'Smart Home Panel', 'Medical Signage', 'Touchscreen Monitor'],
+  zh: ['安卓商用一体机', '安卓商用平板', '收银一体机', '安卓智能广告机', '落地式一体机', '超窄边框标牌', '智能交互数字标牌',
+       '会议带灯标牌', 'L形标牌', '桌面式标牌', '智能家居面板', '医疗标牌', '触控显示器'],
+};
+const MT = {
+  zh: { cats: '类别', sheet: '跳转到类别', front: '封面与目录', contact: '联系方式', scroll: n => `上滑查看全部 ${n} 项参数 ↓` },
+  en: { cats: 'Categories', sheet: 'Jump to category', front: 'Cover & Contents', contact: 'Contact', scroll: n => `Scroll for all ${n} specs ↓` },
+};
+const mq = matchMedia('(max-width: 760px)');
+const mStage = document.getElementById('mStage');
+const mInfo = document.getElementById('mInfo');
+const mPrev = document.getElementById('mPrev');
+const mNext = document.getElementById('mNext');
+const mCatLabel = document.getElementById('mCatLabel');
+const mSheet = document.getElementById('mSheet');
+const mDim = document.getElementById('mDim');
+const mSheetList = document.getElementById('mSheetList');
+const short = c => SHORT[lang][c - 1];
+let mPages = [];
+let mCur = 1;
+
+function mBuild() {
+  const L = t(), M = MT[lang], zh = lang === 'zh';
+  const pages = [];
+  pages.push(['cover', `
+    <div class="brand">GZY<span>SHENZHEN GZY TECHNOLOGY</span></div>
+    <h2>Interactive<em>Digital Signage</em></h2>
+    <div class="sub ${lang}">${L.coverLine}</div>
+    <div class="hero"><img src="img/03-01-s1.jpg" alt="${L.coverAlt[0]}"><img class="contain" src="img/09-04-p2.jpg" alt="${L.coverAlt[1]}"></div>
+    <div class="foot"><span>PRODUCT CATALOGUE<br>${DATA.cats.length} SERIES · ${DATA.products.length} MODELS</span><strong>2026</strong></div>`]);
+  pages.push(['intro', `
+    <div class="run"><span>GZY · 2026</span><span>${L.introRun}</span></div>
+    <h3>${esc(L.introTitle)}</h3>
+    <p class="lede">${L.lede}</p>
+    <div class="stats">
+      <div><strong>${DATA.cats.length}</strong><span>${L.stats[0]}</span></div>
+      <div><strong>${DATA.products.length}</strong><span>${L.stats[1]}</span></div>
+      <div><strong>${DATA.products.filter(p => p.new).length}</strong><span>${L.stats[2]}</span></div>
+    </div>
+    <p class="note">${L.note}</p>
+    <div class="folio"><span>02</span><span>GZY 2026</span></div>`]);
+  pages.push(['mtoc', `
+    <div class="run"><span>${L.tocRun[0]}</span><span><b>${L.tocRun[1]}</b></span></div>
+    <h3>${L.tocTitle}</h3>
+    <ol>${DATA.cats.map(c => `<li><button type="button" data-go="${c.page}"><span class="n">${pad(c.no)}</span>
+      <span class="t">${esc(short(c.no))}<small>${c.n}</small></span><span class="p">${pad(c.page)}</span></button></li>`).join('')}</ol>
+    <div class="folio"><span>GZY 2026</span><span>03</span></div>`]);
+  DATA.products.forEach(p => {
+    const no = pages.length + 1;
+    const keys = p.keys.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('');
+    const thumbs = p.acc.length ? `<div class="mthumbs">${p.acc.map(a => `<img src="img/${a}" alt="" loading="lazy">`).join('')}</div>` : '';
+    const avail = p.sizes.length > 1 ? `<div class="mavail">${L.avail} <b>${p.sizes.map(s => s + '″').join(' · ')}</b></div>` : '';
+    pages.push(['prod', `
+      <div class="run"><span>${pad(p.cat)} · ${esc(short(p.cat))}</span><span>GZY 2026</span></div>
+      <div class="mk"><span>Series ${pad(p.cat)} · ${p.id.slice(3)}</span>${p.new ? '<span class="tag">NEW</span>' : ''}</div>
+      <div class="mname ${lang}">${esc(L.name(p))}</div>
+      ${zh ? `<div class="msub">${esc(p.en)}</div>` : ''}
+      <div class="msize">${p.size}<small>″</small></div>
+      ${avail}
+      <div class="mshot">${p.main ? `<img src="img/${p.main}" alt="${esc(p.size + '″ ' + L.name(p))}" loading="lazy">` : ''}</div>
+      ${thumbs}
+      <dl class="mkeys">${keys}</dl>
+      <div class="folio"><span>${pad(no)}</span><span>${L.origPage(p.cp)}</span></div>`, p.cat]);
+    const media = p.media.length ? `<div class="mmedia ${p.media.length > 1 ? 'two' : 'one'}">${p.media.map(x =>
+      `<img class="${x.fit}" src="img/${x.src}" alt="" loading="lazy">`).join('')}</div>` : '';
+    const rows = p.spec.map(([en, cn, v]) => `<div><dt>${esc(en)}${zh ? `<small>${esc(cn)}</small>` : ''}</dt><dd>${nl(v)}</dd></div>`).join('');
+    pages.push(['spec', `
+      <div class="run"><span>${L.specRun[0]}</span><span><b>${L.specRun[1]}</b></span></div>
+      ${media}
+      <div class="mspec-h"><h3>${p.size}″ ${esc(L.name(p))}</h3><span>${p.id}</span></div>
+      <dl class="mspec">${rows}</dl>
+      <div class="folio"><span>GZY 2026</span><span>${pad(no + 1)}</span></div>`, p.cat, p.spec.length]);
+  });
+  const back = backCover().html.trim();
+  pages.push(['backcover', back.slice(back.indexOf('>') + 1, back.lastIndexOf('</div>'))]);
+
+  mStage.innerHTML = '';
+  mPages = pages.map(([kind, html, cat, nSpec], i) => {
+    const el = document.createElement('section');
+    el.className = `mpage ${kind}`;
+    el.dataset.cat = cat || '';
+    el.style.zIndex = pages.length - i;
+    el.innerHTML = `<div class="in">${html}</div>` + (kind === 'spec' ? `<div class="cue">${M.scroll(nSpec)}</div>` : '');
+    if (kind === 'spec') {
+      const inner = el.firstElementChild, cue = el.lastElementChild;
+      const upd = () => { cue.style.opacity = inner.scrollHeight - inner.scrollTop - inner.clientHeight > 24 ? 1 : 0; };
+      inner.addEventListener('scroll', upd, { passive: true });
+      el._cue = upd;
+    }
+    mStage.append(el);
+    return el;
+  });
+
+  document.getElementById('mSheetTitle').textContent = M.sheet;
+  const items = [[1, M.front], ...DATA.cats.map(c => [c.page, `${pad(c.no)} ${short(c.no)}`, c.no]), [TOTAL, M.contact]];
+  mSheetList.innerHTML = items.map(([pg, label, cat]) =>
+    `<li><button type="button" data-go="${pg}" data-cat="${cat || ''}">${esc(label)}<span>p.${pg}</span></button></li>`).join('');
+  mShow(mq.matches ? mCur : cur, true);
+}
+
+function mShow(n, instant) {
+  n = Math.max(1, Math.min(TOTAL, n));
+  const far = instant || Math.abs(n - mCur) > 1;
+  mCur = n;
+  cur = n;
+  mPages.forEach((el, i) => {
+    const p = i + 1;
+    if (far) el.style.transition = 'none';
+    el.classList.toggle('gone', p < n);
+    el.style.display = p >= n - 1 && p <= n + 1 ? '' : 'none';
+    if (far) { void el.offsetWidth; el.style.transition = ''; }
+  });
+  const here = mPages[n - 1];
+  if (here._cue) { here.firstElementChild.scrollTop = 0; requestAnimationFrame(here._cue); }
+  const L = t(), M = MT[lang];
+  const label = n === 1 ? L.cover : n === TOTAL ? L.back : String(n);
+  mInfo.innerHTML = `${label}<small>${L.pages(TOTAL)}</small>`;
+  mPrev.disabled = n === 1;
+  mNext.disabled = n === TOTAL;
+  mPrev.setAttribute('aria-label', L.prev);
+  mNext.setAttribute('aria-label', L.next);
+  const cat = +here.dataset.cat;
+  mCatLabel.textContent = cat ? short(cat) : M.cats;
+  mSheetList.querySelectorAll('button').forEach(b => b.setAttribute('aria-current', String(!!cat && +b.dataset.cat === cat)));
+}
+
+function mSheetOpen(open) {
+  mSheet.hidden = mDim.hidden = !open;
+  if (open) (mSheetList.querySelector('[aria-current="true"]') || mSheetList.querySelector('button')).focus();
+  else document.getElementById('mCatBtn').focus();
+}
+mPrev.onclick = () => mShow(mCur - 1);
+mNext.onclick = () => mShow(mCur + 1);
+document.getElementById('mCatBtn').onclick = () => mSheetOpen(true);
+mDim.onclick = () => mSheetOpen(false);
+mSheetList.addEventListener('click', e => {
+  const b = e.target.closest('[data-go]');
+  if (!b) return;
+  mSheet.hidden = mDim.hidden = true;
+  mShow(+b.dataset.go);
+});
+mStage.addEventListener('click', e => {
+  const go = e.target.closest('[data-go]');
+  if (go) mShow(+go.dataset.go);
+});
+// a horizontal swipe turns the page; vertical movement is left to scrolling
+let mx = null, my = null;
+mStage.addEventListener('pointerdown', e => { mx = e.clientX; my = e.clientY; });
+mStage.addEventListener('pointerup', e => {
+  if (mx === null) return;
+  const dx = e.clientX - mx, dy = e.clientY - my;
+  mx = my = null;
+  if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.4) mShow(mCur + (dx < 0 ? 1 : -1));
+});
+mStage.addEventListener('pointercancel', () => { mx = my = null; });
+addEventListener('keydown', e => {
+  if (mq.matches && e.key === 'Escape' && !mSheet.hidden) mSheetOpen(false);
+});
+mq.addEventListener('change', () => {
+  if (mq.matches) mShow(cur, true);
+  else { flipped = leavesFor(cur); restack(); show(cur); fit(); fitAll(); }
+});
+
+addEventListener('resize', fit);
+fit();
+build();
+mBuild();
+if (document.fonts) {
+  document.fonts.ready.then(fitAll);
+  document.fonts.addEventListener('loadingdone', fitAll);
+}
+addEventListener('load', fitAll);
+setTimeout(fitAll, 1500);
+setTimeout(fitAll, 4000);
+</script>
